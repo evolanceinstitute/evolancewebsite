@@ -389,13 +389,19 @@ function initPortalDashboards() {
     });
   });
 
-  // Faculty Vertical Sub-Buttons (Roster & Attendance)
-  const vSubBtns = document.querySelectorAll(".v-sub-btn");
-  const fTabContents = document.querySelectorAll(".f-tab-content");
+  // Faculty Vertical Navigation Handlers
+  const vSubBtns = document.querySelectorAll(".faculty-v-tabs .v-sub-btn");
+  const fTabBtns = document.querySelectorAll(".faculty-v-tabs .portal-tab-btn[data-f-tab]");
+  const fTabContents = document.querySelectorAll("#faculty-dashboard .f-tab-content");
+
+  function resetFacultyTabActiveStates() {
+    vSubBtns.forEach(s => s.classList.remove("active"));
+    fTabBtns.forEach(b => b.classList.remove("active"));
+  }
 
   vSubBtns.forEach(sub => {
     sub.addEventListener("click", () => {
-      vSubBtns.forEach(s => s.classList.remove("active"));
+      resetFacultyTabActiveStates();
       sub.classList.add("active");
 
       const targetFTab = sub.getAttribute("data-f-tab");
@@ -421,11 +427,9 @@ function initPortalDashboards() {
     });
   });
 
-  // Faculty Single Vertical Tabs (Grade Quizzes & Announcements)
-  const singleFTabBtns = document.querySelectorAll(".portal-v-tabs .portal-tab-btn[data-f-tab]");
-  singleFTabBtns.forEach(btn => {
+  fTabBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-      singleFTabBtns.forEach(b => b.classList.remove("active"));
+      resetFacultyTabActiveStates();
       btn.classList.add("active");
 
       const targetFTab = btn.getAttribute("data-f-tab");
@@ -435,9 +439,9 @@ function initPortalDashboards() {
     });
   });
 
-  // Student Vertical Tabs (Attendance & Marks)
-  const studentSTabBtns = document.querySelectorAll(".student-v-tabs .portal-tab-btn[data-s-tab]");
-  const sTabContents = document.querySelectorAll(".s-tab-content");
+  // Student Vertical Navigation Handlers (Attendance & Marks)
+  const studentSTabBtns = document.querySelectorAll("#student-dashboard .portal-tab-btn[data-s-tab]");
+  const sTabContents = document.querySelectorAll("#student-dashboard .s-tab-content");
 
   studentSTabBtns.forEach(btn => {
     btn.addEventListener("click", () => {
