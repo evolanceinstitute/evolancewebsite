@@ -1,60 +1,59 @@
 /* ==========================================================================
    EVOLANCE INSTITUTE OF IT — SCRIPT
-   Features: Fullscreen Preloader Reveal, Program Syllabus Modal,
-   Counter Animations, Admissions Form Handler
+   Features: Single-Page Navigation / Tab Switcher, Preloader Reveal,
+   Stats Counter Animations, Admissions Form Handler
    ========================================================================== */
-
-// Authentic Syllabus Data Extracted from IMP Folder
-const syllabusData = {
-  ignite: {
-    title: "Capstone Ignite (Empowering Women Through Technology)",
-    subtitle: "Rawalpindi, Pakistan · Founded by NoorAbbas",
-    duration: "25 Class Days | 4 Phases | 10+ Real Skills",
-    desc: "Built from scratch for women, homemakers, and job seekers. Every student works on their own dedicated laptop in a supportive, judgment-free environment.",
-    phases: [
-      { name: "Phase 1: Foundations (Days 1–6)", detail: "Computer hardware parts, Windows navigation, file/folder management, proper typing technique & computer confidence." },
-      { name: "Phase 2: Productivity (Days 7–14)", detail: "MS Word formatting, Excel spreadsheets, PowerPoint presentations, Google Workspace & Canva graphic design." },
-      { name: "Phase 3: Digital Skills (Days 15–20)", detail: "Safe browsing, online privacy, AI prompt engineering (ChatGPT/Gemini), and social media content creation." },
-      { name: "Phase 4: Earn & Grow (Days 21–25)", detail: "Freelancing profiles on Fiverr & Upwork, client communication, proposal writing, portfolio building & graduation." }
-    ]
-  },
-  juniors: {
-    title: "Capstone Juniors (Ages 11–15)",
-    subtitle: "Building Next-Gen Tech & Coding Mindset",
-    duration: "30 Days | 4 Phases | 15+ Skills | 3 Projects",
-    desc: "A hands-on technology programme designed to give young learners real computer confidence, problem-solving logic, and AI literacy.",
-    phases: [
-      { name: "Phase 1: IT Foundations (Days 1–5)", detail: "What's inside a computer, Windows desktop navigation, settings, keyboard shortcuts, typing speed & accuracy." },
-      { name: "Phase 2: Internet & Productivity (Days 6–10)", detail: "Safe web browsing, online safety, MS Word document creation, PowerPoint & Canva poster design project." },
-      { name: "Phase 3: Coding & Logic (Days 11–15)", detail: "Computational thinking, Scratch drag-and-drop game programming, Python language basics, building & presenting a mini game." },
-      { name: "Phase 4: AI & Showcase (Days 16–20)", detail: "Understanding AI, prompt engineering, final showcase project & parent presentation day with certificate award." }
-    ]
-  },
-  master: {
-    title: "Master IT Program (60+ Skills)",
-    subtitle: "Complete Workplace & Career Readiness Track",
-    duration: "11 Structured Modules | Practical & Job-Ready",
-    desc: "A complete IT breakdown equipping students with hardware knowledge, office productivity, cybersecurity, databases, programming, web design, and freelancing.",
-    phases: [
-      { name: "Modules 1 & 2: Computer & OS Foundations", detail: "Hardware specs, RAM/CPU/Storage roles, Windows settings, file management, software installation & shortcuts." },
-      { name: "Modules 3 & 4: Office Tools & Google Workspace", detail: "MS Word, Excel formulas/spreadsheets, PowerPoint, Gmail setup, Docs, Sheets, Slides & real-time collaboration." },
-      { name: "Modules 5 & 6: Internet, Networks & Cybersecurity", detail: "LAN/WAN/WiFi, DNS, virus/malware threat protection, 2FA/OTPs, strong password management & online safety." },
-      { name: "Modules 7 & 8: Databases & AI Tools", detail: "Flat vs relational databases, spreadsheet data entry, ChatGPT/Gemini prompt writing & responsible AI use." },
-      { name: "Modules 9 & 10: Programming & Web Development", detail: "HTML structure, Scratch logic, Python fundamentals, C/C++ basics, WordPress & Webflow no-code site creation." },
-      { name: "Module 11: Creative Design & Freelancing", detail: "Canva graphic design (posters/socials), Fiverr & Upwork profile setup, proposal writing, pricing & client work." }
-    ]
-  }
-};
 
 document.addEventListener("DOMContentLoaded", () => {
   initPreloader();
+  initTabNavigation();
   initCounters();
-  initBackToTop();
-  initModal();
   initAdmissionsForm();
+  initBackToTop();
 });
 
-// Preloader Reveal
+// Single-Page Tab Switcher
+function initTabNavigation() {
+  const tabs = document.querySelectorAll(".nav-tab");
+  const tabViews = document.querySelectorAll(".tab-view");
+
+  if (!tabs.length || !tabViews.length) return;
+
+  function switchTab(targetTabId) {
+    // Update active nav button state
+    tabs.forEach(btn => {
+      if (btn.getAttribute("data-tab") === targetTabId) {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
+    });
+
+    // Update active view tab
+    tabViews.forEach(view => {
+      if (view.id === `tab-${targetTabId}`) {
+        view.classList.add("active");
+      } else {
+        view.classList.remove("active");
+      }
+    });
+
+    // Scroll smoothly to top
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetTab = btn.getAttribute("data-tab");
+      if (targetTab) {
+        switchTab(targetTab);
+      }
+    });
+  });
+}
+
+// Preloader Reveal Animation
 function initPreloader() {
   const preloader = document.getElementById("preloader");
   const progress = document.getElementById("preloader-progress");
@@ -86,7 +85,7 @@ function initPreloader() {
   }, interval);
 }
 
-// Counters
+// Stats Counter
 function initCounters() {
   const statVals = document.querySelectorAll(".stat-val");
   statVals.forEach(stat => {
@@ -113,50 +112,6 @@ function initCounters() {
   });
 }
 
-// Modal for Syllabus
-function initModal() {
-  const modal = document.getElementById("syllabus-modal");
-  const modalBody = document.getElementById("modal-body");
-  const closeBtn = document.getElementById("modal-close-btn");
-  const triggers = document.querySelectorAll(".modal-trigger");
-
-  if (!modal || !modalBody) return;
-
-  triggers.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      const key = e.currentTarget.getAttribute("data-program");
-      const data = syllabusData[key];
-      if (!data) return;
-
-      modalBody.innerHTML = `
-        <h2 style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; margin-bottom: 4px;">${data.title}</h2>
-        <p style="color: var(--accent-warm); font-size: 0.85rem; font-weight: 600; margin-bottom: 12px;">${data.subtitle} · ${data.duration}</p>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">${data.desc}</p>
-        
-        <h3 class="modal-section-title">Curriculum Breakdown</h3>
-        <div class="module-list">
-          ${data.phases.map(p => `
-            <div class="module-item">
-              <h4>${p.name}</h4>
-              <p>${p.detail}</p>
-            </div>
-          `).join('')}
-        </div>
-      `;
-
-      modal.classList.add("active");
-    });
-  });
-
-  if (closeBtn) {
-    closeBtn.addEventListener("click", () => modal.classList.remove("active"));
-  }
-
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) modal.classList.remove("active");
-  });
-}
-
 // Form Handler
 function initAdmissionsForm() {
   const form = document.getElementById("admissions-form");
@@ -172,7 +127,7 @@ function initAdmissionsForm() {
   });
 }
 
-// Back to Top
+// Back to Top Link
 function initBackToTop() {
   const topBtn = document.getElementById("back-to-top");
   if (topBtn) {
