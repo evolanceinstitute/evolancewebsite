@@ -1,22 +1,27 @@
 /* ==========================================================================
-   EVOLANCE MINIMALIST MATTE DESIGN SYSTEM & TABBED ARCHITECTURE
-   Colors: Matte Deep Obsidian, Off-White Porcelain, Warm Muted Architectural Tones
+   EVOLANCE MINIMALIST DESIGN SYSTEM — LIGHT BLUE & OFF-WHITE AESTHETIC
+   Colors: Soft Ice Off-White, Powder Blue, Sky Cerulean, Deep Slate Navy
    Typography: Syne (Bold Display) & Plus Jakarta Sans
    ========================================================================== */
 
 :root {
-  /* Matte Palette */
-  --bg-dark: #0e0f12;
-  --bg-card: #14161a;
-  --bg-hover: #1b1d22;
+  /* Aesthetic Light Blue & Off-White Palette */
+  --bg-dark: #f8fafc;          /* Soft Creamy Porcelain / Off-White background */
+  --bg-card: #ffffff;          /* Pure White Cards */
+  --bg-hover: #f0f7ff;         /* Muted Soft Ice Blue Tint */
+  --bg-input: #f1f5f9;         /* Very Light Slate Input Fill */
   
-  --text-main: #f0eee9;
-  --text-muted: #8e9096;
-  --text-dim: #5a5c62;
+  --text-main: #0f172a;        /* Deep Slate Navy (High contrast text) */
+  --text-muted: #64748b;       /* Muted Steel Blue Gray */
+  --text-dim: #94a3b8;         /* Light Slate Dim */
 
-  --border-muted: #24262b;
-  --border-hover: #3d4048;
-  --accent-warm: #c5a880;
+  --border-muted: #e2e8f0;     /* Delicate Light Border */
+  --border-hover: #7dd3fc;     /* Soft Light Blue Hover Border */
+  
+  --accent-warm: #0284c7;      /* Ocean Sky Blue Primary Accent */
+  --accent-sky: #38bdf8;       /* Vibrant Sky Blue Accent */
+  --accent-light: #e0f2fe;     /* Powder Blue Soft Tint */
+  --accent-navy: #0369a1;      /* Deep Cerulean */
 
   /* Typography */
   --font-display: 'Syne', sans-serif;
@@ -24,6 +29,8 @@
 
   --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: 0.2s ease;
+  --shadow-subtle: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  --shadow-card: 0 10px 30px -5px rgba(2, 132, 199, 0.08);
 }
 
 /* Reset & Base Setup */
@@ -62,9 +69,9 @@ a, button {
 
 .text-center { text-align: center; }
 .text-accent { color: var(--accent-warm); }
-.text-green { color: #4ade80; }
-.text-gold { color: #facc15; }
-.text-red { color: #f87171; }
+.text-green { color: #16a34a; }
+.text-gold { color: #d97706; }
+.text-red { color: #dc2626; }
 
 /* Container */
 .container {
@@ -74,7 +81,7 @@ a, button {
 }
 
 /* ==========================================================================
-   FULLSCREEN PRELOADER / INTRO ANIMATION
+   FULLSCREEN PRELOADER / INTRO ANIMATION (AESTHETIC SKY BLUE)
    ========================================================================== */
 .preloader {
   position: fixed;
@@ -82,7 +89,7 @@ a, button {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #08090b;
+  background-color: #f8fafc;
   z-index: 10000;
   display: flex;
   align-items: center;
@@ -117,6 +124,7 @@ a, button {
   letter-spacing: 0.4em;
   color: var(--accent-warm);
   margin-bottom: 24px;
+  font-weight: 700;
 }
 
 .preloader-brand .char {
@@ -144,11 +152,12 @@ a, button {
 
 .preloader-bar {
   width: 180px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.08);
+  height: 3px;
+  background: var(--border-muted);
   margin-bottom: 12px;
   position: relative;
   overflow: hidden;
+  border-radius: 2px;
 }
 
 .preloader-progress {
@@ -157,7 +166,7 @@ a, button {
   left: 0;
   width: 0%;
   height: 100%;
-  background: var(--text-main);
+  background: linear-gradient(90deg, var(--accent-warm), var(--accent-sky));
   transition: width 0.1s linear;
 }
 
@@ -166,6 +175,7 @@ a, button {
   font-size: 0.85rem;
   color: var(--text-muted);
   letter-spacing: 0.1em;
+  font-weight: 700;
 }
 
 /* Site Wrapper Fade Reveal */
@@ -185,10 +195,10 @@ body.loaded .site-wrapper {
    ========================================================================== */
 .navbar {
   padding: 20px 0;
-  border-bottom: none;
+  border-bottom: 1px solid var(--border-muted);
   position: sticky;
   top: 0;
-  background-color: rgba(14, 15, 18, 0.85);
+  background-color: rgba(248, 250, 252, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   z-index: 1000;
@@ -207,10 +217,11 @@ body.loaded .site-wrapper {
 }
 
 .logo-mark {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   background-color: var(--accent-warm);
-  border-radius: 2px;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);
 }
 
 .logo-group {
@@ -221,16 +232,17 @@ body.loaded .site-wrapper {
 .logo-text {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   letter-spacing: 0.15em;
   color: var(--text-main);
   line-height: 1;
 }
 
 .logo-sub {
-  font-size: 0.6rem;
+  font-size: 0.62rem;
   letter-spacing: 0.25em;
-  color: var(--text-muted);
+  color: var(--accent-warm);
+  font-weight: 700;
   margin-top: 2px;
 }
 
@@ -244,7 +256,8 @@ body.loaded .site-wrapper {
   color: var(--text-muted);
   position: relative;
   padding: 6px 12px;
-  border-radius: 2px;
+  border-radius: 4px;
+  font-weight: 500;
   transition: color var(--transition-fast), background-color var(--transition-fast);
 }
 
@@ -265,8 +278,8 @@ body.loaded .site-wrapper {
 }
 
 .nav-tab.active {
-  color: var(--text-main);
-  font-weight: 600;
+  color: var(--accent-warm);
+  font-weight: 700;
 }
 
 .nav-tab.active::after {
@@ -275,19 +288,19 @@ body.loaded .site-wrapper {
 
 .text-link {
   font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--text-main);
+  font-weight: 700;
+  color: var(--accent-warm);
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  border-bottom: 1px solid var(--text-main);
+  border-bottom: 2px solid var(--accent-warm);
   padding-bottom: 2px;
-  transition: border-color var(--transition-fast), color var(--transition-fast);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
 }
 
 .text-link:hover {
-  color: var(--accent-warm);
-  border-color: var(--accent-warm);
+  color: var(--accent-navy);
+  border-color: var(--accent-navy);
 }
 
 /* WHEN PORTAL VIEW IS ACTIVE -> HIDE TOP NAVBAR LINKS, FOOTER & MAP */
@@ -341,13 +354,17 @@ body.portal-mode-active .footer {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--accent-warm);
-  font-weight: 700;
+  font-weight: 800;
   display: inline-block;
   margin-bottom: 8px;
+  background-color: var(--accent-light);
+  padding: 4px 12px;
+  border-radius: 20px;
 }
 
 .page-badge.gold {
-  color: var(--accent-warm);
+  color: #d97706;
+  background-color: #fef3c7;
 }
 
 .page-title {
@@ -356,6 +373,7 @@ body.portal-mode-active .footer {
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 10px;
+  color: var(--text-main);
 }
 
 .page-subtitle {
@@ -405,6 +423,14 @@ body.portal-mode-active .footer {
   padding: 24px;
   background-color: var(--bg-card);
   border: 1px solid var(--border-muted);
+  border-radius: 8px;
+  box-shadow: var(--shadow-subtle);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.audience-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-hover);
 }
 
 .audience-card h4 {
@@ -412,6 +438,7 @@ body.portal-mode-active .footer {
   font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 8px;
+  color: var(--text-main);
 }
 
 .audience-card p {
@@ -433,7 +460,9 @@ body.portal-mode-active .footer {
   padding: 20px;
   background-color: var(--bg-card);
   border: 1px solid var(--border-muted);
+  border-radius: 8px;
   align-items: flex-start;
+  box-shadow: var(--shadow-subtle);
 }
 
 .phase-num {
@@ -442,9 +471,9 @@ body.portal-mode-active .footer {
   font-weight: 800;
   text-transform: uppercase;
   color: var(--accent-warm);
-  background-color: var(--bg-dark);
+  background-color: var(--accent-light);
   padding: 6px 12px;
-  border: 1px solid var(--border-muted);
+  border-radius: 4px;
   white-space: nowrap;
 }
 
@@ -471,6 +500,8 @@ body.portal-mode-active .footer {
   padding: 24px;
   background-color: var(--bg-card);
   border: 1px solid var(--border-muted);
+  border-radius: 8px;
+  box-shadow: var(--shadow-subtle);
 }
 
 .mod-badge {
@@ -478,7 +509,7 @@ body.portal-mode-active .footer {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--accent-warm);
-  font-weight: 700;
+  font-weight: 800;
   display: block;
   margin-bottom: 8px;
 }
@@ -500,6 +531,8 @@ body.portal-mode-active .footer {
   padding: 32px;
   background-color: var(--bg-card);
   border: 1px solid var(--border-muted);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
   position: sticky;
   top: 100px;
 }
@@ -540,12 +573,14 @@ body.portal-mode-active .footer {
 
 .saved-session-banner {
   background-color: var(--bg-card);
-  border: 1px solid var(--accent-warm);
+  border: 1.5px solid var(--accent-warm);
   padding: 16px 20px;
   margin-bottom: 20px;
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: var(--shadow-subtle);
 }
 
 .banner-info {
@@ -567,7 +602,9 @@ body.portal-mode-active .footer {
 .login-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-muted);
+  border-radius: 12px;
   padding: 36px;
+  box-shadow: var(--shadow-card);
 }
 
 .portal-mode-switch {
@@ -587,14 +624,16 @@ body.portal-mode-active .footer {
 }
 
 .mode-btn.active {
-  color: var(--text-main);
+  color: var(--accent-warm);
   border-bottom-color: var(--accent-warm);
+  font-weight: 700;
 }
 
 .role-selector {
   display: flex;
   background-color: var(--bg-dark);
   border: 1px solid var(--border-muted);
+  border-radius: 6px;
   padding: 4px;
   gap: 4px;
   margin-bottom: 24px;
@@ -605,14 +644,15 @@ body.portal-mode-active .footer {
   padding: 8px 12px;
   font-size: 0.82rem;
   color: var(--text-muted);
-  border-radius: 2px;
+  border-radius: 4px;
   transition: color var(--transition-fast), background-color var(--transition-fast);
 }
 
 .role-pill.active {
   background-color: var(--bg-card);
-  color: var(--text-main);
-  font-weight: 600;
+  color: var(--accent-warm);
+  font-weight: 700;
+  box-shadow: var(--shadow-subtle);
 }
 
 .verification-notice-box {
@@ -620,18 +660,21 @@ body.portal-mode-active .footer {
   align-items: flex-start;
   gap: 12px;
   padding: 12px 16px;
-  background-color: var(--bg-dark);
-  border: 1px solid var(--border-muted);
+  background-color: var(--accent-light);
+  border: 1px solid var(--border-hover);
+  border-radius: 6px;
   margin-bottom: 20px;
   font-size: 0.82rem;
-  color: var(--text-muted);
+  color: var(--accent-navy);
 }
 
 /* PORTAL DASHBOARD BOX */
 .portal-dashboard-box {
   background-color: var(--bg-card);
   border: 1px solid var(--border-muted);
+  border-radius: 16px;
   padding: 36px;
+  box-shadow: var(--shadow-card);
 }
 
 .dashboard-header {
@@ -649,6 +692,7 @@ body.portal-mode-active .footer {
   font-family: var(--font-display);
   font-size: 2.2rem;
   font-weight: 800;
+  color: var(--text-main);
 }
 
 .dash-sub {
@@ -686,15 +730,16 @@ body.portal-mode-active .footer {
   color: var(--text-muted);
   border: 1px solid var(--border-muted);
   background-color: var(--bg-dark);
-  border-radius: 2px;
+  border-radius: 6px;
   transition: var(--transition-fast);
   text-align: left;
 }
 
 .portal-tab-btn:hover, .portal-tab-btn.active {
-  background-color: var(--bg-hover);
-  color: var(--text-main);
-  border-color: var(--accent-warm);
+  background-color: var(--accent-light);
+  color: var(--accent-warm);
+  border-color: var(--border-hover);
+  font-weight: 700;
 }
 
 .caret-icon {
@@ -712,7 +757,7 @@ body.portal-mode-active .footer {
   flex-direction: column;
   gap: 4px;
   padding: 8px 0 4px 12px;
-  border-left: 2px solid var(--border-muted);
+  border-left: 2px solid var(--accent-warm);
   margin-top: 6px;
   margin-left: 10px;
 }
@@ -729,12 +774,14 @@ body.portal-mode-active .footer {
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: color var(--transition-fast);
+  border-radius: 4px;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
 }
 
 .v-sub-btn:hover, .v-sub-btn.active {
   color: var(--accent-warm);
-  font-weight: 600;
+  background-color: var(--bg-hover);
+  font-weight: 700;
 }
 
 .portal-tab-workspace {
@@ -768,6 +815,7 @@ body.portal-mode-active .footer {
   background: var(--bg-dark);
   border: 1px solid var(--border-muted);
   color: var(--text-main);
+  border-radius: 4px;
   font-size: 0.85rem;
 }
 
@@ -794,53 +842,54 @@ body.portal-mode-active .footer {
   color: var(--text-muted);
   letter-spacing: 0.05em;
   background-color: var(--bg-dark);
+  font-weight: 700;
 }
 
 .status-badge {
   font-size: 0.75rem;
   font-weight: 700;
   padding: 4px 10px;
-  border-radius: 2px;
+  border-radius: 4px;
   text-transform: uppercase;
 }
 
 .status-badge.green {
-  background-color: rgba(74, 222, 128, 0.1);
-  color: #4ade80;
-  border: 1px solid rgba(74, 222, 128, 0.3);
+  background-color: rgba(22, 163, 74, 0.1);
+  color: #15803d;
+  border: 1px solid rgba(22, 163, 74, 0.3);
 }
 
 .status-badge.yellow {
-  background-color: rgba(250, 204, 21, 0.1);
-  color: #facc15;
-  border: 1px solid rgba(250, 204, 21, 0.3);
+  background-color: rgba(217, 119, 6, 0.1);
+  color: #b45309;
+  border: 1px solid rgba(217, 119, 6, 0.3);
 }
 
 .status-badge.red {
-  background-color: rgba(248, 113, 113, 0.1);
-  color: #f87171;
-  border: 1px solid rgba(248, 113, 113, 0.3);
+  background-color: rgba(220, 38, 38, 0.1);
+  color: #b91c1c;
+  border: 1px solid rgba(220, 38, 38, 0.3);
 }
 
 .att-toggle-btn {
   padding: 6px 14px;
   font-size: 0.78rem;
   font-weight: 700;
-  border-radius: 2px;
+  border-radius: 4px;
   cursor: pointer;
   transition: var(--transition-fast);
 }
 
 .att-toggle-btn.present {
-  background-color: rgba(74, 222, 128, 0.15);
-  color: #4ade80;
-  border: 1px solid #4ade80;
+  background-color: rgba(22, 163, 74, 0.1);
+  color: #15803d;
+  border: 1px solid #16a34a;
 }
 
 .att-toggle-btn.absent {
-  background-color: rgba(248, 113, 113, 0.15);
-  color: #f87171;
-  border: 1px solid #f87171;
+  background-color: rgba(220, 38, 38, 0.1);
+  color: #b91c1c;
+  border: 1px solid #dc2626;
 }
 
 .dash-action-bar {
@@ -852,8 +901,8 @@ body.portal-mode-active .footer {
 
 .status-msg {
   font-size: 0.85rem;
-  color: #4ade80;
-  font-weight: 600;
+  color: #15803d;
+  font-weight: 700;
 }
 
 .grade-input-grid {
@@ -878,6 +927,7 @@ body.portal-mode-active .footer {
   padding: 16px;
   background-color: var(--bg-dark);
   border: 1px solid var(--border-muted);
+  border-radius: 8px;
 }
 
 .mini-lbl {
@@ -886,6 +936,7 @@ body.portal-mode-active .footer {
   display: block;
   margin-bottom: 4px;
   text-transform: uppercase;
+  font-weight: 700;
 }
 
 .mini-val {
@@ -897,15 +948,15 @@ body.portal-mode-active .footer {
 .remove-btn {
   padding: 4px 10px;
   font-size: 0.75rem;
-  color: #f87171;
-  border: 1px solid rgba(248, 113, 113, 0.3);
-  background: rgba(248, 113, 113, 0.08);
-  border-radius: 2px;
+  color: #dc2626;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  background: rgba(220, 38, 38, 0.08);
+  border-radius: 4px;
   cursor: pointer;
 }
 
 .remove-btn:hover {
-  background: rgba(248, 113, 113, 0.2);
+  background: rgba(220, 38, 38, 0.2);
 }
 
 /* ==========================================================================
@@ -971,24 +1022,24 @@ body.portal-mode-active .footer {
   align-items: center;
   gap: 6px;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--accent-warm);
   margin-top: 6px;
-  border-bottom: 1px solid var(--accent-warm);
+  border-bottom: 2px solid var(--accent-warm);
   padding-bottom: 2px;
   transition: color var(--transition-fast);
 }
 
 .map-link:hover {
-  color: var(--text-main);
-  border-color: var(--text-main);
+  color: var(--accent-navy);
+  border-color: var(--accent-navy);
 }
 
 .map-container {
-  border: 1px solid var(--border-muted);
-  border-radius: 2px;
+  border: 1fr solid var(--border-muted);
+  border-radius: 8px;
   overflow: hidden;
-  background-color: var(--bg-dark);
+  box-shadow: var(--shadow-card);
   transition: border-color var(--transition-smooth);
 }
 
@@ -1000,7 +1051,9 @@ body.portal-mode-active .footer {
 .admissions-form-box {
   background-color: var(--bg-card);
   border: 1px solid var(--border-muted);
+  border-radius: 12px;
   padding: 36px;
+  box-shadow: var(--shadow-card);
 }
 
 .admissions-form-box h3 {
@@ -1020,28 +1073,32 @@ body.portal-mode-active .footer {
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-weight: 700;
   margin-bottom: 6px;
 }
 
 .form-group input, .form-group select {
   width: 100%;
   padding: 12px 16px;
-  background-color: var(--bg-dark);
+  background-color: var(--bg-input);
   border: 1px solid var(--border-muted);
+  border-radius: 6px;
   color: var(--text-main);
   outline: none;
   font-family: inherit;
   font-size: 0.9rem;
-  transition: border-color var(--transition-fast);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
 }
 
 .form-group select option {
-  background-color: var(--bg-dark);
+  background-color: #ffffff;
   color: var(--text-main);
 }
 
 .form-group input:focus, .form-group select:focus {
   border-color: var(--accent-warm);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
 }
 
 .btn-full {
@@ -1059,15 +1116,16 @@ body.portal-mode-active .footer {
   align-items: center;
   gap: 16px;
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--accent-warm);
+  font-weight: 700;
   margin-bottom: 24px;
   letter-spacing: 0.05em;
 }
 
 .tag-divider {
   width: 30px;
-  height: 1px;
-  background-color: var(--border-muted);
+  height: 2px;
+  background-color: var(--accent-warm);
 }
 
 .hero-heading {
@@ -1077,6 +1135,7 @@ body.portal-mode-active .footer {
   line-height: 1.08;
   letter-spacing: -0.02em;
   margin-bottom: 36px;
+  color: var(--text-main);
 }
 
 .serif-title {
@@ -1112,20 +1171,27 @@ body.portal-mode-active .footer {
   align-items: center;
   gap: 10px;
   padding: 12px 24px;
-  background-color: transparent;
-  border: 1px solid var(--border-muted);
-  color: var(--text-main);
+  background-color: var(--accent-warm);
+  border: 1px solid var(--accent-warm);
+  color: #ffffff;
   font-size: 0.88rem;
-  font-weight: 600;
-  border-radius: 2px;
+  font-weight: 700;
+  border-radius: 6px;
   cursor: pointer;
   transition: var(--transition-smooth);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
 }
 
 .minimal-btn:hover {
-  background-color: var(--bg-hover);
-  border-color: var(--text-main);
+  background-color: var(--accent-navy);
+  border-color: var(--accent-navy);
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.3);
+}
+
+.minimal-btn.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.82rem;
 }
 
 /* Statement */
@@ -1147,13 +1213,13 @@ body.portal-mode-active .footer {
   color: var(--accent-warm);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .statement-text {
   font-family: var(--font-display);
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.35;
   color: var(--text-main);
   margin-bottom: 12px;
@@ -1162,6 +1228,7 @@ body.portal-mode-active .footer {
 .statement-author {
   font-size: 0.9rem;
   color: var(--text-muted);
+  font-weight: 600;
 }
 
 /* Programs Grid */
@@ -1180,7 +1247,8 @@ body.portal-mode-active .footer {
 
 .section-num {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--accent-warm);
+  font-weight: 700;
   display: block;
   margin-bottom: 8px;
 }
@@ -1206,6 +1274,8 @@ body.portal-mode-active .footer {
   padding: 36px 28px;
   border: 1px solid var(--border-muted);
   background-color: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: var(--shadow-subtle);
   display: flex;
   flex-direction: column;
   transition: var(--transition-smooth);
@@ -1213,13 +1283,14 @@ body.portal-mode-active .footer {
 }
 
 .program-card.highlight-card {
-  border-color: var(--accent-warm);
+  border-color: var(--accent-sky);
+  box-shadow: var(--shadow-card);
 }
 
 .program-card:hover {
-  border-color: var(--text-main);
-  background-color: var(--bg-hover);
-  transform: translateY(-4px);
+  border-color: var(--accent-warm);
+  transform: translateY(-5px);
+  box-shadow: 0 14px 28px rgba(2, 132, 199, 0.12);
 }
 
 .card-meta {
@@ -1231,14 +1302,14 @@ body.portal-mode-active .footer {
 }
 
 .card-badge {
-  color: var(--text-main);
+  color: var(--accent-warm);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .card-badge.gold {
-  color: var(--accent-warm);
+  color: #d97706;
 }
 
 .card-duration {
@@ -1256,7 +1327,7 @@ body.portal-mode-active .footer {
   font-size: 0.85rem;
   color: var(--accent-warm);
   margin-bottom: 16px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .program-desc {
@@ -1291,13 +1362,14 @@ body.portal-mode-active .footer {
   font-family: var(--font-display);
   font-size: 3.2rem;
   font-weight: 800;
-  color: var(--text-main);
+  color: var(--accent-warm);
   margin-bottom: 4px;
 }
 
 .stat-lbl {
   font-size: 0.88rem;
   color: var(--text-muted);
+  font-weight: 600;
   letter-spacing: 0.05em;
 }
 
@@ -1305,6 +1377,7 @@ body.portal-mode-active .footer {
 .footer {
   padding: 60px 0 40px;
   border-top: 1px solid var(--border-muted);
+  background-color: var(--bg-card);
 }
 
 .footer-top {
@@ -1323,6 +1396,7 @@ body.portal-mode-active .footer {
   font-size: 1.8rem;
   font-weight: 800;
   letter-spacing: 0.05em;
+  color: var(--text-main);
 }
 
 .footer-subtext {
@@ -1336,7 +1410,7 @@ body.portal-mode-active .footer {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--accent-warm);
-  border-bottom: 1px solid var(--accent-warm);
+  border-bottom: 2px solid var(--accent-warm);
   padding-bottom: 2px;
 }
 
@@ -1352,11 +1426,12 @@ body.portal-mode-active .footer {
 
 .top-link {
   color: var(--text-muted);
+  font-weight: 600;
   transition: color var(--transition-fast);
 }
 
 .top-link:hover {
-  color: var(--text-main);
+  color: var(--accent-warm);
 }
 
 /* Responsive */
