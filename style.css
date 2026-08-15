@@ -290,7 +290,7 @@ body.loaded .site-wrapper {
   border-color: var(--accent-warm);
 }
 
-/* WHEN PORTAL VIEW IS ACTIVE -> HIDE TOP NAVBAR LINKS */
+/* WHEN PORTAL VIEW IS ACTIVE -> HIDE TOP NAVBAR LINKS, FOOTER & MAP */
 body.portal-mode-active #main-nav-links,
 body.portal-mode-active #main-nav-action {
   display: none !important;
@@ -298,6 +298,11 @@ body.portal-mode-active #main-nav-action {
 
 body.portal-mode-active #portal-header-action {
   display: flex !important;
+}
+
+body.portal-mode-active .global-location-section,
+body.portal-mode-active .footer {
+  display: none !important;
 }
 
 /* ==========================================================================
