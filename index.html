@@ -43,7 +43,7 @@
   <div class="site-wrapper" id="site-wrapper">
     
     <!-- Top Navigation Bar -->
-    <header class="navbar">
+    <header class="navbar" id="main-navbar">
       <div class="container nav-container">
         <a href="#home" class="logo nav-tab" data-tab="home">
           <span class="logo-mark"></span>
@@ -53,7 +53,8 @@
           </div>
         </a>
 
-        <nav class="nav-links">
+        <!-- Top Navigation Links (Hidden automatically when Portal View is open) -->
+        <nav class="nav-links" id="main-nav-links">
           <button class="nav-tab active" data-tab="home">Home</button>
           <button class="nav-tab" data-tab="ignite">Capstone Ignite</button>
           <button class="nav-tab" data-tab="juniors">Capstone Juniors</button>
@@ -61,8 +62,13 @@
           <button class="nav-tab" data-tab="login">Portal Login</button>
         </nav>
 
-        <div class="nav-action">
+        <div class="nav-action" id="main-nav-action">
           <button class="text-link nav-tab" data-tab="registration">Registration <i class="fa-solid fa-arrow-up-right"></i></button>
+        </div>
+
+        <!-- Exit Portal Button (Visible only when in Portal View) -->
+        <div class="portal-header-action" id="portal-header-action" style="display: none;">
+          <button class="minimal-btn btn-sm nav-tab" data-tab="home"><i class="fa-solid fa-house"></i> Return to Main Website</button>
         </div>
       </div>
     </header>
@@ -444,22 +450,22 @@
       </section>
 
       <!-- ===================================================================
-           TAB 5: PORTAL LOGIN & DEDICATED STUDENT / FACULTY DASHBOARDS
+           TAB 5: PORTAL ARCHITECTURE WITH VERTICAL LEFT SIDEBAR & ACCORDIONS
            =================================================================== -->
       <section class="tab-view" id="tab-login">
         <div class="container page-container">
           
-          <!-- LOGIN / SIGN UP CONTAINER (BEFORE LOG IN) -->
+          <!-- BEFORE LOG IN CARD -->
           <div id="login-view-box">
             <div class="page-header text-center">
-              <span class="page-badge">Student & Faculty Portal</span>
-              <h1 class="page-title">Evolance Learning Portal</h1>
+              <span class="page-badge">Evolance Learning Portal</span>
+              <h1 class="page-title">Sign In / Sign Up</h1>
               <p class="page-subtitle">Pre-approved email verification, attendance tracking & marks</p>
             </div>
 
             <div class="login-wrapper">
               
-              <!-- Quick Session Status Banner (If session exists) -->
+              <!-- Quick Saved Session Banner -->
               <div id="saved-session-banner" class="saved-session-banner" style="display: none;">
                 <div class="banner-info">
                   <i class="fa-solid fa-circle-check text-green"></i>
@@ -479,7 +485,7 @@
                   <button class="mode-btn" id="mode-signup-btn"><i class="fa-solid fa-user-plus"></i> Student Sign Up</button>
                 </div>
 
-                <!-- Role Selector (Visible only in Sign In mode) -->
+                <!-- Role Selector (Sign In) -->
                 <div class="role-selector" id="signin-role-selector">
                   <button class="role-pill active" data-role="student">Student Portal</button>
                   <button class="role-pill" data-role="faculty">Faculty Portal</button>
@@ -511,10 +517,10 @@
                     </label>
                   </div>
 
-                  <button type="submit" class="minimal-btn btn-full">Sign In to Portal <i class="fa-solid fa-arrow-right"></i></button>
+                  <button type="submit" class="minimal-btn btn-full">Sign In & Open Portal <i class="fa-solid fa-arrow-right"></i></button>
                 </form>
 
-                <!-- SIGN UP FORM (PRE-APPROVED EMAIL VERIFICATION REQUIRED) -->
+                <!-- SIGN UP FORM (VERIFICATION REQUIRED) -->
                 <form id="signup-form" class="minimal-form" style="display: none;">
                   <div class="verification-notice-box">
                     <i class="fa-solid fa-shield-halved text-accent"></i>
@@ -532,7 +538,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="signup-program">Enrolled Program</label>
+                    <label for="signup-program">Enrolled Program Track</label>
                     <select id="signup-program" required>
                       <option value="" disabled selected>Select Your Enrolled Course...</option>
                       <option value="ignite">Capstone Ignite (Women Track)</option>
@@ -558,10 +564,10 @@
                 </form>
 
                 <div class="demo-access-box">
-                  <span class="demo-lbl">Instant Demo Previews:</span>
+                  <span class="demo-lbl">Instant Demo Portal Previews:</span>
                   <div class="demo-btn-row">
-                    <button class="minimal-btn btn-sm" id="btn-demo-student"><i class="fa-solid fa-user-graduate"></i> Open Student Dashboard</button>
-                    <button class="minimal-btn btn-sm" id="btn-demo-faculty"><i class="fa-solid fa-chalkboard-user"></i> Open Faculty Admin Dashboard</button>
+                    <button class="minimal-btn btn-sm" id="btn-demo-student"><i class="fa-solid fa-user-graduate"></i> Open Student Portal</button>
+                    <button class="minimal-btn btn-sm" id="btn-demo-faculty"><i class="fa-solid fa-chalkboard-user"></i> Open Faculty Admin Portal</button>
                   </div>
                 </div>
 
@@ -570,352 +576,403 @@
           </div>
 
           <!-- ================================================================
-               INTERACTIVE FACULTY DASHBOARD VIEW
+               MAIN PORTAL CONTAINER WITH VERTICAL SIDEBAR ON LEFT
                ================================================================ -->
-          <div id="faculty-dashboard" class="portal-dashboard-box" style="display: none;">
-            <div class="dashboard-header">
-              <div>
-                <span class="page-badge gold"><i class="fa-solid fa-user-shield"></i> Faculty Administration Portal</span>
-                <h2 class="dash-title">Faculty Control Panel</h2>
-                <p class="dash-sub">Director: NoorAbbas · Department of IT & Computer Science</p>
+          <div id="portal-authenticated-view" class="portal-layout" style="display: none;">
+            
+            <!-- VERTICAL LEFT SIDEBAR NAVIGATION -->
+            <aside class="portal-sidebar">
+              <div class="sidebar-user-header">
+                <span class="page-badge gold" id="portal-role-badge">Student Portal</span>
+                <h4 id="portal-user-name">Ayesha Khan</h4>
+                <span class="user-email-sm" id="portal-user-email">ayesha@evolance.edu.pk</span>
               </div>
-              <button class="minimal-btn btn-sm" id="faculty-logout"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
-            </div>
 
-            <!-- Inner Faculty Tabs -->
-            <div class="portal-tabs-nav">
-              <button class="portal-tab-btn active" data-f-tab="roster"><i class="fa-solid fa-user-plus"></i> Pre-Approve Student Roster</button>
-              <button class="portal-tab-btn" data-f-tab="attendance"><i class="fa-solid fa-calendar-check"></i> Mark Attendance</button>
-              <button class="portal-tab-btn" data-f-tab="marks"><i class="fa-solid fa-pen-to-square"></i> Grade Quizzes & Projects</button>
-              <button class="portal-tab-btn" data-f-tab="announcements"><i class="fa-solid fa-bullhorn"></i> Broadcast Notice</button>
-            </div>
+              <!-- VERTICAL MENU LIST WITH ACCORDIONS -->
+              <nav class="v-menu">
 
-            <!-- Faculty Tab 1: Manage Pre-Approved Student Roster -->
-            <div class="f-tab-content active" id="f-tab-roster">
-              <div class="dash-card">
-                <h3>Pre-Approve Students for Sign-Up Verification</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
-                  Only emails added below can successfully sign up or log into their respective course dashboards.
-                </p>
+                <!-- FACULTY VERTICAL MENU (WITH ACCORDION DROPDOWNS) -->
+                <div class="v-menu-group" id="faculty-v-group" style="display: none;">
+                  
+                  <!-- Accordion 1: Student Roster -->
+                  <div class="v-menu-item has-dropdown active">
+                    <button class="v-menu-link dropdown-toggle">
+                      <span><i class="fa-solid fa-user-plus"></i> Approved Roster</span>
+                      <i class="fa-solid fa-chevron-down caret-icon"></i>
+                    </button>
+                    <div class="v-dropdown-menu">
+                      <button class="v-sub-link active" data-f-tab="roster" data-course-sub="ignite"><i class="fa-solid fa-angle-right"></i> Capstone Ignite</button>
+                      <button class="v-sub-link" data-f-tab="roster" data-course-sub="juniors"><i class="fa-solid fa-angle-right"></i> Capstone Juniors</button>
+                      <button class="v-sub-link" data-f-tab="roster" data-course-sub="master"><i class="fa-solid fa-angle-right"></i> Master IT Program</button>
+                    </div>
+                  </div>
 
-                <!-- Course Sub-Tabs -->
-                <div class="course-roster-tabs">
-                  <button class="roster-sub-btn active" data-course-sub="ignite"><i class="fa-solid fa-person-dress"></i> Capstone Ignite</button>
-                  <button class="roster-sub-btn" data-course-sub="juniors"><i class="fa-solid fa-child"></i> Capstone Juniors</button>
-                  <button class="roster-sub-btn" data-course-sub="master"><i class="fa-solid fa-laptop-code"></i> Master IT Program</button>
+                  <!-- Accordion 2: Mark Attendance -->
+                  <div class="v-menu-item has-dropdown">
+                    <button class="v-menu-link dropdown-toggle">
+                      <span><i class="fa-solid fa-calendar-check"></i> Mark Attendance</span>
+                      <i class="fa-solid fa-chevron-down caret-icon"></i>
+                    </button>
+                    <div class="v-dropdown-menu">
+                      <button class="v-sub-link" data-f-tab="attendance" data-batch="ignite"><i class="fa-solid fa-angle-right"></i> Ignite Batch</button>
+                      <button class="v-sub-link" data-f-tab="attendance" data-batch="juniors"><i class="fa-solid fa-angle-right"></i> Juniors Batch</button>
+                      <button class="v-sub-link" data-f-tab="attendance" data-batch="master"><i class="fa-solid fa-angle-right"></i> Master IT Batch</button>
+                    </div>
+                  </div>
+
+                  <!-- Single Menu Item 3: Grade Quizzes -->
+                  <div class="v-menu-item">
+                    <button class="v-menu-link" data-f-tab="marks">
+                      <span><i class="fa-solid fa-pen-to-square"></i> Grade Quizzes</span>
+                    </button>
+                  </div>
+
+                  <!-- Single Menu Item 4: Broadcast Notice -->
+                  <div class="v-menu-item">
+                    <button class="v-menu-link" data-f-tab="announcements">
+                      <span><i class="fa-solid fa-bullhorn"></i> Broadcast Notice</span>
+                    </button>
+                  </div>
+
                 </div>
 
-                <!-- Add Student to Roster Form -->
-                <form id="add-student-roster-form" class="grade-input-grid" style="margin-bottom: 30px;">
-                  <div class="form-group">
-                    <label>Student Email (Required for Sign Up)</label>
-                    <input type="email" id="roster-email" placeholder="student@evolance.edu.pk" required>
+                <!-- STUDENT VERTICAL MENU -->
+                <div class="v-menu-group" id="student-v-group" style="display: block;">
+                  <div class="v-menu-item">
+                    <button class="v-menu-link active" data-s-tab="s-attendance">
+                      <span><i class="fa-solid fa-user-check"></i> Attendance Record</span>
+                    </button>
                   </div>
-                  <div class="form-group">
-                    <label>Student Full Name</label>
-                    <input type="text" id="roster-name" placeholder="Ayesha Khan" required>
+                  <div class="v-menu-item">
+                    <button class="v-menu-link" data-s-tab="s-marks">
+                      <span><i class="fa-solid fa-award"></i> Marks & Class Rank</span>
+                    </button>
                   </div>
-                  <div class="form-group">
-                    <label>Assigned Roll No.</label>
-                    <input type="text" id="roster-roll" placeholder="EVO-IGN-005" required>
-                  </div>
-                  <div class="form-group">
-                    <label>Target Course Program</label>
-                    <select id="roster-program-select">
-                      <option value="ignite">Capstone Ignite (Women Track)</option>
-                      <option value="juniors">Capstone Juniors (Ages 11-15)</option>
-                      <option value="master" selected>Master IT Program (60+ Skills)</option>
-                    </select>
-                  </div>
-                  <div class="form-group full-width">
-                    <button type="submit" class="minimal-btn"><i class="fa-solid fa-plus"></i> Add Student to Approved Roster</button>
-                  </div>
-                </form>
-
-                <h4>Current Approved Course Roster</h4>
-                <div class="table-responsive">
-                  <table class="portal-table" id="roster-table">
-                    <thead>
-                      <tr>
-                        <th>Roll No.</th>
-                        <th>Approved Email</th>
-                        <th>Student Name</th>
-                        <th>Course Track</th>
-                        <th>Account Status</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody id="roster-table-body">
-                      <!-- Populated dynamically via JS -->
-                    </tbody>
-                  </table>
                 </div>
+
+              </nav>
+
+              <div class="v-sidebar-footer">
+                <button class="minimal-btn btn-sm btn-full" id="portal-logout-btn">
+                  <i class="fa-solid fa-right-from-bracket"></i> Sign Out Portal
+                </button>
               </div>
-            </div>
+            </aside>
 
-            <!-- Faculty Tab 2: Mark Attendance -->
-            <div class="f-tab-content" id="f-tab-attendance">
-              <div class="dash-card">
-                <div class="card-top-bar">
-                  <h3>Mark Daily Attendance</h3>
-                  <div class="batch-selectors">
-                    <select id="attendance-batch-select">
-                      <option value="ignite">Capstone Ignite (Batch #1)</option>
-                      <option value="juniors">Capstone Juniors (Batch #2)</option>
-                      <option value="master" selected>Master IT Program (Batch #4)</option>
-                    </select>
-                    <input type="date" value="2026-08-15">
+            <!-- RIGHT WORKSPACE CONTENT DISPLAY -->
+            <div class="portal-workspace">
+              
+              <!-- FACULTY WORKSPACE BLOCKS -->
+              <div id="faculty-workspace" style="display: none;">
+                
+                <!-- Faculty Tab 1: Manage Pre-Approved Student Roster -->
+                <div class="f-tab-content active" id="f-tab-roster">
+                  <div class="dash-card">
+                    <div class="card-top-bar">
+                      <h3>Pre-Approve Student Roster</h3>
+                      <span class="page-badge" id="current-roster-badge">CAPSTONE IGNITE</span>
+                    </div>
+
+                    <!-- Add Student to Roster Form -->
+                    <form id="add-student-roster-form" class="grade-input-grid" style="margin-bottom: 24px;">
+                      <div class="form-group">
+                        <label>Student Email (Required for Sign Up)</label>
+                        <input type="email" id="roster-email" placeholder="student@evolance.edu.pk" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Student Full Name</label>
+                        <input type="text" id="roster-name" placeholder="Ayesha Khan" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Assigned Roll No.</label>
+                        <input type="text" id="roster-roll" placeholder="EVO-IGN-005" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Target Course Track</label>
+                        <select id="roster-program-select">
+                          <option value="ignite">Capstone Ignite (Women Track)</option>
+                          <option value="juniors">Capstone Juniors (Ages 11-15)</option>
+                          <option value="master" selected>Master IT Program (60+ Skills)</option>
+                        </select>
+                      </div>
+                      <div class="form-group full-width">
+                        <button type="submit" class="minimal-btn"><i class="fa-solid fa-plus"></i> Add Student to Approved Roster</button>
+                      </div>
+                    </form>
+
+                    <h4>Current Approved Roster Table</h4>
+                    <div class="table-responsive">
+                      <table class="portal-table" id="roster-table">
+                        <thead>
+                          <tr>
+                            <th>Roll No.</th>
+                            <th>Approved Email</th>
+                            <th>Student Name</th>
+                            <th>Course Track</th>
+                            <th>Account Status</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody id="roster-table-body">
+                          <!-- Populated dynamically via JS -->
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
 
-                <div class="table-responsive">
-                  <table class="portal-table">
-                    <thead>
-                      <tr>
-                        <th>Roll No.</th>
-                        <th>Student Name</th>
-                        <th>Program Batch</th>
-                        <th>Overall %</th>
-                        <th>Attendance Status (Click to Toggle)</th>
-                      </tr>
-                    </thead>
-                    <tbody id="attendance-table-body">
-                      <!-- Populated dynamically based on selected batch -->
-                    </tbody>
-                  </table>
+                <!-- Faculty Tab 2: Mark Attendance -->
+                <div class="f-tab-content" id="f-tab-attendance">
+                  <div class="dash-card">
+                    <div class="card-top-bar">
+                      <h3>Mark Class Attendance</h3>
+                      <div class="batch-selectors">
+                        <select id="attendance-batch-select">
+                          <option value="ignite">Capstone Ignite (Batch #1)</option>
+                          <option value="juniors">Capstone Juniors (Batch #2)</option>
+                          <option value="master" selected>Master IT Program (Batch #4)</option>
+                        </select>
+                        <input type="date" value="2026-08-15">
+                      </div>
+                    </div>
+
+                    <div class="table-responsive">
+                      <table class="portal-table">
+                        <thead>
+                          <tr>
+                            <th>Roll No.</th>
+                            <th>Student Name</th>
+                            <th>Program Batch</th>
+                            <th>Overall %</th>
+                            <th>Attendance Status (Click to Toggle)</th>
+                          </tr>
+                        </thead>
+                        <tbody id="attendance-table-body">
+                          <!-- Populated dynamically -->
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div class="dash-action-bar">
+                      <button class="minimal-btn" id="save-attendance-btn"><i class="fa-solid fa-floppy-disk"></i> Save & Sync Attendance</button>
+                      <span id="attendance-save-status" class="status-msg"></span>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="dash-action-bar">
-                  <button class="minimal-btn" id="save-attendance-btn"><i class="fa-solid fa-floppy-disk"></i> Save & Sync Attendance</button>
-                  <span id="attendance-save-status" class="status-msg"></span>
+                <!-- Faculty Tab 3: Grade Quizzes & Marks -->
+                <div class="f-tab-content" id="f-tab-marks">
+                  <div class="dash-card">
+                    <h3>Submit Student Quiz & Project Grades</h3>
+                    <form id="faculty-grade-form" class="grade-input-grid">
+                      <div class="form-group">
+                        <label>Select Approved Student</label>
+                        <select id="grade-student-select">
+                          <!-- Populated from roster -->
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Assessment Title</label>
+                        <select id="grade-type-select">
+                          <option value="Quiz 1 (Hardware & OS)">Quiz 1 (Hardware & OS)</option>
+                          <option value="Quiz 2 (MS Office & Excel)">Quiz 2 (MS Office & Excel)</option>
+                          <option value="Midterm Project (Canva & HTML)">Midterm Project (Canva & HTML)</option>
+                          <option value="Final Capstone Presentation">Final Capstone Presentation</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Marks Obtained</label>
+                        <input type="number" id="grade-score-input" placeholder="e.g. 19" min="0" max="100" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Total Marks</label>
+                        <input type="number" id="grade-total-input" placeholder="e.g. 20" min="1" max="100" value="20" required>
+                      </div>
+                      <div class="form-group full-width">
+                        <button type="submit" class="minimal-btn"><i class="fa-solid fa-check"></i> Record Grade to Database</button>
+                      </div>
+                    </form>
+
+                    <h4 style="margin-top: 30px; margin-bottom: 12px;">Recently Submitted Grades Log</h4>
+                    <div class="table-responsive">
+                      <table class="portal-table" id="grades-log-table">
+                        <thead>
+                          <tr>
+                            <th>Date</th>
+                            <th>Student Name</th>
+                            <th>Assessment Title</th>
+                            <th>Score</th>
+                            <th>Grade Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>15 Aug 2026</td>
+                            <td>Ayesha Khan</td>
+                            <td>Quiz 1 (Hardware & OS)</td>
+                            <td>19 / 20</td>
+                            <td><span class="status-badge green">A+ Outstanding</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
+
+                <!-- Faculty Tab 4: Announcements -->
+                <div class="f-tab-content" id="f-tab-announcements">
+                  <div class="dash-card">
+                    <h3>Post Notice to Student Portals</h3>
+                    <form id="announcement-form" style="margin-top: 16px;">
+                      <div class="form-group">
+                        <label>Notice Heading</label>
+                        <input type="text" id="ann-title" placeholder="e.g. Capstone Ignite Presentation Schedule" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Notice Content</label>
+                        <textarea id="ann-content" rows="4" style="width: 100%; background: var(--bg-dark); border: 1px solid var(--border-muted); color: var(--text-main); padding: 12px;" placeholder="Write message for students..." required></textarea>
+                      </div>
+                      <button type="submit" class="minimal-btn"><i class="fa-solid fa-paper-plane"></i> Broadcast Notice</button>
+                    </form>
+                  </div>
+                </div>
+
               </div>
-            </div>
 
-            <!-- Faculty Tab 3: Grade Quizzes & Marks -->
-            <div class="f-tab-content" id="f-tab-marks">
-              <div class="dash-card">
-                <h3>Submit Student Quiz & Project Grades</h3>
-                <form id="faculty-grade-form" class="grade-input-grid">
-                  <div class="form-group">
-                    <label>Select Approved Student</label>
-                    <select id="grade-student-select">
-                      <!-- Populated from roster -->
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Assessment Title</label>
-                    <select id="grade-type-select">
-                      <option value="Quiz 1 (Hardware & OS)">Quiz 1 (Hardware & OS)</option>
-                      <option value="Quiz 2 (MS Office & Excel)">Quiz 2 (MS Office & Excel)</option>
-                      <option value="Midterm Project (Canva & HTML)">Midterm Project (Canva & HTML)</option>
-                      <option value="Final Capstone Presentation">Final Capstone Presentation</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Marks Obtained</label>
-                    <input type="number" id="grade-score-input" placeholder="e.g. 19" min="0" max="100" required>
-                  </div>
-                  <div class="form-group">
-                    <label>Total Marks</label>
-                    <input type="number" id="grade-total-input" placeholder="e.g. 20" min="1" max="100" value="20" required>
-                  </div>
-                  <div class="form-group full-width">
-                    <button type="submit" class="minimal-btn"><i class="fa-solid fa-check"></i> Record Grade to Database</button>
-                  </div>
-                </form>
+              <!-- STUDENT WORKSPACE BLOCKS -->
+              <div id="student-workspace" style="display: block;">
+                
+                <!-- Student Tab 1: My Attendance Record -->
+                <div class="s-tab-content active" id="s-tab-s-attendance">
+                  <div class="dash-card">
+                    <div class="stats-mini-row">
+                      <div class="mini-stat">
+                        <span class="mini-lbl">Overall Attendance</span>
+                        <span class="mini-val text-green" id="student-att-pct">96%</span>
+                      </div>
+                      <div class="mini-stat">
+                        <span class="mini-lbl">Total Classes Held</span>
+                        <span class="mini-val">25 Days</span>
+                      </div>
+                      <div class="mini-stat">
+                        <span class="mini-lbl">Classes Attended</span>
+                        <span class="mini-val" id="student-att-count">24 Days</span>
+                      </div>
+                      <div class="mini-stat">
+                        <span class="mini-lbl">Absences</span>
+                        <span class="mini-val text-red" id="student-abs-count">1 Day</span>
+                      </div>
+                    </div>
 
-                <h4 style="margin-top: 30px; margin-bottom: 12px;">Recently Submitted Grades Log</h4>
-                <div class="table-responsive">
-                  <table class="portal-table" id="grades-log-table">
-                    <thead>
-                      <tr>
-                        <th>Date</th>
-                        <th>Student Name</th>
-                        <th>Assessment Title</th>
-                        <th>Score</th>
-                        <th>Grade Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>15 Aug 2026</td>
-                        <td>Ayesha Khan</td>
-                        <td>Quiz 1 (Hardware & OS)</td>
-                        <td>19 / 20</td>
-                        <td><span class="status-badge green">A+ Outstanding</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-
-            <!-- Faculty Tab 4: Announcements -->
-            <div class="f-tab-content" id="f-tab-announcements">
-              <div class="dash-card">
-                <h3>Post Notice to Student Portals</h3>
-                <form id="announcement-form" style="margin-top: 16px;">
-                  <div class="form-group">
-                    <label>Notice Heading</label>
-                    <input type="text" id="ann-title" placeholder="e.g. Capstone Ignite Presentation Schedule" required>
-                  </div>
-                  <div class="form-group">
-                    <label>Notice Content</label>
-                    <textarea id="ann-content" rows="4" style="width: 100%; background: var(--bg-dark); border: 1px solid var(--border-muted); color: var(--text-main); padding: 12px;" placeholder="Write message for students..." required></textarea>
-                  </div>
-                  <button type="submit" class="minimal-btn"><i class="fa-solid fa-paper-plane"></i> Broadcast Notice</button>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <!-- ================================================================
-               INTERACTIVE STUDENT DASHBOARD VIEW
-               ================================================================ -->
-          <div id="student-dashboard" class="portal-dashboard-box" style="display: none;">
-            <div class="dashboard-header">
-              <div>
-                <span class="page-badge"><i class="fa-solid fa-graduation-cap"></i> Verified Student Portal</span>
-                <h2 class="dash-title" id="student-dashboard-welcome">Welcome Back, Ayesha Khan</h2>
-                <p class="dash-sub" id="student-dashboard-meta">Roll No: EVO-2026-001 · Master IT Program</p>
-              </div>
-              <button class="minimal-btn btn-sm" id="student-logout"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
-            </div>
-
-            <!-- Inner Student Tabs -->
-            <div class="portal-tabs-nav">
-              <button class="portal-tab-btn active" data-s-tab="s-attendance"><i class="fa-solid fa-user-check"></i> My Attendance Record</button>
-              <button class="portal-tab-btn" data-s-tab="s-marks"><i class="fa-solid fa-award"></i> My Marks & Class Rank</button>
-            </div>
-
-            <!-- Student Tab 1: My Attendance Record -->
-            <div class="s-tab-content active" id="s-tab-s-attendance">
-              <div class="dash-card">
-                <div class="stats-mini-row">
-                  <div class="mini-stat">
-                    <span class="mini-lbl">Overall Attendance</span>
-                    <span class="mini-val text-green" id="student-att-pct">96%</span>
-                  </div>
-                  <div class="mini-stat">
-                    <span class="mini-lbl">Total Classes Held</span>
-                    <span class="mini-val">25 Days</span>
-                  </div>
-                  <div class="mini-stat">
-                    <span class="mini-lbl">Classes Attended</span>
-                    <span class="mini-val" id="student-att-count">24 Days</span>
-                  </div>
-                  <div class="mini-stat">
-                    <span class="mini-lbl">Absences</span>
-                    <span class="mini-val text-red" id="student-abs-count">1 Day</span>
+                    <h4 style="margin-top: 24px; margin-bottom: 12px;">Recent Class Attendance History</h4>
+                    <div class="table-responsive">
+                      <table class="portal-table">
+                        <thead>
+                          <tr>
+                            <th>Class Date</th>
+                            <th>Topic Covered</th>
+                            <th>Instructor</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>15 Aug 2026</td>
+                            <td>Python Programming Logic & Syntax</td>
+                            <td>Prof. NoorAbbas</td>
+                            <td><span class="status-badge green"><i class="fa-solid fa-check"></i> PRESENT</span></td>
+                          </tr>
+                          <tr>
+                            <td>14 Aug 2026</td>
+                            <td>HTML & CSS Web Structure</td>
+                            <td>Prof. NoorAbbas</td>
+                            <td><span class="status-badge green"><i class="fa-solid fa-check"></i> PRESENT</span></td>
+                          </tr>
+                          <tr>
+                            <td>12 Aug 2026</td>
+                            <td>Databases & SQL Basics</td>
+                            <td>Prof. NoorAbbas</td>
+                            <td><span class="status-badge green"><i class="fa-solid fa-check"></i> PRESENT</span></td>
+                          </tr>
+                          <tr>
+                            <td>10 Aug 2026</td>
+                            <td>Cybersecurity & Data Privacy</td>
+                            <td>Prof. NoorAbbas</td>
+                            <td><span class="status-badge red"><i class="fa-solid fa-xmark"></i> ABSENT (Leave Approved)</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
 
-                <h4 style="margin-top: 24px; margin-bottom: 12px;">Recent Class Attendance History</h4>
-                <div class="table-responsive">
-                  <table class="portal-table">
-                    <thead>
-                      <tr>
-                        <th>Class Date</th>
-                        <th>Topic Covered</th>
-                        <th>Instructor</th>
-                        <th>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>15 Aug 2026</td>
-                        <td>Python Programming Logic & Syntax</td>
-                        <td>Prof. NoorAbbas</td>
-                        <td><span class="status-badge green"><i class="fa-solid fa-check"></i> PRESENT</span></td>
-                      </tr>
-                      <tr>
-                        <td>14 Aug 2026</td>
-                        <td>HTML & CSS Web Structure</td>
-                        <td>Prof. NoorAbbas</td>
-                        <td><span class="status-badge green"><i class="fa-solid fa-check"></i> PRESENT</span></td>
-                      </tr>
-                      <tr>
-                        <td>12 Aug 2026</td>
-                        <td>Databases & SQL Basics</td>
-                        <td>Prof. NoorAbbas</td>
-                        <td><span class="status-badge green"><i class="fa-solid fa-check"></i> PRESENT</span></td>
-                      </tr>
-                      <tr>
-                        <td>10 Aug 2026</td>
-                        <td>Cybersecurity & Data Privacy</td>
-                        <td>Prof. NoorAbbas</td>
-                        <td><span class="status-badge red"><i class="fa-solid fa-xmark"></i> ABSENT (Leave Approved)</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
+                <!-- Student Tab 2: My Marks & Class Rank -->
+                <div class="s-tab-content" id="s-tab-s-marks">
+                  <div class="dash-card">
+                    <div class="stats-mini-row">
+                      <div class="mini-stat">
+                        <span class="mini-lbl">Performance Grade</span>
+                        <span class="mini-val text-gold">A+ Outstanding</span>
+                      </div>
+                      <div class="mini-stat">
+                        <span class="mini-lbl">Course Total Score</span>
+                        <span class="mini-val">174 / 190</span>
+                      </div>
+                      <div class="mini-stat">
+                        <span class="mini-lbl">Batch Class Rank</span>
+                        <span class="mini-val text-accent" id="student-class-rank">1st Place</span>
+                      </div>
+                    </div>
 
-            <!-- Student Tab 2: My Marks & Class Rank -->
-            <div class="s-tab-content" id="s-tab-s-marks">
-              <div class="dash-card">
-                <div class="stats-mini-row">
-                  <div class="mini-stat">
-                    <span class="mini-lbl">Performance Grade</span>
-                    <span class="mini-val text-gold">A+ Outstanding</span>
-                  </div>
-                  <div class="mini-stat">
-                    <span class="mini-lbl">Course Total Score</span>
-                    <span class="mini-val">174 / 190</span>
-                  </div>
-                  <div class="mini-stat">
-                    <span class="mini-lbl">Batch Class Rank</span>
-                    <span class="mini-val text-accent" id="student-class-rank">1st Place</span>
+                    <h4 style="margin-top: 24px; margin-bottom: 12px;">Detailed Assessment Transcript</h4>
+                    <div class="table-responsive">
+                      <table class="portal-table">
+                        <thead>
+                          <tr>
+                            <th>Assessment</th>
+                            <th>Module / Topic</th>
+                            <th>Score</th>
+                            <th>Percentage</th>
+                            <th>Performance Grade</th>
+                          </tr>
+                        </thead>
+                        <tbody id="student-transcript-body">
+                          <tr>
+                            <td><strong>Quiz 1</strong></td>
+                            <td>Computer Hardware & Specs</td>
+                            <td>19 / 20</td>
+                            <td>95%</td>
+                            <td><span class="status-badge green">A+ Outstanding</span></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Quiz 2</strong></td>
+                            <td>MS Office & Google Workspace</td>
+                            <td>20 / 20</td>
+                            <td>100%</td>
+                            <td><span class="status-badge green">A+ Perfect</span></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Midterm Project</strong></td>
+                            <td>Canva Graphics & Web Design</td>
+                            <td>47 / 50</td>
+                            <td>94%</td>
+                            <td><span class="status-badge green">A+ Excellent</span></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Final Capstone</strong></td>
+                            <td>Live Webflow Website & Freelancing Setup</td>
+                            <td>88 / 100</td>
+                            <td>88%</td>
+                            <td><span class="status-badge green">A Very Good</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
 
-                <h4 style="margin-top: 24px; margin-bottom: 12px;">Detailed Assessment Transcript</h4>
-                <div class="table-responsive">
-                  <table class="portal-table">
-                    <thead>
-                      <tr>
-                        <th>Assessment</th>
-                        <th>Module / Topic</th>
-                        <th>Score</th>
-                        <th>Percentage</th>
-                        <th>Performance Grade</th>
-                      </tr>
-                    </thead>
-                    <tbody id="student-transcript-body">
-                      <tr>
-                        <td><strong>Quiz 1</strong></td>
-                        <td>Computer Hardware & Specs</td>
-                        <td>19 / 20</td>
-                        <td>95%</td>
-                        <td><span class="status-badge green">A+ Outstanding</span></td>
-                      </tr>
-                      <tr>
-                        <td><strong>Quiz 2</strong></td>
-                        <td>MS Office & Google Workspace</td>
-                        <td>20 / 20</td>
-                        <td>100%</td>
-                        <td><span class="status-badge green">A+ Perfect</span></td>
-                      </tr>
-                      <tr>
-                        <td><strong>Midterm Project</strong></td>
-                        <td>Canva Graphics & Web Design</td>
-                        <td>47 / 50</td>
-                        <td>94%</td>
-                        <td><span class="status-badge green">A+ Excellent</span></td>
-                      </tr>
-                      <tr>
-                        <td><strong>Final Capstone</strong></td>
-                        <td>Live Webflow Website & Freelancing Setup</td>
-                        <td>88 / 100</td>
-                        <td>88%</td>
-                        <td><span class="status-badge green">A Very Good</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
               </div>
+
             </div>
 
           </div>
