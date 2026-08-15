@@ -444,59 +444,455 @@
       </section>
 
       <!-- ===================================================================
-           TAB 5: PORTAL LOGIN
+           TAB 5: PORTAL LOGIN & DEDICATED STUDENT / FACULTY DASHBOARDS
            =================================================================== -->
       <section class="tab-view" id="tab-login">
         <div class="container page-container">
-          <div class="page-header text-center">
-            <span class="page-badge">Student & Faculty Portal</span>
-            <h1 class="page-title">Sign In to Evolance</h1>
-            <p class="page-subtitle">Access course materials, assignment submissions, and grading records</p>
-          </div>
+          
+          <!-- LOGIN VIEW (BEFORE LOG IN) -->
+          <div id="login-view-box">
+            <div class="page-header text-center">
+              <span class="page-badge">Student & Faculty Portal</span>
+              <h1 class="page-title">Sign In to Evolance</h1>
+              <p class="page-subtitle">Access course materials, attendance records, and quiz marks</p>
+            </div>
 
-          <div class="login-wrapper">
-            <div class="login-card">
-              
-              <!-- Role Selector Pills (Student & Faculty Only) -->
-              <div class="role-selector">
-                <button class="role-pill active" data-role="student">Student</button>
-                <button class="role-pill" data-role="faculty">Faculty</button>
-              </div>
-
-              <form id="login-form" class="minimal-form">
-                <div class="form-group">
-                  <label for="login-email">Email or Student Roll No.</label>
-                  <input type="text" id="login-email" placeholder="student@evolance.edu.pk" required>
+            <div class="login-wrapper">
+              <div class="login-card">
+                
+                <!-- Role Selector Pills -->
+                <div class="role-selector">
+                  <button class="role-pill active" data-role="student">Student Portal</button>
+                  <button class="role-pill" data-role="faculty">Faculty Portal</button>
                 </div>
 
-                <div class="form-group">
-                  <div class="label-row">
-                    <label for="login-password">Password</label>
-                    <a href="#" class="forgot-link">Forgot?</a>
+                <form id="login-form" class="minimal-form">
+                  <div class="form-group">
+                    <label for="login-email">Email / ID</label>
+                    <input type="text" id="login-email" placeholder="student@evolance.edu.pk" value="student@evolance.edu.pk" required>
                   </div>
-                  <div class="password-input-wrap">
-                    <input type="password" id="login-password" placeholder="••••••••••••" required>
-                    <button type="button" class="toggle-pwd-btn" id="toggle-pwd"><i class="fa-regular fa-eye"></i></button>
+
+                  <div class="form-group">
+                    <div class="label-row">
+                      <label for="login-password">Password</label>
+                      <a href="#" class="forgot-link">Forgot?</a>
+                    </div>
+                    <div class="password-input-wrap">
+                      <input type="password" id="login-password" value="password123" required>
+                      <button type="button" class="toggle-pwd-btn" id="toggle-pwd"><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="form-group checkbox-group">
+                    <label class="custom-checkbox">
+                      <input type="checkbox" checked>
+                      <span class="checkmark"></span>
+                      Keep me signed in
+                    </label>
+                  </div>
+
+                  <button type="submit" class="minimal-btn btn-full">Sign In to Portal <i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+
+                <div class="demo-access-box">
+                  <span class="demo-lbl">Instant Demo Portal Preview:</span>
+                  <div class="demo-btn-row">
+                    <button class="minimal-btn btn-sm" id="btn-demo-student"><i class="fa-solid fa-user-graduate"></i> Launch Student Dashboard</button>
+                    <button class="minimal-btn btn-sm" id="btn-demo-faculty"><i class="fa-solid fa-chalkboard-user"></i> Launch Faculty Dashboard</button>
                   </div>
                 </div>
 
-                <div class="form-group checkbox-group">
-                  <label class="custom-checkbox">
-                    <input type="checkbox" checked>
-                    <span class="checkmark"></span>
-                    Keep me signed in
-                  </label>
+                <div class="login-footer">
+                  <p>Not enrolled yet? <button class="text-link nav-tab" data-tab="registration">Register Here</button></p>
                 </div>
 
-                <button type="submit" class="minimal-btn btn-full">Sign In to Portal <i class="fa-solid fa-arrow-right"></i></button>
-              </form>
-
-              <div class="login-footer">
-                <p>Not enrolled yet? <button class="text-link nav-tab" data-tab="registration">Register Here</button></p>
               </div>
-
             </div>
           </div>
+
+          <!-- ================================================================
+               INTERACTIVE FACULTY DASHBOARD VIEW
+               ================================================================ -->
+          <div id="faculty-dashboard" class="portal-dashboard-box" style="display: none;">
+            <div class="dashboard-header">
+              <div>
+                <span class="page-badge gold"><i class="fa-solid fa-user-shield"></i> Faculty Administration Portal</span>
+                <h2 class="dash-title">Faculty Control Panel</h2>
+                <p class="dash-sub">Instructor: Prof. NoorAbbas · Department of IT & Computer Science</p>
+              </div>
+              <button class="minimal-btn btn-sm" id="faculty-logout"><i class="fa-solid fa-right-from-bracket"></i> Switch Account / Log Out</button>
+            </div>
+
+            <!-- Inner Faculty Tabs -->
+            <div class="portal-tabs-nav">
+              <button class="portal-tab-btn active" data-f-tab="attendance"><i class="fa-solid fa-calendar-check"></i> Mark Attendance</button>
+              <button class="portal-tab-btn" data-f-tab="marks"><i class="fa-solid fa-pen-to-square"></i> Grade Quizzes & Assignments</button>
+              <button class="portal-tab-btn" data-f-tab="announcements"><i class="fa-solid fa-bullhorn"></i> Course Notices</button>
+            </div>
+
+            <!-- Faculty Tab 1: Mark Attendance -->
+            <div class="f-tab-content active" id="f-tab-attendance">
+              <div class="dash-card">
+                <div class="card-top-bar">
+                  <h3>Mark Daily Attendance</h3>
+                  <div class="batch-selectors">
+                    <select id="attendance-batch-select">
+                      <option value="ignite">Capstone Ignite (Batch #1)</option>
+                      <option value="juniors">Capstone Juniors (Batch #2)</option>
+                      <option value="master" selected>Master IT Program (Batch #4)</option>
+                    </select>
+                    <input type="date" value="2026-08-15">
+                  </div>
+                </div>
+
+                <div class="table-responsive">
+                  <table class="portal-table">
+                    <thead>
+                      <tr>
+                        <th>Roll No.</th>
+                        <th>Student Name</th>
+                        <th>Program Batch</th>
+                        <th>Overall %</th>
+                        <th>Attendance Status (Click to Toggle)</th>
+                      </tr>
+                    </thead>
+                    <tbody id="attendance-table-body">
+                      <tr>
+                        <td>EVO-2026-001</td>
+                        <td><strong>Ayesha Khan</strong></td>
+                        <td>Master IT Program</td>
+                        <td><span class="status-badge green">96%</span></td>
+                        <td><button class="att-toggle-btn present">PRESENT</button></td>
+                      </tr>
+                      <tr>
+                        <td>EVO-2026-002</td>
+                        <td><strong>Zainab Bibi</strong></td>
+                        <td>Master IT Program</td>
+                        <td><span class="status-badge green">92%</span></td>
+                        <td><button class="att-toggle-btn present">PRESENT</button></td>
+                      </tr>
+                      <tr>
+                        <td>EVO-2026-003</td>
+                        <td><strong>Hamza Ahmed</strong></td>
+                        <td>Master IT Program</td>
+                        <td><span class="status-badge yellow">84%</span></td>
+                        <td><button class="att-toggle-btn absent">ABSENT</button></td>
+                      </tr>
+                      <tr>
+                        <td>EVO-2026-004</td>
+                        <td><strong>Fatima Noor</strong></td>
+                        <td>Master IT Program</td>
+                        <td><span class="status-badge green">100%</span></td>
+                        <td><button class="att-toggle-btn present">PRESENT</button></td>
+                      </tr>
+                      <tr>
+                        <td>EVO-2026-005</td>
+                        <td><strong>Usman Ali</strong></td>
+                        <td>Master IT Program</td>
+                        <td><span class="status-badge green">88%</span></td>
+                        <td><button class="att-toggle-btn present">PRESENT</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="dash-action-bar">
+                  <button class="minimal-btn" id="save-attendance-btn"><i class="fa-solid fa-floppy-disk"></i> Save & Lock Attendance</button>
+                  <span id="attendance-save-status" class="status-msg"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Faculty Tab 2: Grade Quizzes & Marks -->
+            <div class="f-tab-content" id="f-tab-marks">
+              <div class="dash-card">
+                <h3>Submit Student Quiz & Project Grades</h3>
+                <form id="faculty-grade-form" class="grade-input-grid">
+                  <div class="form-group">
+                    <label>Select Student</label>
+                    <select id="grade-student-select">
+                      <option value="EVO-2026-001">EVO-2026-001 — Ayesha Khan</option>
+                      <option value="EVO-2026-002">EVO-2026-002 — Zainab Bibi</option>
+                      <option value="EVO-2026-003">EVO-2026-003 — Hamza Ahmed</option>
+                      <option value="EVO-2026-004">EVO-2026-004 — Fatima Noor</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Assessment Type</label>
+                    <select id="grade-type-select">
+                      <option value="Quiz 1 (Hardware & OS)">Quiz 1 (Hardware & OS)</option>
+                      <option value="Quiz 2 (MS Office & Excel)">Quiz 2 (MS Office & Excel)</option>
+                      <option value="Midterm Project (Canva & HTML)">Midterm Project (Canva & HTML)</option>
+                      <option value="Final Capstone Presentation">Final Capstone Presentation</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Marks Obtained</label>
+                    <input type="number" id="grade-score-input" placeholder="e.g. 18" min="0" max="100" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Total Marks</label>
+                    <input type="number" id="grade-total-input" placeholder="e.g. 20" min="1" max="100" value="20" required>
+                  </div>
+                  <div class="form-group full-width">
+                    <button type="submit" class="minimal-btn"><i class="fa-solid fa-check"></i> Record Grade to Database</button>
+                  </div>
+                </form>
+
+                <h4 style="margin-top: 30px; margin-bottom: 12px;">Recently Submitted Grades Log</h4>
+                <div class="table-responsive">
+                  <table class="portal-table" id="grades-log-table">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Student Name</th>
+                        <th>Assessment Title</th>
+                        <th>Score</th>
+                        <th>Grade Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>15 Aug 2026</td>
+                        <td>Ayesha Khan</td>
+                        <td>Quiz 1 (Hardware & OS)</td>
+                        <td>19 / 20</td>
+                        <td><span class="status-badge green">A+ Outstanding</span></td>
+                      </tr>
+                      <tr>
+                        <td>14 Aug 2026</td>
+                        <td>Zainab Bibi</td>
+                        <td>Quiz 1 (Hardware & OS)</td>
+                        <td>18 / 20</td>
+                        <td><span class="status-badge green">A Excellent</span></td>
+                      </tr>
+                      <tr>
+                        <td>12 Aug 2026</td>
+                        <td>Hamza Ahmed</td>
+                        <td>Midterm Project</td>
+                        <td>42 / 50</td>
+                        <td><span class="status-badge green">B Very Good</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Faculty Tab 3: Announcements -->
+            <div class="f-tab-content" id="f-tab-announcements">
+              <div class="dash-card">
+                <h3>Post Notice to Student Portals</h3>
+                <form id="announcement-form" style="margin-top: 16px;">
+                  <div class="form-group">
+                    <label>Notice Heading</label>
+                    <input type="text" id="ann-title" placeholder="e.g. Capstone Ignite Presentation Schedule" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Notice Content</label>
+                    <textarea id="ann-content" rows="4" style="width: 100%; background: var(--bg-dark); border: 1px solid var(--border-muted); color: var(--text-main); padding: 12px;" placeholder="Write message for students..." required></textarea>
+                  </div>
+                  <button type="submit" class="minimal-btn"><i class="fa-solid fa-paper-plane"></i> Broadcast Notice</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================================================================
+               INTERACTIVE STUDENT DASHBOARD VIEW
+               ================================================================ -->
+          <div id="student-dashboard" class="portal-dashboard-box" style="display: none;">
+            <div class="dashboard-header">
+              <div>
+                <span class="page-badge"><i class="fa-solid fa-graduation-cap"></i> Student Portal</span>
+                <h2 class="dash-title">Welcome Back, Ayesha Khan</h2>
+                <p class="dash-sub">Roll No: EVO-2026-001 · Master IT Program (Batch #4)</p>
+              </div>
+              <button class="minimal-btn btn-sm" id="student-logout"><i class="fa-solid fa-right-from-bracket"></i> Switch Account / Log Out</button>
+            </div>
+
+            <!-- Inner Student Tabs -->
+            <div class="portal-tabs-nav">
+              <button class="portal-tab-btn active" data-s-tab="s-attendance"><i class="fa-solid fa-user-check"></i> My Attendance Record</button>
+              <button class="portal-tab-btn" data-s-tab="s-marks"><i class="fa-solid fa-award"></i> My Marks & Transcript</button>
+              <button class="portal-tab-btn" data-s-tab="s-materials"><i class="fa-solid fa-book-open"></i> Class Materials & Submit</button>
+            </div>
+
+            <!-- Student Tab 1: My Attendance Record -->
+            <div class="s-tab-content active" id="s-tab-s-attendance">
+              <div class="dash-card">
+                <div class="stats-mini-row">
+                  <div class="mini-stat">
+                    <span class="mini-lbl">Overall Attendance</span>
+                    <span class="mini-val text-green">96%</span>
+                  </div>
+                  <div class="mini-stat">
+                    <span class="mini-lbl">Total Classes Held</span>
+                    <span class="mini-val">25 Days</span>
+                  </div>
+                  <div class="mini-stat">
+                    <span class="mini-lbl">Classes Attended</span>
+                    <span class="mini-val">24 Days</span>
+                  </div>
+                  <div class="mini-stat">
+                    <span class="mini-lbl">Absences</span>
+                    <span class="mini-val text-red">1 Day</span>
+                  </div>
+                </div>
+
+                <h4 style="margin-top: 24px; margin-bottom: 12px;">Recent Attendance History</h4>
+                <div class="table-responsive">
+                  <table class="portal-table">
+                    <thead>
+                      <tr>
+                        <th>Class Date</th>
+                        <th>Topic Covered</th>
+                        <th>Instructor</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>15 Aug 2026</td>
+                        <td>Python Programming Logic & Syntax</td>
+                        <td>Prof. NoorAbbas</td>
+                        <td><span class="status-badge green"><i class="fa-solid fa-check"></i> PRESENT</span></td>
+                      </tr>
+                      <tr>
+                        <td>14 Aug 2026</td>
+                        <td>HTML & CSS Web Structure</td>
+                        <td>Prof. NoorAbbas</td>
+                        <td><span class="status-badge green"><i class="fa-solid fa-check"></i> PRESENT</span></td>
+                      </tr>
+                      <tr>
+                        <td>12 Aug 2026</td>
+                        <td>Databases & SQL Basics</td>
+                        <td>Prof. NoorAbbas</td>
+                        <td><span class="status-badge green"><i class="fa-solid fa-check"></i> PRESENT</span></td>
+                      </tr>
+                      <tr>
+                        <td>10 Aug 2026</td>
+                        <td>Cybersecurity & Data Privacy</td>
+                        <td>Prof. NoorAbbas</td>
+                        <td><span class="status-badge red"><i class="fa-solid fa-xmark"></i> ABSENT (Leave Approved)</span></td>
+                      </tr>
+                      <tr>
+                        <td>08 Aug 2026</td>
+                        <td>MS Excel Formulas & Charts</td>
+                        <td>Prof. NoorAbbas</td>
+                        <td><span class="status-badge green"><i class="fa-solid fa-check"></i> PRESENT</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Student Tab 2: My Marks & Transcript -->
+            <div class="s-tab-content" id="s-tab-s-marks">
+              <div class="dash-card">
+                <div class="stats-mini-row">
+                  <div class="mini-stat">
+                    <span class="mini-lbl">Current Grade</span>
+                    <span class="mini-val text-gold">A+ Outstanding</span>
+                  </div>
+                  <div class="mini-stat">
+                    <span class="mini-lbl">Total Score</span>
+                    <span class="mini-val">174 / 190</span>
+                  </div>
+                  <div class="mini-stat">
+                    <span class="mini-lbl">Class Rank</span>
+                    <span class="mini-val">1st Place</span>
+                  </div>
+                </div>
+
+                <h4 style="margin-top: 24px; margin-bottom: 12px;">Detailed Assessment Transcript</h4>
+                <div class="table-responsive">
+                  <table class="portal-table">
+                    <thead>
+                      <tr>
+                        <th>Assessment</th>
+                        <th>Module / Topic</th>
+                        <th>Score</th>
+                        <th>Percentage</th>
+                        <th>Performance Grade</th>
+                      </tr>
+                    </thead>
+                    <tbody id="student-transcript-body">
+                      <tr>
+                        <td><strong>Quiz 1</strong></td>
+                        <td>Computer Hardware & Specs</td>
+                        <td>19 / 20</td>
+                        <td>95%</td>
+                        <td><span class="status-badge green">A+ Outstanding</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Quiz 2</strong></td>
+                        <td>MS Office & Google Workspace</td>
+                        <td>20 / 20</td>
+                        <td>100%</td>
+                        <td><span class="status-badge green">A+ Perfect</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Midterm Project</strong></td>
+                        <td>Canva Graphics & Web Design</td>
+                        <td>47 / 50</td>
+                        <td>94%</td>
+                        <td><span class="status-badge green">A+ Excellent</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Final Capstone</strong></td>
+                        <td>Live Webflow Website & Freelancing Setup</td>
+                        <td>88 / 100</td>
+                        <td>88%</td>
+                        <td><span class="status-badge green">A Very Good</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Student Tab 3: Materials & Submit -->
+            <div class="s-tab-content" id="s-tab-s-materials">
+              <div class="dash-card">
+                <h3>Course Materials & Project Submission</h3>
+                <div class="materials-list" style="margin-top: 16px;">
+                  <div class="material-item">
+                    <div>
+                      <strong><i class="fa-solid fa-file-pdf text-accent"></i> Module 9: Python Basics Handbook.pdf</strong>
+                      <p style="font-size: 0.82rem; color: var(--text-muted);">Uploaded by Prof. NoorAbbas · 14 Aug 2026</p>
+                    </div>
+                    <a href="#" class="minimal-btn btn-sm" onclick="alert('Downloading Python Basics Handbook...'); return false;"><i class="fa-solid fa-download"></i> Download PDF</a>
+                  </div>
+                  <div class="material-item">
+                    <div>
+                      <strong><i class="fa-solid fa-file-powerpoint text-accent"></i> Module 11: Fiverr & Upwork Proposal Kit.pptx</strong>
+                      <p style="font-size: 0.82rem; color: var(--text-muted);">Uploaded by Prof. NoorAbbas · 12 Aug 2026</p>
+                    </div>
+                    <a href="#" class="minimal-btn btn-sm" onclick="alert('Downloading Freelancing Proposal Kit...'); return false;"><i class="fa-solid fa-download"></i> Download PPTX</a>
+                  </div>
+                </div>
+
+                <div class="submit-assignment-box" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-muted);">
+                  <h4>Submit Homework / Capstone Assignment</h4>
+                  <form id="assignment-submit-form" style="margin-top: 12px;">
+                    <div class="form-group">
+                      <label>Assignment Title</label>
+                      <input type="text" placeholder="e.g. Capstone Final Website URL / Project Zip" required>
+                    </div>
+                    <div class="form-group">
+                      <label>Submission Link / Notes</label>
+                      <input type="text" placeholder="https://github.com/... or Google Drive Link" required>
+                    </div>
+                    <button type="submit" class="minimal-btn"><i class="fa-solid fa-upload"></i> Submit to Faculty</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </section>
 

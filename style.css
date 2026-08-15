@@ -64,6 +64,11 @@ a, button {
   text-align: center;
 }
 
+.text-accent { color: var(--accent-warm); }
+.text-green { color: #4ade80; }
+.text-gold { color: #facc15; }
+.text-red { color: #f87171; }
+
 /* Container */
 .container {
   width: 90%;
@@ -514,7 +519,7 @@ body.loaded .site-wrapper {
 }
 
 /* ==========================================================================
-   PORTAL LOGIN PAGE
+   PORTAL LOGIN & DASHBOARDS
    ========================================================================== */
 .login-wrapper {
   max-width: 460px;
@@ -549,6 +554,32 @@ body.loaded .site-wrapper {
   background-color: var(--bg-card);
   color: var(--text-main);
   font-weight: 600;
+}
+
+.demo-access-box {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--border-muted);
+}
+
+.demo-lbl {
+  font-size: 0.78rem;
+  color: var(--accent-warm);
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.demo-btn-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-sm {
+  padding: 8px 14px;
+  font-size: 0.8rem;
 }
 
 .label-row {
@@ -597,6 +628,230 @@ body.loaded .site-wrapper {
   text-align: center;
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+/* ==========================================================================
+   INTERACTIVE PORTAL DASHBOARDS (FACULTY & STUDENT)
+   ========================================================================== */
+.portal-dashboard-box {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-muted);
+  padding: 36px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-muted);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.dash-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+.dash-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.portal-tabs-nav {
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid var(--border-muted);
+  padding-bottom: 16px;
+  margin-bottom: 30px;
+}
+
+.portal-tab-btn {
+  padding: 10px 18px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  border: 1px solid var(--border-muted);
+  background-color: var(--bg-dark);
+  border-radius: 2px;
+  transition: var(--transition-fast);
+}
+
+.portal-tab-btn.active {
+  background-color: var(--bg-hover);
+  color: var(--text-main);
+  border-color: var(--accent-warm);
+}
+
+.f-tab-content, .s-tab-content {
+  display: none;
+}
+
+.f-tab-content.active, .s-tab-content.active {
+  display: block;
+}
+
+.card-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.batch-selectors {
+  display: flex;
+  gap: 12px;
+}
+
+.batch-selectors select, .batch-selectors input {
+  padding: 8px 12px;
+  background: var(--bg-dark);
+  border: 1px solid var(--border-muted);
+  color: var(--text-main);
+  font-size: 0.85rem;
+}
+
+/* Tables */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.portal-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.portal-table th, .portal-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-muted);
+}
+
+.portal-table th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  background-color: var(--bg-dark);
+}
+
+.status-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.status-badge.green {
+  background-color: rgba(74, 222, 128, 0.1);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.status-badge.yellow {
+  background-color: rgba(250, 204, 21, 0.1);
+  color: #facc15;
+  border: 1px solid rgba(250, 204, 21, 0.3);
+}
+
+.status-badge.red {
+  background-color: rgba(248, 113, 113, 0.1);
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.att-toggle-btn {
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.att-toggle-btn.present {
+  background-color: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+  border: 1px solid #4ade80;
+}
+
+.att-toggle-btn.absent {
+  background-color: rgba(248, 113, 113, 0.15);
+  color: #f87171;
+  border: 1px solid #f87171;
+}
+
+.dash-action-bar {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.status-msg {
+  font-size: 0.85rem;
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.grade-input-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.grade-input-grid .full-width {
+  grid-column: span 2;
+}
+
+.stats-mini-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.mini-stat {
+  padding: 16px;
+  background-color: var(--bg-dark);
+  border: 1px solid var(--border-muted);
+}
+
+.mini-lbl {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.mini-val {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.materials-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.material-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: var(--bg-dark);
+  border: 1px solid var(--border-muted);
 }
 
 /* ==========================================================================
@@ -1053,7 +1308,8 @@ body.loaded .site-wrapper {
 /* Responsive */
 @media (max-width: 900px) {
   .hero-heading { font-size: 2.8rem; }
-  .hero-bottom-row, .statement-grid, .programs-grid, .stats-grid, .location-box, .page-body-grid, .audience-grid, .module-cards-grid { grid-template-columns: 1fr; gap: 30px; }
+  .hero-bottom-row, .statement-grid, .programs-grid, .stats-grid, .location-box, .page-body-grid, .audience-grid, .module-cards-grid, .stats-mini-row, .grade-input-grid { grid-template-columns: 1fr; gap: 20px; }
   .hero-actions { justify-content: flex-start; }
   .nav-links { display: none; }
+  .grade-input-grid .full-width { grid-column: span 1; }
 }
