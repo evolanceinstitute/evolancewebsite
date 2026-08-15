@@ -449,27 +449,47 @@
       <section class="tab-view" id="tab-login">
         <div class="container page-container">
           
-          <!-- LOGIN VIEW (BEFORE LOG IN) -->
+          <!-- LOGIN / SIGN UP CONTAINER (BEFORE LOG IN) -->
           <div id="login-view-box">
             <div class="page-header text-center">
               <span class="page-badge">Student & Faculty Portal</span>
-              <h1 class="page-title">Sign In to Evolance</h1>
-              <p class="page-subtitle">Access course materials, attendance records, and quiz marks</p>
+              <h1 class="page-title">Evolance Learning Portal</h1>
+              <p class="page-subtitle">Pre-approved email verification, attendance tracking & marks</p>
             </div>
 
             <div class="login-wrapper">
+              
+              <!-- Quick Session Status Banner (If session exists) -->
+              <div id="saved-session-banner" class="saved-session-banner" style="display: none;">
+                <div class="banner-info">
+                  <i class="fa-solid fa-circle-check text-green"></i>
+                  <div>
+                    <strong id="saved-user-name">Saved Student Session</strong>
+                    <span id="saved-user-email">email@evolance.edu.pk</span>
+                  </div>
+                </div>
+                <button class="minimal-btn btn-sm" id="btn-resume-session">Auto Sign In <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+
               <div class="login-card">
                 
-                <!-- Role Selector Pills -->
-                <div class="role-selector">
+                <!-- Main Mode Switcher: Sign In vs Student Sign Up -->
+                <div class="portal-mode-switch">
+                  <button class="mode-btn active" id="mode-signin-btn"><i class="fa-solid fa-key"></i> Sign In</button>
+                  <button class="mode-btn" id="mode-signup-btn"><i class="fa-solid fa-user-plus"></i> Student Sign Up</button>
+                </div>
+
+                <!-- Role Selector (Visible only in Sign In mode) -->
+                <div class="role-selector" id="signin-role-selector">
                   <button class="role-pill active" data-role="student">Student Portal</button>
                   <button class="role-pill" data-role="faculty">Faculty Portal</button>
                 </div>
 
+                <!-- SIGN IN FORM -->
                 <form id="login-form" class="minimal-form">
                   <div class="form-group">
-                    <label for="login-email">Email / ID</label>
-                    <input type="text" id="login-email" placeholder="student@evolance.edu.pk" value="student@evolance.edu.pk" required>
+                    <label for="login-email">Registered Email Address</label>
+                    <input type="email" id="login-email" placeholder="ayesha@evolance.edu.pk" value="ayesha@evolance.edu.pk" required>
                   </div>
 
                   <div class="form-group">
@@ -485,25 +505,64 @@
 
                   <div class="form-group checkbox-group">
                     <label class="custom-checkbox">
-                      <input type="checkbox" checked>
+                      <input type="checkbox" id="save-login-checkbox" checked>
                       <span class="checkmark"></span>
-                      Keep me signed in
+                      Remember Me & Save Login Details (Quick Sign-In)
                     </label>
                   </div>
 
                   <button type="submit" class="minimal-btn btn-full">Sign In to Portal <i class="fa-solid fa-arrow-right"></i></button>
                 </form>
 
-                <div class="demo-access-box">
-                  <span class="demo-lbl">Instant Demo Portal Preview:</span>
-                  <div class="demo-btn-row">
-                    <button class="minimal-btn btn-sm" id="btn-demo-student"><i class="fa-solid fa-user-graduate"></i> Launch Student Dashboard</button>
-                    <button class="minimal-btn btn-sm" id="btn-demo-faculty"><i class="fa-solid fa-chalkboard-user"></i> Launch Faculty Dashboard</button>
+                <!-- SIGN UP FORM (PRE-APPROVED EMAIL VERIFICATION REQUIRED) -->
+                <form id="signup-form" class="minimal-form" style="display: none;">
+                  <div class="verification-notice-box">
+                    <i class="fa-solid fa-shield-halved text-accent"></i>
+                    <span><strong>Pre-Approval Verification:</strong> Your email must be pre-added by Faculty to your course roster before signing up.</span>
                   </div>
-                </div>
 
-                <div class="login-footer">
-                  <p>Not enrolled yet? <button class="text-link nav-tab" data-tab="registration">Register Here</button></p>
+                  <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" placeholder="Ayesha Khan" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="signup-email">Approved Email Address</label>
+                    <input type="email" id="signup-email" placeholder="ayesha@evolance.edu.pk" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="signup-program">Enrolled Program</label>
+                    <select id="signup-program" required>
+                      <option value="" disabled selected>Select Your Enrolled Course...</option>
+                      <option value="ignite">Capstone Ignite (Women Track)</option>
+                      <option value="juniors">Capstone Juniors (Ages 11-15)</option>
+                      <option value="master">Master IT Program (60+ Skills)</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="signup-password">Create Password</label>
+                    <input type="password" id="signup-password" placeholder="••••••••••••" required>
+                  </div>
+
+                  <div class="form-group checkbox-group">
+                    <label class="custom-checkbox">
+                      <input type="checkbox" id="signup-save-checkbox" checked>
+                      <span class="checkmark"></span>
+                      Save details for quick automatic login
+                    </label>
+                  </div>
+
+                  <button type="submit" class="minimal-btn btn-full">Verify & Create Account <i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+
+                <div class="demo-access-box">
+                  <span class="demo-lbl">Instant Demo Previews:</span>
+                  <div class="demo-btn-row">
+                    <button class="minimal-btn btn-sm" id="btn-demo-student"><i class="fa-solid fa-user-graduate"></i> Open Student Dashboard</button>
+                    <button class="minimal-btn btn-sm" id="btn-demo-faculty"><i class="fa-solid fa-chalkboard-user"></i> Open Faculty Admin Dashboard</button>
+                  </div>
                 </div>
 
               </div>
@@ -518,20 +577,84 @@
               <div>
                 <span class="page-badge gold"><i class="fa-solid fa-user-shield"></i> Faculty Administration Portal</span>
                 <h2 class="dash-title">Faculty Control Panel</h2>
-                <p class="dash-sub">Instructor: Prof. NoorAbbas · Department of IT & Computer Science</p>
+                <p class="dash-sub">Director: NoorAbbas · Department of IT & Computer Science</p>
               </div>
-              <button class="minimal-btn btn-sm" id="faculty-logout"><i class="fa-solid fa-right-from-bracket"></i> Switch Account / Log Out</button>
+              <button class="minimal-btn btn-sm" id="faculty-logout"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
             </div>
 
             <!-- Inner Faculty Tabs -->
             <div class="portal-tabs-nav">
-              <button class="portal-tab-btn active" data-f-tab="attendance"><i class="fa-solid fa-calendar-check"></i> Mark Attendance</button>
-              <button class="portal-tab-btn" data-f-tab="marks"><i class="fa-solid fa-pen-to-square"></i> Grade Quizzes & Assignments</button>
-              <button class="portal-tab-btn" data-f-tab="announcements"><i class="fa-solid fa-bullhorn"></i> Course Notices</button>
+              <button class="portal-tab-btn active" data-f-tab="roster"><i class="fa-solid fa-user-plus"></i> Pre-Approve Student Roster</button>
+              <button class="portal-tab-btn" data-f-tab="attendance"><i class="fa-solid fa-calendar-check"></i> Mark Attendance</button>
+              <button class="portal-tab-btn" data-f-tab="marks"><i class="fa-solid fa-pen-to-square"></i> Grade Quizzes & Projects</button>
+              <button class="portal-tab-btn" data-f-tab="announcements"><i class="fa-solid fa-bullhorn"></i> Broadcast Notice</button>
             </div>
 
-            <!-- Faculty Tab 1: Mark Attendance -->
-            <div class="f-tab-content active" id="f-tab-attendance">
+            <!-- Faculty Tab 1: Manage Pre-Approved Student Roster -->
+            <div class="f-tab-content active" id="f-tab-roster">
+              <div class="dash-card">
+                <h3>Pre-Approve Students for Sign-Up Verification</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
+                  Only emails added below can successfully sign up or log into their respective course dashboards.
+                </p>
+
+                <!-- Course Sub-Tabs -->
+                <div class="course-roster-tabs">
+                  <button class="roster-sub-btn active" data-course-sub="ignite"><i class="fa-solid fa-person-dress"></i> Capstone Ignite</button>
+                  <button class="roster-sub-btn" data-course-sub="juniors"><i class="fa-solid fa-child"></i> Capstone Juniors</button>
+                  <button class="roster-sub-btn" data-course-sub="master"><i class="fa-solid fa-laptop-code"></i> Master IT Program</button>
+                </div>
+
+                <!-- Add Student to Roster Form -->
+                <form id="add-student-roster-form" class="grade-input-grid" style="margin-bottom: 30px;">
+                  <div class="form-group">
+                    <label>Student Email (Required for Sign Up)</label>
+                    <input type="email" id="roster-email" placeholder="student@evolance.edu.pk" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Student Full Name</label>
+                    <input type="text" id="roster-name" placeholder="Ayesha Khan" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Assigned Roll No.</label>
+                    <input type="text" id="roster-roll" placeholder="EVO-IGN-005" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Target Course Program</label>
+                    <select id="roster-program-select">
+                      <option value="ignite">Capstone Ignite (Women Track)</option>
+                      <option value="juniors">Capstone Juniors (Ages 11-15)</option>
+                      <option value="master" selected>Master IT Program (60+ Skills)</option>
+                    </select>
+                  </div>
+                  <div class="form-group full-width">
+                    <button type="submit" class="minimal-btn"><i class="fa-solid fa-plus"></i> Add Student to Approved Roster</button>
+                  </div>
+                </form>
+
+                <h4>Current Approved Course Roster</h4>
+                <div class="table-responsive">
+                  <table class="portal-table" id="roster-table">
+                    <thead>
+                      <tr>
+                        <th>Roll No.</th>
+                        <th>Approved Email</th>
+                        <th>Student Name</th>
+                        <th>Course Track</th>
+                        <th>Account Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="roster-table-body">
+                      <!-- Populated dynamically via JS -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Faculty Tab 2: Mark Attendance -->
+            <div class="f-tab-content" id="f-tab-attendance">
               <div class="dash-card">
                 <div class="card-top-bar">
                   <h3>Mark Daily Attendance</h3>
@@ -557,68 +680,31 @@
                       </tr>
                     </thead>
                     <tbody id="attendance-table-body">
-                      <tr>
-                        <td>EVO-2026-001</td>
-                        <td><strong>Ayesha Khan</strong></td>
-                        <td>Master IT Program</td>
-                        <td><span class="status-badge green">96%</span></td>
-                        <td><button class="att-toggle-btn present">PRESENT</button></td>
-                      </tr>
-                      <tr>
-                        <td>EVO-2026-002</td>
-                        <td><strong>Zainab Bibi</strong></td>
-                        <td>Master IT Program</td>
-                        <td><span class="status-badge green">92%</span></td>
-                        <td><button class="att-toggle-btn present">PRESENT</button></td>
-                      </tr>
-                      <tr>
-                        <td>EVO-2026-003</td>
-                        <td><strong>Hamza Ahmed</strong></td>
-                        <td>Master IT Program</td>
-                        <td><span class="status-badge yellow">84%</span></td>
-                        <td><button class="att-toggle-btn absent">ABSENT</button></td>
-                      </tr>
-                      <tr>
-                        <td>EVO-2026-004</td>
-                        <td><strong>Fatima Noor</strong></td>
-                        <td>Master IT Program</td>
-                        <td><span class="status-badge green">100%</span></td>
-                        <td><button class="att-toggle-btn present">PRESENT</button></td>
-                      </tr>
-                      <tr>
-                        <td>EVO-2026-005</td>
-                        <td><strong>Usman Ali</strong></td>
-                        <td>Master IT Program</td>
-                        <td><span class="status-badge green">88%</span></td>
-                        <td><button class="att-toggle-btn present">PRESENT</button></td>
-                      </tr>
+                      <!-- Populated dynamically based on selected batch -->
                     </tbody>
                   </table>
                 </div>
 
                 <div class="dash-action-bar">
-                  <button class="minimal-btn" id="save-attendance-btn"><i class="fa-solid fa-floppy-disk"></i> Save & Lock Attendance</button>
+                  <button class="minimal-btn" id="save-attendance-btn"><i class="fa-solid fa-floppy-disk"></i> Save & Sync Attendance</button>
                   <span id="attendance-save-status" class="status-msg"></span>
                 </div>
               </div>
             </div>
 
-            <!-- Faculty Tab 2: Grade Quizzes & Marks -->
+            <!-- Faculty Tab 3: Grade Quizzes & Marks -->
             <div class="f-tab-content" id="f-tab-marks">
               <div class="dash-card">
                 <h3>Submit Student Quiz & Project Grades</h3>
                 <form id="faculty-grade-form" class="grade-input-grid">
                   <div class="form-group">
-                    <label>Select Student</label>
+                    <label>Select Approved Student</label>
                     <select id="grade-student-select">
-                      <option value="EVO-2026-001">EVO-2026-001 — Ayesha Khan</option>
-                      <option value="EVO-2026-002">EVO-2026-002 — Zainab Bibi</option>
-                      <option value="EVO-2026-003">EVO-2026-003 — Hamza Ahmed</option>
-                      <option value="EVO-2026-004">EVO-2026-004 — Fatima Noor</option>
+                      <!-- Populated from roster -->
                     </select>
                   </div>
                   <div class="form-group">
-                    <label>Assessment Type</label>
+                    <label>Assessment Title</label>
                     <select id="grade-type-select">
                       <option value="Quiz 1 (Hardware & OS)">Quiz 1 (Hardware & OS)</option>
                       <option value="Quiz 2 (MS Office & Excel)">Quiz 2 (MS Office & Excel)</option>
@@ -628,7 +714,7 @@
                   </div>
                   <div class="form-group">
                     <label>Marks Obtained</label>
-                    <input type="number" id="grade-score-input" placeholder="e.g. 18" min="0" max="100" required>
+                    <input type="number" id="grade-score-input" placeholder="e.g. 19" min="0" max="100" required>
                   </div>
                   <div class="form-group">
                     <label>Total Marks</label>
@@ -659,27 +745,13 @@
                         <td>19 / 20</td>
                         <td><span class="status-badge green">A+ Outstanding</span></td>
                       </tr>
-                      <tr>
-                        <td>14 Aug 2026</td>
-                        <td>Zainab Bibi</td>
-                        <td>Quiz 1 (Hardware & OS)</td>
-                        <td>18 / 20</td>
-                        <td><span class="status-badge green">A Excellent</span></td>
-                      </tr>
-                      <tr>
-                        <td>12 Aug 2026</td>
-                        <td>Hamza Ahmed</td>
-                        <td>Midterm Project</td>
-                        <td>42 / 50</td>
-                        <td><span class="status-badge green">B Very Good</span></td>
-                      </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
 
-            <!-- Faculty Tab 3: Announcements -->
+            <!-- Faculty Tab 4: Announcements -->
             <div class="f-tab-content" id="f-tab-announcements">
               <div class="dash-card">
                 <h3>Post Notice to Student Portals</h3>
@@ -704,17 +776,17 @@
           <div id="student-dashboard" class="portal-dashboard-box" style="display: none;">
             <div class="dashboard-header">
               <div>
-                <span class="page-badge"><i class="fa-solid fa-graduation-cap"></i> Student Portal</span>
-                <h2 class="dash-title">Welcome Back, Ayesha Khan</h2>
-                <p class="dash-sub">Roll No: EVO-2026-001 · Master IT Program (Batch #4)</p>
+                <span class="page-badge"><i class="fa-solid fa-graduation-cap"></i> Verified Student Portal</span>
+                <h2 class="dash-title" id="student-dashboard-welcome">Welcome Back, Ayesha Khan</h2>
+                <p class="dash-sub" id="student-dashboard-meta">Roll No: EVO-2026-001 · Master IT Program</p>
               </div>
-              <button class="minimal-btn btn-sm" id="student-logout"><i class="fa-solid fa-right-from-bracket"></i> Switch Account / Log Out</button>
+              <button class="minimal-btn btn-sm" id="student-logout"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
             </div>
 
-            <!-- Inner Student Tabs (Attendance & Marks Only) -->
+            <!-- Inner Student Tabs -->
             <div class="portal-tabs-nav">
               <button class="portal-tab-btn active" data-s-tab="s-attendance"><i class="fa-solid fa-user-check"></i> My Attendance Record</button>
-              <button class="portal-tab-btn" data-s-tab="s-marks"><i class="fa-solid fa-award"></i> My Marks & Transcript</button>
+              <button class="portal-tab-btn" data-s-tab="s-marks"><i class="fa-solid fa-award"></i> My Marks & Class Rank</button>
             </div>
 
             <!-- Student Tab 1: My Attendance Record -->
@@ -723,7 +795,7 @@
                 <div class="stats-mini-row">
                   <div class="mini-stat">
                     <span class="mini-lbl">Overall Attendance</span>
-                    <span class="mini-val text-green">96%</span>
+                    <span class="mini-val text-green" id="student-att-pct">96%</span>
                   </div>
                   <div class="mini-stat">
                     <span class="mini-lbl">Total Classes Held</span>
@@ -731,15 +803,15 @@
                   </div>
                   <div class="mini-stat">
                     <span class="mini-lbl">Classes Attended</span>
-                    <span class="mini-val">24 Days</span>
+                    <span class="mini-val" id="student-att-count">24 Days</span>
                   </div>
                   <div class="mini-stat">
                     <span class="mini-lbl">Absences</span>
-                    <span class="mini-val text-red">1 Day</span>
+                    <span class="mini-val text-red" id="student-abs-count">1 Day</span>
                   </div>
                 </div>
 
-                <h4 style="margin-top: 24px; margin-bottom: 12px;">Recent Attendance History</h4>
+                <h4 style="margin-top: 24px; margin-bottom: 12px;">Recent Class Attendance History</h4>
                 <div class="table-responsive">
                   <table class="portal-table">
                     <thead>
@@ -775,33 +847,27 @@
                         <td>Prof. NoorAbbas</td>
                         <td><span class="status-badge red"><i class="fa-solid fa-xmark"></i> ABSENT (Leave Approved)</span></td>
                       </tr>
-                      <tr>
-                        <td>08 Aug 2026</td>
-                        <td>MS Excel Formulas & Charts</td>
-                        <td>Prof. NoorAbbas</td>
-                        <td><span class="status-badge green"><i class="fa-solid fa-check"></i> PRESENT</span></td>
-                      </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
 
-            <!-- Student Tab 2: My Marks & Transcript -->
+            <!-- Student Tab 2: My Marks & Class Rank -->
             <div class="s-tab-content" id="s-tab-s-marks">
               <div class="dash-card">
                 <div class="stats-mini-row">
                   <div class="mini-stat">
-                    <span class="mini-lbl">Current Grade</span>
+                    <span class="mini-lbl">Performance Grade</span>
                     <span class="mini-val text-gold">A+ Outstanding</span>
                   </div>
                   <div class="mini-stat">
-                    <span class="mini-lbl">Total Score</span>
+                    <span class="mini-lbl">Course Total Score</span>
                     <span class="mini-val">174 / 190</span>
                   </div>
                   <div class="mini-stat">
-                    <span class="mini-lbl">Class Rank</span>
-                    <span class="mini-val">1st Place</span>
+                    <span class="mini-lbl">Batch Class Rank</span>
+                    <span class="mini-val text-accent" id="student-class-rank">1st Place</span>
                   </div>
                 </div>
 
