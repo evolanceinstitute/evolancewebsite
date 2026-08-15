@@ -604,6 +604,37 @@ body.loaded .site-wrapper {
   color: var(--text-muted);
 }
 
+.map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-warm);
+  margin-top: 6px;
+  border-bottom: 1px solid var(--accent-warm);
+  padding-bottom: 2px;
+  transition: color var(--transition-fast);
+}
+
+.map-link:hover {
+  color: var(--text-main);
+  border-color: var(--text-main);
+}
+
+.map-container {
+  margin: 16px 0 24px;
+  border: 1px solid var(--border-muted);
+  border-radius: 2px;
+  overflow: hidden;
+  background-color: var(--bg-card);
+  transition: border-color var(--transition-smooth);
+}
+
+.map-container:hover {
+  border-color: var(--accent-warm);
+}
+
 .admissions-form-box {
   background-color: var(--bg-card);
   border: 1px solid var(--border-muted);
