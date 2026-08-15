@@ -450,7 +450,7 @@
       </section>
 
       <!-- ===================================================================
-           TAB 5: PORTAL ARCHITECTURE WITH VERTICAL LEFT SIDEBAR & ACCORDIONS
+           TAB 5: PORTAL LOGIN & DEDICATED STUDENT / FACULTY DASHBOARDS
            =================================================================== -->
       <section class="tab-view" id="tab-login">
         <div class="container page-container">
@@ -566,8 +566,8 @@
                 <div class="demo-access-box">
                   <span class="demo-lbl">Instant Demo Portal Previews:</span>
                   <div class="demo-btn-row">
-                    <button class="minimal-btn btn-sm" id="btn-demo-student"><i class="fa-solid fa-user-graduate"></i> Open Student Portal</button>
-                    <button class="minimal-btn btn-sm" id="btn-demo-faculty"><i class="fa-solid fa-chalkboard-user"></i> Open Faculty Admin Portal</button>
+                    <button class="minimal-btn btn-sm" id="btn-demo-student"><i class="fa-solid fa-user-graduate"></i> Open Student Dashboard</button>
+                    <button class="minimal-btn btn-sm" id="btn-demo-faculty"><i class="fa-solid fa-chalkboard-user"></i> Open Faculty Admin Dashboard</button>
                   </div>
                 </div>
 
@@ -576,105 +576,82 @@
           </div>
 
           <!-- ================================================================
-               MAIN PORTAL CONTAINER WITH VERTICAL SIDEBAR ON LEFT
+               INTERACTIVE FACULTY DASHBOARD VIEW (WITH VERTICAL TABS & SUB-TABS)
                ================================================================ -->
-          <div id="portal-authenticated-view" class="portal-layout" style="display: none;">
-            
-            <!-- VERTICAL LEFT SIDEBAR NAVIGATION -->
-            <aside class="portal-sidebar">
-              <div class="sidebar-user-header">
-                <span class="page-badge gold" id="portal-role-badge">Student Portal</span>
-                <h4 id="portal-user-name">Ayesha Khan</h4>
-                <span class="user-email-sm" id="portal-user-email">ayesha@evolance.edu.pk</span>
+          <div id="faculty-dashboard" class="portal-dashboard-box" style="display: none;">
+            <div class="dashboard-header">
+              <div>
+                <span class="page-badge gold"><i class="fa-solid fa-user-shield"></i> Faculty Administration Portal</span>
+                <h2 class="dash-title">Faculty Control Panel</h2>
+                <p class="dash-sub">Director: NoorAbbas · Department of IT & Computer Science</p>
               </div>
+              <button class="minimal-btn btn-sm" id="faculty-logout"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+            </div>
 
-              <!-- VERTICAL MENU LIST WITH ACCORDIONS -->
-              <nav class="v-menu">
-
-                <!-- FACULTY VERTICAL MENU (WITH ACCORDION DROPDOWNS) -->
-                <div class="v-menu-group" id="faculty-v-group" style="display: none;">
-                  
-                  <!-- Accordion 1: Student Roster -->
-                  <div class="v-menu-item has-dropdown active">
-                    <button class="v-menu-link dropdown-toggle">
-                      <span><i class="fa-solid fa-user-plus"></i> Approved Roster</span>
-                      <i class="fa-solid fa-chevron-down caret-icon"></i>
-                    </button>
-                    <div class="v-dropdown-menu">
-                      <button class="v-sub-link active" data-f-tab="roster" data-course-sub="ignite"><i class="fa-solid fa-angle-right"></i> Capstone Ignite</button>
-                      <button class="v-sub-link" data-f-tab="roster" data-course-sub="juniors"><i class="fa-solid fa-angle-right"></i> Capstone Juniors</button>
-                      <button class="v-sub-link" data-f-tab="roster" data-course-sub="master"><i class="fa-solid fa-angle-right"></i> Master IT Program</button>
-                    </div>
-                  </div>
-
-                  <!-- Accordion 2: Mark Attendance -->
-                  <div class="v-menu-item has-dropdown">
-                    <button class="v-menu-link dropdown-toggle">
-                      <span><i class="fa-solid fa-calendar-check"></i> Mark Attendance</span>
-                      <i class="fa-solid fa-chevron-down caret-icon"></i>
-                    </button>
-                    <div class="v-dropdown-menu">
-                      <button class="v-sub-link" data-f-tab="attendance" data-batch="ignite"><i class="fa-solid fa-angle-right"></i> Ignite Batch</button>
-                      <button class="v-sub-link" data-f-tab="attendance" data-batch="juniors"><i class="fa-solid fa-angle-right"></i> Juniors Batch</button>
-                      <button class="v-sub-link" data-f-tab="attendance" data-batch="master"><i class="fa-solid fa-angle-right"></i> Master IT Batch</button>
-                    </div>
-                  </div>
-
-                  <!-- Single Menu Item 3: Grade Quizzes -->
-                  <div class="v-menu-item">
-                    <button class="v-menu-link" data-f-tab="marks">
-                      <span><i class="fa-solid fa-pen-to-square"></i> Grade Quizzes</span>
-                    </button>
-                  </div>
-
-                  <!-- Single Menu Item 4: Broadcast Notice -->
-                  <div class="v-menu-item">
-                    <button class="v-menu-link" data-f-tab="announcements">
-                      <span><i class="fa-solid fa-bullhorn"></i> Broadcast Notice</span>
-                    </button>
-                  </div>
-
-                </div>
-
-                <!-- STUDENT VERTICAL MENU -->
-                <div class="v-menu-group" id="student-v-group" style="display: block;">
-                  <div class="v-menu-item">
-                    <button class="v-menu-link active" data-s-tab="s-attendance">
-                      <span><i class="fa-solid fa-user-check"></i> Attendance Record</span>
-                    </button>
-                  </div>
-                  <div class="v-menu-item">
-                    <button class="v-menu-link" data-s-tab="s-marks">
-                      <span><i class="fa-solid fa-award"></i> Marks & Class Rank</span>
-                    </button>
-                  </div>
-                </div>
-
-              </nav>
-
-              <div class="v-sidebar-footer">
-                <button class="minimal-btn btn-sm btn-full" id="portal-logout-btn">
-                  <i class="fa-solid fa-right-from-bracket"></i> Sign Out Portal
-                </button>
-              </div>
-            </aside>
-
-            <!-- RIGHT WORKSPACE CONTENT DISPLAY -->
-            <div class="portal-workspace">
+            <!-- DASHBOARD INNER SPLIT: VERTICAL TABS ON LEFT + WORKSPACE CONTENT ON RIGHT -->
+            <div class="portal-tab-split">
               
-              <!-- FACULTY WORKSPACE BLOCKS -->
-              <div id="faculty-workspace" style="display: none;">
+              <!-- Vertical Navigation Tabs on Left -->
+              <aside class="portal-v-tabs">
                 
-                <!-- Faculty Tab 1: Manage Pre-Approved Student Roster -->
+                <!-- Tab 1: Pre-Approve Roster with Dropdown -->
+                <div class="v-tab-item has-dropdown active">
+                  <button class="portal-tab-btn dropdown-toggle">
+                    <span><i class="fa-solid fa-user-plus"></i> Approved Roster</span>
+                    <i class="fa-solid fa-chevron-down caret-icon"></i>
+                  </button>
+                  <div class="v-dropdown-list">
+                    <button class="v-sub-btn active" data-f-tab="roster" data-course-sub="ignite"><i class="fa-solid fa-angle-right"></i> Capstone Ignite</button>
+                    <button class="v-sub-btn" data-f-tab="roster" data-course-sub="juniors"><i class="fa-solid fa-angle-right"></i> Capstone Juniors</button>
+                    <button class="v-sub-btn" data-f-tab="roster" data-course-sub="master"><i class="fa-solid fa-angle-right"></i> Master IT Program</button>
+                  </div>
+                </div>
+
+                <!-- Tab 2: Mark Attendance with Dropdown -->
+                <div class="v-tab-item has-dropdown">
+                  <button class="portal-tab-btn dropdown-toggle">
+                    <span><i class="fa-solid fa-calendar-check"></i> Mark Attendance</span>
+                    <i class="fa-solid fa-chevron-down caret-icon"></i>
+                  </button>
+                  <div class="v-dropdown-list">
+                    <button class="v-sub-btn" data-f-tab="attendance" data-batch="ignite"><i class="fa-solid fa-angle-right"></i> Ignite Batch</button>
+                    <button class="v-sub-btn" data-f-tab="attendance" data-batch="juniors"><i class="fa-solid fa-angle-right"></i> Juniors Batch</button>
+                    <button class="v-sub-btn" data-f-tab="attendance" data-batch="master"><i class="fa-solid fa-angle-right"></i> Master IT Batch</button>
+                  </div>
+                </div>
+
+                <!-- Tab 3: Grade Quizzes -->
+                <div class="v-tab-item">
+                  <button class="portal-tab-btn" data-f-tab="marks">
+                    <i class="fa-solid fa-pen-to-square"></i> Grade Quizzes
+                  </button>
+                </div>
+
+                <!-- Tab 4: Broadcast Notice -->
+                <div class="v-tab-item">
+                  <button class="portal-tab-btn" data-f-tab="announcements">
+                    <i class="fa-solid fa-bullhorn"></i> Broadcast Notice
+                  </button>
+                </div>
+
+              </aside>
+
+              <!-- Workspace Content Area on Right -->
+              <div class="portal-tab-workspace">
+                
+                <!-- Faculty Tab 1: Pre-Approve Roster -->
                 <div class="f-tab-content active" id="f-tab-roster">
                   <div class="dash-card">
                     <div class="card-top-bar">
-                      <h3>Pre-Approve Student Roster</h3>
+                      <h3>Pre-Approve Students for Sign-Up Verification</h3>
                       <span class="page-badge" id="current-roster-badge">CAPSTONE IGNITE</span>
                     </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
+                      Only emails added below can successfully sign up or log into their respective course dashboards.
+                    </p>
 
-                    <!-- Add Student to Roster Form -->
-                    <form id="add-student-roster-form" class="grade-input-grid" style="margin-bottom: 24px;">
+                    <!-- Add Student Form -->
+                    <form id="add-student-roster-form" class="grade-input-grid" style="margin-bottom: 30px;">
                       <div class="form-group">
                         <label>Student Email (Required for Sign Up)</label>
                         <input type="email" id="roster-email" placeholder="student@evolance.edu.pk" required>
@@ -688,7 +665,7 @@
                         <input type="text" id="roster-roll" placeholder="EVO-IGN-005" required>
                       </div>
                       <div class="form-group">
-                        <label>Target Course Track</label>
+                        <label>Target Course Program</label>
                         <select id="roster-program-select">
                           <option value="ignite">Capstone Ignite (Women Track)</option>
                           <option value="juniors">Capstone Juniors (Ages 11-15)</option>
@@ -700,7 +677,7 @@
                       </div>
                     </form>
 
-                    <h4>Current Approved Roster Table</h4>
+                    <h4>Current Approved Course Roster Table</h4>
                     <div class="table-responsive">
                       <table class="portal-table" id="roster-table">
                         <thead>
@@ -725,7 +702,7 @@
                 <div class="f-tab-content" id="f-tab-attendance">
                   <div class="dash-card">
                     <div class="card-top-bar">
-                      <h3>Mark Class Attendance</h3>
+                      <h3>Mark Daily Attendance</h3>
                       <div class="batch-selectors">
                         <select id="attendance-batch-select">
                           <option value="ignite">Capstone Ignite (Batch #1)</option>
@@ -748,7 +725,7 @@
                           </tr>
                         </thead>
                         <tbody id="attendance-table-body">
-                          <!-- Populated dynamically -->
+                          <!-- Populated dynamically based on selected batch -->
                         </tbody>
                       </table>
                     </div>
@@ -839,8 +816,41 @@
 
               </div>
 
-              <!-- STUDENT WORKSPACE BLOCKS -->
-              <div id="student-workspace" style="display: block;">
+            </div>
+          </div>
+
+          <!-- ================================================================
+               INTERACTIVE STUDENT DASHBOARD VIEW (WITH VERTICAL TABS)
+               ================================================================ -->
+          <div id="student-dashboard" class="portal-dashboard-box" style="display: none;">
+            <div class="dashboard-header">
+              <div>
+                <span class="page-badge"><i class="fa-solid fa-graduation-cap"></i> Verified Student Portal</span>
+                <h2 class="dash-title" id="student-dashboard-welcome">Welcome Back, Ayesha Khan</h2>
+                <p class="dash-sub" id="student-dashboard-meta">Roll No: EVO-2026-001 · Master IT Program</p>
+              </div>
+              <button class="minimal-btn btn-sm" id="student-logout"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+            </div>
+
+            <!-- DASHBOARD INNER SPLIT: VERTICAL TABS ON LEFT + WORKSPACE CONTENT ON RIGHT -->
+            <div class="portal-tab-split">
+              
+              <!-- Vertical Navigation Tabs on Left -->
+              <aside class="portal-v-tabs">
+                <div class="v-tab-item">
+                  <button class="portal-tab-btn active" data-s-tab="s-attendance">
+                    <i class="fa-solid fa-user-check"></i> Attendance Record
+                  </button>
+                </div>
+                <div class="v-tab-item">
+                  <button class="portal-tab-btn" data-s-tab="s-marks">
+                    <i class="fa-solid fa-award"></i> Marks & Class Rank
+                  </button>
+                </div>
+              </aside>
+
+              <!-- Workspace Content Area on Right -->
+              <div class="portal-tab-workspace">
                 
                 <!-- Student Tab 1: My Attendance Record -->
                 <div class="s-tab-content active" id="s-tab-s-attendance">

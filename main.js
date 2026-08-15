@@ -1,8 +1,8 @@
 /* ==========================================================================
    EVOLANCE INSTITUTE OF IT — SCRIPT
    Features: Single-Page Navigation / Tab Switcher, Preloader Reveal,
-   Vertical Left Sidebar Portal Navigation with Accordion Dropdowns,
-   Top Navbar Hiding, Pre-Approved Email Verification, Session Persistence
+   Vertical Navigation Tabs within Faculty & Student Dashboards with Dropdowns,
+   Top Navbar Auto-Hiding, Pre-Approved Email Verification, Session Persistence
    ========================================================================== */
 
 // Global State
@@ -50,7 +50,6 @@ function initTabNavigation() {
   if (!tabs.length || !tabViews.length) return;
 
   function switchTab(targetTabId) {
-    // When switching to Portal Login tab -> Hide top nav links
     if (targetTabId === "login") {
       body.classList.add("portal-mode-active");
     } else {
@@ -146,14 +145,11 @@ function initCounters() {
   });
 }
 
-// Interactive Portal Dashboards & Vertical Sidebar Logic
+// Interactive Portal Dashboards & Vertical Navigation Logic
 function initPortalDashboards() {
   const loginViewBox = document.getElementById("login-view-box");
-  const authenticatedView = document.getElementById("portal-authenticated-view");
-  const facultyWorkspace = document.getElementById("faculty-workspace");
-  const studentWorkspace = document.getElementById("student-workspace");
-  const facultyVGroup = document.getElementById("faculty-v-group");
-  const studentVGroup = document.getElementById("student-v-group");
+  const facultyDash = document.getElementById("faculty-dashboard");
+  const studentDash = document.getElementById("student-dashboard");
 
   const modeSigninBtn = document.getElementById("mode-signin-btn");
   const modeSignupBtn = document.getElementById("mode-signup-btn");
@@ -238,52 +234,26 @@ function initPortalDashboards() {
     });
   }
 
-  // Open Student Dashboard Layout
+  // Open Student Dashboard
   function openStudentDashboard(userObj) {
     document.body.classList.add("portal-mode-active");
     if (loginViewBox) loginViewBox.style.display = "none";
-    if (authenticatedView) authenticatedView.style.display = "grid";
+    if (facultyDash) facultyDash.style.display = "none";
+    if (studentDash) studentDash.style.display = "block";
 
-    if (facultyWorkspace) facultyWorkspace.style.display = "none";
-    if (studentWorkspace) studentWorkspace.style.display = "block";
+    const welcomeHeader = document.getElementById("student-dashboard-welcome");
+    const metaHeader = document.getElementById("student-dashboard-meta");
 
-    if (facultyVGroup) facultyVGroup.style.display = "none";
-    if (studentVGroup) studentVGroup.style.display = "block";
-
-    const roleBadge = document.getElementById("portal-role-badge");
-    const nameEl = document.getElementById("portal-user-name");
-    const emailEl = document.getElementById("portal-user-email");
-
-    if (roleBadge) {
-      roleBadge.innerText = "Verified Student Portal";
-      roleBadge.className = "page-badge";
-    }
-    if (nameEl) nameEl.innerText = userObj.name || "Ayesha Khan";
-    if (emailEl) emailEl.innerText = userObj.email || "ayesha@evolance.edu.pk";
+    if (welcomeHeader) welcomeHeader.innerText = `Welcome Back, ${userObj.name || 'Student'}`;
+    if (metaHeader) metaHeader.innerText = `Roll No: ${userObj.rollNo || 'EVO-2026-001'} · ${userObj.programName || 'Master IT Program'}`;
   }
 
-  // Open Faculty Dashboard Layout
+  // Open Faculty Dashboard
   function openFacultyDashboard() {
     document.body.classList.add("portal-mode-active");
     if (loginViewBox) loginViewBox.style.display = "none";
-    if (authenticatedView) authenticatedView.style.display = "grid";
-
-    if (studentWorkspace) studentWorkspace.style.display = "none";
-    if (facultyWorkspace) facultyWorkspace.style.display = "block";
-
-    if (studentVGroup) studentVGroup.style.display = "none";
-    if (facultyVGroup) facultyVGroup.style.display = "block";
-
-    const roleBadge = document.getElementById("portal-role-badge");
-    const nameEl = document.getElementById("portal-user-name");
-    const emailEl = document.getElementById("portal-user-email");
-
-    if (roleBadge) {
-      roleBadge.innerText = "Faculty Admin Portal";
-      roleBadge.className = "page-badge gold";
-    }
-    if (nameEl) nameEl.innerText = "Prof. NoorAbbas";
-    if (emailEl) emailEl.innerText = "director@evolance.edu.pk";
+    if (studentDash) studentDash.style.display = "none";
+    if (facultyDash) facultyDash.style.display = "block";
 
     renderFacultyRosterTable();
     populateFacultyStudentSelect();
@@ -293,7 +263,8 @@ function initPortalDashboards() {
   function hideDashboards() {
     document.body.classList.remove("portal-mode-active");
     if (loginViewBox) loginViewBox.style.display = "block";
-    if (authenticatedView) authenticatedView.style.display = "none";
+    if (facultyDash) facultyDash.style.display = "none";
+    if (studentDash) studentDash.style.display = "none";
     checkSavedSession();
   }
 
@@ -395,44 +366,46 @@ function initPortalDashboards() {
     btnDemoFaculty.addEventListener("click", openFacultyDashboard);
   }
 
-  const portalLogoutBtn = document.getElementById("portal-logout-btn");
-  if (portalLogoutBtn) {
-    portalLogoutBtn.addEventListener("click", () => {
+  const facultyLogout = document.getElementById("faculty-logout");
+  const studentLogout = document.getElementById("student-logout");
+
+  if (facultyLogout) facultyLogout.addEventListener("click", hideDashboards);
+  if (studentLogout) {
+    studentLogout.addEventListener("click", () => {
       localStorage.removeItem("evolance_saved_user");
       hideDashboards();
     });
   }
 
   // =========================================================================
-  // ACCORDION DROPDOWN & VERTICAL LEFT SIDEBAR MENU NAVIGATION
+  // VERTICAL TAB NAVIGATION & ACCORDION DROPDOWNS INSIDE DASHBOARDS
   // =========================================================================
-  const dropdownToggles = document.querySelectorAll(".v-menu-link.dropdown-toggle");
+  const dropdownToggles = document.querySelectorAll(".v-tab-item.has-dropdown .dropdown-toggle");
   dropdownToggles.forEach(toggle => {
-    toggle.addEventListener("click", () => {
-      const parentItem = toggle.closest(".v-menu-item");
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const parentItem = toggle.closest(".v-tab-item");
       parentItem.classList.toggle("open");
     });
   });
 
-  // Vertical Sub-Link Dropdown Click Handlers (Faculty)
-  const vSubLinks = document.querySelectorAll(".v-sub-link");
+  // Faculty Vertical Sub-Buttons (Roster & Attendance)
+  const vSubBtns = document.querySelectorAll(".v-sub-btn");
   const fTabContents = document.querySelectorAll(".f-tab-content");
 
-  vSubLinks.forEach(sub => {
+  vSubBtns.forEach(sub => {
     sub.addEventListener("click", () => {
-      vSubLinks.forEach(s => s.classList.remove("active"));
+      vSubBtns.forEach(s => s.classList.remove("active"));
       sub.classList.add("active");
 
       const targetFTab = sub.getAttribute("data-f-tab");
       const courseSub = sub.getAttribute("data-course-sub");
       const batchKey = sub.getAttribute("data-batch");
 
-      // Switch active faculty workspace tab
       fTabContents.forEach(c => c.classList.remove("active"));
       const activeContent = document.getElementById(`f-tab-${targetFTab}`);
       if (activeContent) activeContent.classList.add("active");
 
-      // Handle course sub-filter
       if (courseSub) {
         state.currentRosterCourse = courseSub;
         renderFacultyRosterTable();
@@ -448,32 +421,54 @@ function initPortalDashboards() {
     });
   });
 
-  // Single Vertical Menu Links (Faculty: Grade Quizzes & Broadcast Notice)
-  const singleFLinks = document.querySelectorAll(".v-menu-link[data-f-tab]");
-  singleFLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      const targetFTab = link.getAttribute("data-f-tab");
+  // Faculty Single Vertical Tabs (Grade Quizzes & Announcements)
+  const singleFTabBtns = document.querySelectorAll(".portal-v-tabs .portal-tab-btn[data-f-tab]");
+  singleFTabBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      singleFTabBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const targetFTab = btn.getAttribute("data-f-tab");
       fTabContents.forEach(c => c.classList.remove("active"));
       const activeContent = document.getElementById(`f-tab-${targetFTab}`);
       if (activeContent) activeContent.classList.add("active");
     });
   });
 
-  // Vertical Menu Links (Student)
-  const studentVLinks = document.querySelectorAll(".v-menu-link[data-s-tab]");
+  // Student Vertical Tabs (Attendance & Marks)
+  const studentSTabBtns = document.querySelectorAll(".student-v-tabs .portal-tab-btn[data-s-tab]");
   const sTabContents = document.querySelectorAll(".s-tab-content");
 
-  studentVLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      studentVLinks.forEach(l => l.classList.remove("active"));
-      link.classList.add("active");
+  studentSTabBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      studentSTabBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
 
-      const targetSTab = link.getAttribute("data-s-tab");
+      const targetSTab = btn.getAttribute("data-s-tab");
       sTabContents.forEach(c => c.classList.remove("active"));
       const activeContent = document.getElementById(`s-tab-${targetSTab}`);
       if (activeContent) activeContent.classList.add("active");
     });
   });
+
+  // Add Student to Roster Form
+  const addRosterForm = document.getElementById("add-student-roster-form");
+  if (addRosterForm) {
+    addRosterForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("roster-email").value.trim().toLowerCase();
+      const name = document.getElementById("roster-name").value.trim();
+      const roll = document.getElementById("roster-roll").value.trim();
+      const programKey = document.getElementById("roster-program-select").value;
+
+      state.approvedRoster[programKey].push({ email, name, roll });
+      renderFacultyRosterTable();
+      populateFacultyStudentSelect();
+
+      alert(`✓ Added ${name} (${email}) to approved roster for ${programKey.toUpperCase()}!`);
+      addRosterForm.reset();
+    });
+  }
 
   // Save Attendance Button
   const saveAttBtn = document.getElementById("save-attendance-btn");
