@@ -3,189 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Evolance | Simple & Modern Digital Experience</title>
-  <meta name="description" content="Discover Evolance — a simple, elegant landing page featuring smooth animations and modern design.">
-  
-  <!-- Google Fonts -->
+  <title>EVOLANCE — Architectural Digital Experience</title>
+  <meta name="description" content="Evolance is a minimalist digital studio crafting high-end architectural web experiences and refined engineering.">
+
+  <!-- Google Fonts: Syne (Bold Editorial) & Plus Jakarta Sans (Clean Minimal Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <link rel="stylesheet" href="./style.css">
 </head>
-<body>
+<body class="loading">
 
-  <!-- Floating Ambient Orbs -->
-  <div class="ambient-orb orb-top"></div>
-  <div class="ambient-orb orb-bottom"></div>
-
-  <!-- Header / Navigation -->
-  <header class="navbar">
-    <div class="container nav-container">
-      <a href="#" class="logo">
-        <div class="logo-icon"><i class="fa-solid fa-cube"></i></div>
-        <span>EVOLANCE</span>
-      </a>
-      
-      <nav class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#about">About</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <div class="nav-cta">
-        <a href="#get-started" class="btn btn-primary btn-animated">Get Started</a>
+  <!-- Fullscreen Preloader Intro Screen -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-brand">
+        <span class="char">E</span>
+        <span class="char">V</span>
+        <span class="char">O</span>
+        <span class="char">L</span>
+        <span class="char">A</span>
+        <span class="char">N</span>
+        <span class="char">C</span>
+        <span class="char">E</span>
       </div>
+      <div class="preloader-bar">
+        <div class="preloader-progress" id="preloader-progress"></div>
+      </div>
+      <span class="preloader-counter" id="preloader-counter">0%</span>
     </div>
-  </header>
+  </div>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="container hero-content">
-      <div class="badge-animated">
-        <span class="badge-pulse"></span>
-        <span>Simple, Powerful & Elegant</span>
-      </div>
-
-      <h1 class="hero-title">
-        Build Amazing Ideas <br>
-        <span class="gradient-text">With Effortless Speed.</span>
-      </h1>
-
-      <p class="hero-subtitle">
-        A clean, modern platform designed to simplify your workflow with smooth animations, fluid interactions, and pure visual clarity.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#features" class="btn btn-primary glow-effect">
-          Explore Features <i class="fa-solid fa-arrow-right"></i>
+  <!-- Main Website Content -->
+  <div class="site-wrapper" id="site-wrapper">
+    
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="container nav-container">
+        <a href="#" class="logo">
+          <span class="logo-mark"></span>
+          <span class="logo-text">EVOLANCE</span>
         </a>
-        <a href="#demo" class="btn btn-secondary">
-          Watch Demo <i class="fa-solid fa-play"></i>
-        </a>
-      </div>
 
-      <!-- Animated Graphic Card -->
-      <div class="hero-visual-card">
-        <div class="visual-header">
-          <div class="visual-dots">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
-          <span class="visual-title">evolance-app ~ dashboard</span>
+        <nav class="nav-links">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#work" class="nav-link">Pillars</a>
+          <a href="#philosophy" class="nav-link">Philosophy</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="nav-action">
+          <a href="#contact" class="text-link">Inquire <i class="fa-solid fa-arrow-up-right"></i></a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-container">
+        <div class="hero-tag">
+          <span class="tag-number">01 / Studio</span>
+          <span class="tag-divider"></span>
+          <span class="tag-title">Architectural Precision</span>
         </div>
 
-        <div class="visual-body">
-          <div class="visual-stat-row">
-            <div class="stat-badge float-anim-1">
-              <i class="fa-solid fa-bolt text-accent"></i>
-              <div>
-                <strong>99.9% Speed</strong>
-                <small>Lightning Performance</small>
-              </div>
-            </div>
-            <div class="stat-badge float-anim-2">
-              <i class="fa-solid fa-shield-halved text-purple"></i>
-              <div>
-                <strong>Secured</strong>
-                <small>Enterprise Grade</small>
-              </div>
-            </div>
-            <div class="stat-badge float-anim-3">
-              <i class="fa-solid fa-sparkles text-pink"></i>
-              <div>
-                <strong>Smooth Motion</strong>
-                <small>60 FPS Animations</small>
-              </div>
-            </div>
-          </div>
+        <h1 class="hero-heading">
+          Redefining <br>
+          <span class="serif-title">Digital Form</span> & Function.
+        </h1>
 
-          <div class="interactive-preview" id="interactive-preview">
-            <p><i class="fa-solid fa-circle-notch fa-spin"></i> Click buttons below to trigger smooth state changes</p>
-            <div class="preview-actions">
-              <button class="preview-btn active" data-state="fast">Fast</button>
-              <button class="preview-btn" data-state="secure">Secure</button>
-              <button class="preview-btn" data-state="flexible">Flexible</button>
-            </div>
-            <div class="preview-display" id="preview-display">
-              <i class="fa-solid fa-rocket preview-icon"></i>
-              <h4 id="preview-title">Optimized for Speed</h4>
-              <p id="preview-desc">Experience instant rendering with lightweight, zero-bloat animation frames.</p>
-            </div>
+        <div class="hero-bottom-row">
+          <p class="hero-desc">
+            We craft understated, high-performance web systems stripped of noise, focused entirely on clarity, typography, and raw elegance.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#work" class="minimal-btn">
+              <span>Selected Works</span>
+              <i class="fa-solid fa-arrow-down"></i>
+            </a>
+            <a href="#philosophy" class="text-link">Read Philosophy</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Features Section -->
-  <section class="features-section" id="features">
-    <div class="container">
-      <div class="section-header text-center">
-        <h2 class="section-title">Designed for <span class="gradient-text">Simplicity</span></h2>
-        <p class="section-subtitle">Everything you need to deliver clean, modern web experiences without complexity.</p>
-      </div>
-
-      <div class="features-grid">
-        <div class="feature-card reveal-card">
-          <div class="feature-icon icon-cyan"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-          <h3>Smooth Animations</h3>
-          <p>Fluid keyframe transitions and subtle hover micro-interactions that make your site feel alive.</p>
-        </div>
-
-        <div class="feature-card reveal-card">
-          <div class="feature-icon icon-purple"><i class="fa-solid fa-layer-group"></i></div>
-          <h3>Clean Architecture</h3>
-          <p>Structured HTML5 & Vanilla CSS components designed for effortless maintenance and speed.</p>
-        </div>
-
-        <div class="feature-card reveal-card">
-          <div class="feature-icon icon-pink"><i class="fa-solid fa-mobile-screen-button"></i></div>
-          <h3>Fully Responsive</h3>
-          <p>Looks pixel-perfect on desktop, tablet, and mobile devices automatically.</p>
+    <!-- Editorial Statement Section -->
+    <section class="statement-section" id="about">
+      <div class="container">
+        <div class="statement-grid">
+          <div class="statement-label">
+            <span>02 / Vision</span>
+          </div>
+          <div class="statement-body">
+            <h2 class="statement-text">
+              "True luxury in software design is not measured by loudness or decorative neon gradients, but by the quiet confidence of function, restraint, and flawless composition."
+            </h2>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Stats Counter Section -->
-  <section class="stats-section">
-    <div class="container stats-grid">
-      <div class="stat-card">
-        <h3 class="counter" data-target="100">0%</h3>
-        <p>Pure Performance</p>
-      </div>
-      <div class="stat-card">
-        <h3 class="counter" data-target="60">0</h3>
-        <p>FPS Smooth Motion</p>
-      </div>
-      <div class="stat-card">
-        <h3 class="counter" data-target="5">0k+</h3>
-        <p>Happy Users</p>
-      </div>
-    </div>
-  </section>
+    <!-- Pillars / Selected Works Section -->
+    <section class="pillars-section" id="work">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-num">03 / Core Disciplines</span>
+            <h2 class="section-title">Built on Restraint</h2>
+          </div>
+          <p class="section-desc">Every element exists for a singular purpose: function without distraction.</p>
+        </div>
 
-  <!-- CTA Footer Section -->
-  <footer class="footer">
-    <div class="container footer-content text-center">
-      <h2>Ready to Experience <span class="gradient-text">Evolance?</span></h2>
-      <p>Simple, elegant, and fast. Start building your next idea today.</p>
-      
-      <div class="footer-cta">
-        <a href="#" class="btn btn-primary glow-effect">Get Started Free</a>
-      </div>
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-num">01</div>
+            <h3 class="pillar-title">Pure Typography</h3>
+            <p class="pillar-desc">Hierarchy engineered through weight, scale, and spatial rhythm rather than visual clutter.</p>
+            <a href="#contact" class="pillar-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
 
-      <div class="footer-bottom">
-        <p>&copy; 2026 Evolance. Built with clean code & smooth animations.</p>
+          <div class="pillar-card">
+            <div class="pillar-num">02</div>
+            <h3 class="pillar-title">Matte Systems</h3>
+            <p class="pillar-desc">Subtle charcoal tones and warm slate contrast designed to reduce visual fatigue.</p>
+            <a href="#contact" class="pillar-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-num">03</div>
+            <h3 class="pillar-title">Silent Motion</h3>
+            <p class="pillar-desc">Micro-animations that respond naturally to user movement without performative delay.</p>
+            <a href="#contact" class="pillar-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
       </div>
-    </div>
-  </footer>
+    </section>
+
+    <!-- Minimal Stats Section -->
+    <section class="stats-section" id="philosophy">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-val" data-target="100">0%</div>
+            <div class="stat-lbl">Ad-Free Simplicity</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" data-target="60">0</div>
+            <div class="stat-lbl">FPS Tactile Response</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" data-target="0">0.0s</div>
+            <div class="stat-lbl">Latency Overhead</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="container footer-container">
+        <div class="footer-top">
+          <h2 class="footer-title">Let's create something enduring.</h2>
+          <a href="mailto:hello@evolance.studio" class="footer-email">hello@evolance.studio <i class="fa-solid fa-arrow-up-right"></i></a>
+        </div>
+
+        <div class="footer-bottom">
+          <span class="logo-text">EVOLANCE</span>
+          <p>&copy; 2026 EVOLANCE STUDIO. ALL RIGHTS RESERVED.</p>
+          <a href="#" class="top-link" id="back-to-top">Back to Top <i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
 
   <script type="module" src="./main.js"></script>
 </body>

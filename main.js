@@ -1,70 +1,55 @@
 /* ==========================================================================
-   EVOLANCE LANDING PAGE SCRIPT
-   Interactive Preview State Switcher & Counter Animations
+   EVOLANCE MINIMALIST STUDIO SCRIPT
+   Features: Fullscreen Preloader Intro Reveal, Counter Animations, Smooth Scroll
    ========================================================================== */
 
-const previewData = {
-  fast: {
-    icon: "fa-rocket",
-    title: "Optimized for Speed",
-    desc: "Experience instant rendering with lightweight, zero-bloat animation frames."
-  },
-  secure: {
-    icon: "fa-shield-halved",
-    title: "Enterprise Grade Security",
-    desc: "Built-in protection and encrypted data flows with zero compromises."
-  },
-  flexible: {
-    icon: "fa-wand-magic-sparkles",
-    title: "Flexible & Modular",
-    desc: "Seamlessly adapt layout components and animations to fit any product requirement."
-  }
-};
-
 document.addEventListener("DOMContentLoaded", () => {
-  setupInteractivePreview();
-  setupCounters();
+  initPreloader();
+  initCounters();
+  initBackToTop();
 });
 
-function setupInteractivePreview() {
-  const buttons = document.querySelectorAll(".preview-btn");
-  const icon = document.querySelector(".preview-icon");
-  const title = document.getElementById("preview-title");
-  const desc = document.getElementById("preview-desc");
-  const display = document.getElementById("preview-display");
+// Intro Preloader Reveal Animation
+function initPreloader() {
+  const preloader = document.getElementById("preloader");
+  const progress = document.getElementById("preloader-progress");
+  const counter = document.getElementById("preloader-counter");
+  const body = document.body;
 
-  buttons.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      buttons.forEach(b => b.classList.remove("active"));
-      e.target.classList.add("active");
+  if (!preloader || !progress || !counter) return;
 
-      const stateKey = e.target.getAttribute("data-state");
-      const data = previewData[stateKey];
+  let count = 0;
+  const duration = 1200; // 1.2s preloader duration
+  const interval = 20;
+  const step = Math.ceil(100 / (duration / interval));
 
-      if (data && display) {
-        display.style.opacity = "0";
-        display.style.transform = "scale(0.95)";
+  const timer = setInterval(() => {
+    count += step;
+    if (count >= 100) {
+      count = 100;
+      clearInterval(timer);
 
-        setTimeout(() => {
-          if (icon) icon.className = `fa-solid ${data.icon} preview-icon`;
-          if (title) title.innerText = data.title;
-          if (desc) desc.innerText = data.desc;
+      // Smooth curtain reveal
+      setTimeout(() => {
+        preloader.classList.add("completed");
+        body.classList.remove("loading");
+        body.classList.add("loaded");
+      }, 200);
+    }
 
-          display.style.opacity = "1";
-          display.style.transform = "scale(1)";
-        }, 150);
-      }
-    });
-  });
+    progress.style.width = count + "%";
+    counter.innerText = count + "%";
+  }, interval);
 }
 
-function setupCounters() {
-  const counters = document.querySelectorAll(".counter");
-  counters.forEach(counter => {
-    const target = parseInt(counter.getAttribute("data-target"), 10);
+// Minimalist Stat Counter
+function initCounters() {
+  const statVals = document.querySelectorAll(".stat-val");
+  statVals.forEach(stat => {
+    const target = parseInt(stat.getAttribute("data-target"), 10);
     let count = 0;
     const duration = 1500;
-    const step = Math.ceil(target / (duration / 30));
+    const step = Math.ceil((target || 1) / 30);
 
     const timer = setInterval(() => {
       count += step;
@@ -72,13 +57,25 @@ function setupCounters() {
         count = target;
         clearInterval(timer);
       }
+
       if (target === 100) {
-        counter.innerText = count + "%";
+        stat.innerText = count + "%";
       } else if (target === 60) {
-        counter.innerText = count;
-      } else if (target === 5) {
-        counter.innerText = count + "k+";
+        stat.innerText = count;
+      } else {
+        stat.innerText = "0.0s";
       }
-    }, 30);
+    }, 40);
   });
+}
+
+// Back to Top Link
+function initBackToTop() {
+  const topBtn = document.getElementById("back-to-top");
+  if (topBtn) {
+    topBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 }
