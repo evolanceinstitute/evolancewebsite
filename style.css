@@ -30,8 +30,8 @@
 
   --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: 0.2s ease;
-  --shadow-subtle: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
-  --shadow-card: 0 10px 30px -5px rgba(56, 189, 248, 0.15);
+  --shadow-subtle: none;
+  --shadow-card: none;
 }
 
 /* Reset & Base Setup */
@@ -222,7 +222,7 @@ body.loaded .site-wrapper {
   height: 12px;
   background-color: var(--accent-warm);
   border-radius: 3px;
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+  box-shadow: none;
 }
 
 .logo-group {
@@ -1108,7 +1108,7 @@ body.portal-mode-active .footer {
 .form-group input:focus, .form-group select:focus {
   border-color: var(--accent-warm);
   background-color: var(--bg-dark);
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+  box-shadow: none;
 }
 
 .btn-full {
@@ -1189,7 +1189,7 @@ body.portal-mode-active .footer {
   border-radius: 6px;
   cursor: pointer;
   transition: var(--transition-smooth);
-  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
+  box-shadow: none;
 }
 
 .minimal-btn:hover {
@@ -1197,7 +1197,7 @@ body.portal-mode-active .footer {
   color: #0b1727;
   border-color: var(--accent-warm);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+  box-shadow: none;
 }
 
 .minimal-btn.btn-sm {
