@@ -1,27 +1,28 @@
 /* ==========================================================================
-   EVOLANCE MINIMALIST DESIGN SYSTEM — LIGHT BLUE & OFF-WHITE AESTHETIC
-   Colors: Soft Ice Off-White, Powder Blue, Sky Cerulean, Deep Slate Navy
+   EVOLANCE MINIMALIST DESIGN SYSTEM — DOMINANT AESTHETIC BLUE THEME
+   Primary Color: Dominant Deep Ocean Navy & Electric Sky Blue
+   Minor Accent: Crisp White & Soft Ice Tint
    Typography: Syne (Bold Display) & Plus Jakarta Sans
    ========================================================================== */
 
 :root {
-  /* Aesthetic Light Blue & Off-White Palette */
-  --bg-dark: #f8fafc;          /* Soft Creamy Porcelain / Off-White background */
-  --bg-card: #ffffff;          /* Pure White Cards */
-  --bg-hover: #f0f7ff;         /* Muted Soft Ice Blue Tint */
-  --bg-input: #f1f5f9;         /* Very Light Slate Input Fill */
+  /* Dominant Aesthetic Blue & Crisp White Palette */
+  --bg-dark: #0b1727;          /* Dominant Deep Midnight Blue Background */
+  --bg-card: #122238;          /* Rich Ocean Blue Cards */
+  --bg-hover: #1b3354;         /* Vibrant Ice Blue Hover Fill */
+  --bg-input: #08111e;         /* Deep Sapphire Input Fill */
   
-  --text-main: #0f172a;        /* Deep Slate Navy (High contrast text) */
-  --text-muted: #64748b;       /* Muted Steel Blue Gray */
-  --text-dim: #94a3b8;         /* Light Slate Dim */
+  --text-main: #ffffff;        /* Pure Crisp White Text (High Contrast) */
+  --text-muted: #94a3b8;       /* Soft Ice Slate Text */
+  --text-dim: #64748b;         /* Muted Ocean Slate */
 
-  --border-muted: #e2e8f0;     /* Delicate Light Border */
-  --border-hover: #7dd3fc;     /* Soft Light Blue Hover Border */
+  --border-muted: #1e3a5f;     /* Subtle Ocean Blue Border */
+  --border-hover: #38bdf8;     /* Glowing Sky Blue Hover Border */
   
-  --accent-warm: #0284c7;      /* Ocean Sky Blue Primary Accent */
-  --accent-sky: #38bdf8;       /* Vibrant Sky Blue Accent */
-  --accent-light: #e0f2fe;     /* Powder Blue Soft Tint */
-  --accent-navy: #0369a1;      /* Deep Cerulean */
+  --accent-warm: #38bdf8;      /* Electric Sky Blue Primary Highlight */
+  --accent-sky: #0284c7;       /* Deep Cerulean Blue */
+  --accent-light: rgba(56, 189, 248, 0.12); /* Soft Sky Blue Tint */
+  --accent-navy: #0369a1;      /* Bright Royal Blue */
 
   /* Typography */
   --font-display: 'Syne', sans-serif;
@@ -29,8 +30,8 @@
 
   --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: 0.2s ease;
-  --shadow-subtle: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
-  --shadow-card: 0 10px 30px -5px rgba(2, 132, 199, 0.08);
+  --shadow-subtle: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
+  --shadow-card: 0 10px 30px -5px rgba(56, 189, 248, 0.15);
 }
 
 /* Reset & Base Setup */
@@ -69,9 +70,9 @@ a, button {
 
 .text-center { text-align: center; }
 .text-accent { color: var(--accent-warm); }
-.text-green { color: #16a34a; }
-.text-gold { color: #d97706; }
-.text-red { color: #dc2626; }
+.text-green { color: #4ade80; }
+.text-gold { color: #fbbf24; }
+.text-red { color: #f87171; }
 
 /* Container */
 .container {
@@ -81,7 +82,7 @@ a, button {
 }
 
 /* ==========================================================================
-   FULLSCREEN PRELOADER / INTRO ANIMATION (AESTHETIC SKY BLUE)
+   FULLSCREEN PRELOADER / INTRO ANIMATION (DOMINANT BLUE)
    ========================================================================== */
 .preloader {
   position: fixed;
@@ -89,7 +90,7 @@ a, button {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #f8fafc;
+  background-color: #0b1727;
   z-index: 10000;
   display: flex;
   align-items: center;
@@ -113,7 +114,7 @@ a, button {
   font-size: 3rem;
   font-weight: 800;
   letter-spacing: 0.3em;
-  color: var(--text-main);
+  color: #ffffff;
   margin-bottom: 6px;
   display: flex;
   overflow: hidden;
@@ -166,7 +167,7 @@ a, button {
   left: 0;
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, var(--accent-warm), var(--accent-sky));
+  background: linear-gradient(90deg, var(--accent-sky), var(--accent-warm));
   transition: width 0.1s linear;
 }
 
@@ -191,14 +192,14 @@ body.loaded .site-wrapper {
 }
 
 /* ==========================================================================
-   MINIMALIST NAVBAR & TOP TABS NAVIGATION
+   MINIMALIST NAVBAR & TOP TABS NAVIGATION (BLUE GLASS)
    ========================================================================== */
 .navbar {
   padding: 20px 0;
   border-bottom: 1px solid var(--border-muted);
   position: sticky;
   top: 0;
-  background-color: rgba(248, 250, 252, 0.85);
+  background-color: rgba(11, 23, 39, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   z-index: 1000;
@@ -221,7 +222,7 @@ body.loaded .site-wrapper {
   height: 12px;
   background-color: var(--accent-warm);
   border-radius: 3px;
-  box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
 }
 
 .logo-group {
@@ -234,7 +235,7 @@ body.loaded .site-wrapper {
   font-weight: 800;
   font-size: 1.15rem;
   letter-spacing: 0.15em;
-  color: var(--text-main);
+  color: #ffffff;
   line-height: 1;
 }
 
@@ -274,7 +275,7 @@ body.loaded .site-wrapper {
 }
 
 .nav-tab:hover {
-  color: var(--text-main);
+  color: #ffffff;
 }
 
 .nav-tab.active {
@@ -299,8 +300,8 @@ body.loaded .site-wrapper {
 }
 
 .text-link:hover {
-  color: var(--accent-navy);
-  border-color: var(--accent-navy);
+  color: #ffffff;
+  border-color: #ffffff;
 }
 
 /* WHEN PORTAL VIEW IS ACTIVE -> HIDE TOP NAVBAR LINKS, FOOTER & MAP */
@@ -360,11 +361,13 @@ body.portal-mode-active .footer {
   background-color: var(--accent-light);
   padding: 4px 12px;
   border-radius: 20px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
 }
 
 .page-badge.gold {
-  color: #d97706;
-  background-color: #fef3c7;
+  color: #fbbf24;
+  background-color: rgba(251, 191, 36, 0.12);
+  border-color: rgba(251, 191, 36, 0.3);
 }
 
 .page-title {
@@ -373,7 +376,7 @@ body.portal-mode-active .footer {
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 10px;
-  color: var(--text-main);
+  color: #ffffff;
 }
 
 .page-subtitle {
@@ -402,7 +405,7 @@ body.portal-mode-active .footer {
   font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: 16px;
-  color: var(--text-main);
+  color: #ffffff;
 }
 
 .info-block p {
@@ -438,7 +441,7 @@ body.portal-mode-active .footer {
   font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 8px;
-  color: var(--text-main);
+  color: #ffffff;
 }
 
 .audience-card p {
@@ -481,6 +484,7 @@ body.portal-mode-active .footer {
   font-family: var(--font-display);
   font-size: 1.1rem;
   margin-bottom: 4px;
+  color: #ffffff;
 }
 
 .phase-item p {
@@ -519,6 +523,7 @@ body.portal-mode-active .footer {
   font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: 8px;
+  color: #ffffff;
 }
 
 .module-card p {
@@ -541,6 +546,7 @@ body.portal-mode-active .footer {
   font-family: var(--font-display);
   font-size: 1.3rem;
   margin-bottom: 20px;
+  color: #ffffff;
 }
 
 .check-list {
@@ -553,7 +559,7 @@ body.portal-mode-active .footer {
   align-items: center;
   gap: 12px;
   font-size: 0.88rem;
-  color: var(--text-main);
+  color: #ffffff;
   margin-bottom: 12px;
 }
 
@@ -592,6 +598,7 @@ body.portal-mode-active .footer {
 .banner-info strong {
   display: block;
   font-size: 0.9rem;
+  color: #ffffff;
 }
 
 .banner-info span {
@@ -649,7 +656,7 @@ body.portal-mode-active .footer {
 }
 
 .role-pill.active {
-  background-color: var(--bg-card);
+  background-color: var(--bg-hover);
   color: var(--accent-warm);
   font-weight: 700;
   box-shadow: var(--shadow-subtle);
@@ -665,7 +672,7 @@ body.portal-mode-active .footer {
   border-radius: 6px;
   margin-bottom: 20px;
   font-size: 0.82rem;
-  color: var(--accent-navy);
+  color: var(--accent-warm);
 }
 
 /* PORTAL DASHBOARD BOX */
@@ -692,7 +699,7 @@ body.portal-mode-active .footer {
   font-family: var(--font-display);
   font-size: 2.2rem;
   font-weight: 800;
-  color: var(--text-main);
+  color: #ffffff;
 }
 
 .dash-sub {
@@ -736,7 +743,7 @@ body.portal-mode-active .footer {
 }
 
 .portal-tab-btn:hover, .portal-tab-btn.active {
-  background-color: var(--accent-light);
+  background-color: var(--bg-hover);
   color: var(--accent-warm);
   border-color: var(--border-hover);
   font-weight: 700;
@@ -812,9 +819,9 @@ body.portal-mode-active .footer {
 
 .batch-selectors select, .batch-selectors input {
   padding: 8px 12px;
-  background: var(--bg-dark);
+  background: var(--bg-input);
   border: 1px solid var(--border-muted);
-  color: var(--text-main);
+  color: #ffffff;
   border-radius: 4px;
   font-size: 0.85rem;
 }
@@ -854,21 +861,21 @@ body.portal-mode-active .footer {
 }
 
 .status-badge.green {
-  background-color: rgba(22, 163, 74, 0.1);
-  color: #15803d;
-  border: 1px solid rgba(22, 163, 74, 0.3);
+  background-color: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.3);
 }
 
 .status-badge.yellow {
-  background-color: rgba(217, 119, 6, 0.1);
-  color: #b45309;
-  border: 1px solid rgba(217, 119, 6, 0.3);
+  background-color: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
 }
 
 .status-badge.red {
-  background-color: rgba(220, 38, 38, 0.1);
-  color: #b91c1c;
-  border: 1px solid rgba(220, 38, 38, 0.3);
+  background-color: rgba(248, 113, 113, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.3);
 }
 
 .att-toggle-btn {
@@ -881,15 +888,15 @@ body.portal-mode-active .footer {
 }
 
 .att-toggle-btn.present {
-  background-color: rgba(22, 163, 74, 0.1);
-  color: #15803d;
-  border: 1px solid #16a34a;
+  background-color: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+  border: 1px solid #4ade80;
 }
 
 .att-toggle-btn.absent {
-  background-color: rgba(220, 38, 38, 0.1);
-  color: #b91c1c;
-  border: 1px solid #dc2626;
+  background-color: rgba(248, 113, 113, 0.15);
+  color: #f87171;
+  border: 1px solid #f87171;
 }
 
 .dash-action-bar {
@@ -901,7 +908,7 @@ body.portal-mode-active .footer {
 
 .status-msg {
   font-size: 0.85rem;
-  color: #15803d;
+  color: #4ade80;
   font-weight: 700;
 }
 
@@ -943,20 +950,21 @@ body.portal-mode-active .footer {
   font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: 800;
+  color: #ffffff;
 }
 
 .remove-btn {
   padding: 4px 10px;
   font-size: 0.75rem;
-  color: #dc2626;
-  border: 1px solid rgba(220, 38, 38, 0.3);
-  background: rgba(220, 38, 38, 0.08);
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  background: rgba(248, 113, 113, 0.1);
   border-radius: 4px;
   cursor: pointer;
 }
 
 .remove-btn:hover {
-  background: rgba(220, 38, 38, 0.2);
+  background: rgba(248, 113, 113, 0.25);
 }
 
 /* ==========================================================================
@@ -980,6 +988,7 @@ body.portal-mode-active .footer {
   font-size: 2.2rem;
   font-weight: 800;
   margin-bottom: 12px;
+  color: #ffffff;
 }
 
 .location-desc {
@@ -1009,7 +1018,7 @@ body.portal-mode-active .footer {
 .contact-item strong {
   display: block;
   font-size: 0.95rem;
-  color: var(--text-main);
+  color: #ffffff;
 }
 
 .contact-item p {
@@ -1031,12 +1040,12 @@ body.portal-mode-active .footer {
 }
 
 .map-link:hover {
-  color: var(--accent-navy);
-  border-color: var(--accent-navy);
+  color: #ffffff;
+  border-color: #ffffff;
 }
 
 .map-container {
-  border: 1fr solid var(--border-muted);
+  border: 1px solid var(--border-muted);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--shadow-card);
@@ -1061,6 +1070,7 @@ body.portal-mode-active .footer {
   font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: 24px;
+  color: #ffffff;
 }
 
 .form-group {
@@ -1083,7 +1093,7 @@ body.portal-mode-active .footer {
   background-color: var(--bg-input);
   border: 1px solid var(--border-muted);
   border-radius: 6px;
-  color: var(--text-main);
+  color: #ffffff;
   outline: none;
   font-family: inherit;
   font-size: 0.9rem;
@@ -1091,14 +1101,14 @@ body.portal-mode-active .footer {
 }
 
 .form-group select option {
-  background-color: #ffffff;
-  color: var(--text-main);
+  background-color: var(--bg-card);
+  color: #ffffff;
 }
 
 .form-group input:focus, .form-group select:focus {
   border-color: var(--accent-warm);
-  background-color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+  background-color: var(--bg-dark);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
 }
 
 .btn-full {
@@ -1135,7 +1145,7 @@ body.portal-mode-active .footer {
   line-height: 1.08;
   letter-spacing: -0.02em;
   margin-bottom: 36px;
-  color: var(--text-main);
+  color: #ffffff;
 }
 
 .serif-title {
@@ -1171,7 +1181,7 @@ body.portal-mode-active .footer {
   align-items: center;
   gap: 10px;
   padding: 12px 24px;
-  background-color: var(--accent-warm);
+  background-color: var(--accent-sky);
   border: 1px solid var(--accent-warm);
   color: #ffffff;
   font-size: 0.88rem;
@@ -1179,14 +1189,15 @@ body.portal-mode-active .footer {
   border-radius: 6px;
   cursor: pointer;
   transition: var(--transition-smooth);
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
 }
 
 .minimal-btn:hover {
-  background-color: var(--accent-navy);
-  border-color: var(--accent-navy);
+  background-color: var(--accent-warm);
+  color: #0b1727;
+  border-color: var(--accent-warm);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.3);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
 }
 
 .minimal-btn.btn-sm {
@@ -1221,7 +1232,7 @@ body.portal-mode-active .footer {
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.35;
-  color: var(--text-main);
+  color: #ffffff;
   margin-bottom: 12px;
 }
 
@@ -1257,6 +1268,7 @@ body.portal-mode-active .footer {
   font-family: var(--font-display);
   font-size: 2.4rem;
   font-weight: 700;
+  color: #ffffff;
 }
 
 .section-desc {
@@ -1283,14 +1295,14 @@ body.portal-mode-active .footer {
 }
 
 .program-card.highlight-card {
-  border-color: var(--accent-sky);
+  border-color: var(--accent-warm);
   box-shadow: var(--shadow-card);
 }
 
 .program-card:hover {
   border-color: var(--accent-warm);
   transform: translateY(-5px);
-  box-shadow: 0 14px 28px rgba(2, 132, 199, 0.12);
+  box-shadow: 0 14px 28px rgba(56, 189, 248, 0.18);
 }
 
 .card-meta {
@@ -1309,7 +1321,7 @@ body.portal-mode-active .footer {
 }
 
 .card-badge.gold {
-  color: #d97706;
+  color: #fbbf24;
 }
 
 .card-duration {
@@ -1321,6 +1333,7 @@ body.portal-mode-active .footer {
   font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: 4px;
+  color: #ffffff;
 }
 
 .program-subtitle {
@@ -1396,7 +1409,7 @@ body.portal-mode-active .footer {
   font-size: 1.8rem;
   font-weight: 800;
   letter-spacing: 0.05em;
-  color: var(--text-main);
+  color: #ffffff;
 }
 
 .footer-subtext {
