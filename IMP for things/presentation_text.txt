@@ -1,0 +1,177 @@
+=== IMP for things/Evolance Presentation.pdf ===
+--- Page 1 ---
+E V O L A N C E  I N S T I T U T E  O F  I T
+IT Program
+A complete skills breakdown for parents
+60+ Skills
+practical & job-ready
+11 Modules
+structured progression
+Real Tools
+used in actual workplaces
+
+--- Page 2 ---
+What will my child actually learn?
+Computer & OS skills
+Work on any computer with confidence — hardware, 
+software, and operating systems.
+Workplace readiness
+MS Office, Google Workspace, email — skills every employer 
+expects on day one.
+Cybersecurity & safety
+Protect devices and data — antivirus, OTPs, strong passwords, 
+and threat awareness.
+AI & modern tools
+Use AI tools and prompts responsibly for school, work, and 
+content creation.
+Programming & web dev
+HTML, Python, Scratch, C++ and building real websites with 
+WordPress and Webflow.
+Design & freelancing
+Create graphics with Canva and learn how to earn online with 
+real freelancing skills.
+
+--- Page 3 ---
+Modules 1 & 2  — Computer foundations & OS
+Module 1 Computer fundamentals
+Identify hardware parts & their roles
+Understand input & output devices
+Know processor, RAM & storage
+Read & compare device specs
+Types of computing explained
+Turn on/off & use a computer correctly
+Understands how any computer works — inside and out.
+Module 2 Operating systems
+What an OS is and why it matters
+Windows navigation & settings
+File management: create, save, rename
+Zip, extract & manage file types
+Screenshots, shortcuts & productivity
+Installing & removing software safely
+Navigates any operating system independently.
+
+--- Page 4 ---
+Modules 3 & 4  — Office tools & Google Workspace
+Module 3 MS Office suite
+Format professional documents in Word
+Build & analyse spreadsheets in Excel
+Create presentations in PowerPoint
+Use templates, styles & formatting
+Print, share & export documents
+Email configuration & management
+Produces polished documents ready for work or study.
+Module 4 Google Workspace
+Set up & manage a Gmail account
+Use Google Docs, Sheets & Slides
+Collaborate in real-time on documents
+Google Drive: organise & share files
+Browser extensions & productivity
+Office communication rules & protocols
+Collaborates professionally using Google's tools.
+
+--- Page 5 ---
+Modules 5 & 6  — Internet, networks & cybersecurity
+Module 5 Internet & networks
+What the internet is & how it works
+Types of networks (LAN, WAN, WiFi)
+Safe & effective browser use
+Understanding IP addresses & DNS
+WhatsApp & social media basics
+Remote computing concepts
+Uses the internet safely and understands how it works.
+Module 6 Cybersecurity & safety
+Identify viruses, malware & threats
+Install & manage antivirus software
+OTPs, two-factor authentication
+Hacker tactics & how to stay safe
+Strong passwords & data protection
+Virus protection & precautions
+Protects devices & personal data — a critical life skill.
+
+--- Page 6 ---
+Modules 7 & 8  — Databases & AI tools
+Module 7 Databases
+What a database is & why it matters
+Types of databases (flat, relational)
+Basic data entry & record keeping
+Searching & filtering data
+Introduction to spreadsheet databases
+Real-world database use cases
+Understands how data is stored and managed professionally.
+Module 8 AI tools for real life
+What AI is & how it works
+Use ChatGPT & Gemini effectively
+Write strong prompts & commands
+AI for homework & content creation
+AI tools for kids & young learners
+Use AI responsibly & safely
+Uses AI as a real tool — a genuine career advantage.
+
+--- Page 7 ---
+Modules 9 & 10  — Programming & web development
+Module 9 Programming fundamentals
+Introduction to HTML & web structure
+Scratch: visual programming for beginners
+Python basics: variables, loops, logic
+C & C++ fundamentals
+Problem solving through code
+Build simple programs & projects
+Writes real code — from beginner Scratch to Python & C++.
+Module 10 Web development
+Build websites with WordPress
+No-code web design with Webflow
+Start a blog & manage content
+Domain, hosting & going live
+Basic SEO & site optimisation
+Portfolio & personal website setup
+Builds real websites — ready for freelancing or a career.
+
+--- Page 8 ---
+Module 11  — Creative design & freelancing basics
+Module 11A Creative design with Canva
+Design posters, cards & social graphics
+Use layouts, fonts & colour theory
+Edit & place images professionally
+Export designs for print & digital
+Create visual content for social media
+Build a basic design portfolio
+Creates professional-grade visuals using Canva.
+Module 11B Freelancing basics
+What freelancing is & how to start
+Setting up a profile on Fiverr/Upwork
+Pricing, proposals & client communication
+Delivering work & getting reviews
+Managing time & multiple projects
+Turning IT skills into real income
+Knows how to earn money using their new IT skills.
+
+--- Page 9 ---
+Bonus  — IT for kids (junior course outline)
+Kids A Computer basics for kids
+Computer hardware — what's inside?
+Computer software & apps
+How a computer works
+Understanding icons & the desktop
+Apps: what they are & how to use them
+Viruses & staying safe online
+Young learners understand computers from the ground up.
+Kids B Digital skills & safety for kids
+Cybersecurity basics for young learners
+Coding introduction (Scratch)
+Operating systems — Windows basics
+AI & what it means for kids
+AI for content creation
+Internet, networking & two-factor auth
+Safe, confident, and digitally aware from a young age.
+
+--- Page 10 ---
+Your child leaves with
+60+ real, usable skills.
+Computer & OS confidence
+ Job-ready office & communication skills
+Cybersecurity & online protection
+ Real programming skills (Python, HTML, C++)
+Creative design & freelancing ability
+ Practical AI skills for school and work
+Evolance Institute of IT  ·  IT Program
+
