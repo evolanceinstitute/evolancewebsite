@@ -613,17 +613,29 @@ function renderFacultyAttendanceTable(batchKey) {
   });
 }
 
-// Admissions Form Handler
+// Admissions / Registration Form Handler -> Redirects to WhatsApp (03399333066)
 function initAdmissionsForm() {
   const form = document.getElementById("admissions-form");
   if (!form) return;
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const name = document.getElementById("student-name").value;
+    const name = document.getElementById("student-name").value.trim();
+    const emailElem = document.getElementById("student-email");
+    const phoneElem = document.getElementById("student-phone");
+
+    const email = emailElem ? emailElem.value.trim() : "N/A";
+    const phone = phoneElem ? phoneElem.value.trim() : "N/A";
     const program = document.getElementById("student-program").value;
 
-    alert(`Thank you ${name}! Your inquiry for "${program}" at Evolance Institute of IT has been received. Our team will contact you shortly.`);
+    const whatsappNumber = "923399333066";
+    const message = `Hello Evolance Institute of IT!\n\nI would like to register for admission.\n\n*Full Name:* ${name}\n*Email Address:* ${email}\n*Phone / WhatsApp:* ${phone}\n*Selected Course:* ${program}\n\nPlease guide me with my registration steps.`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    alert(`✓ Registration details saved for ${name}!\n\nRedirecting to Evolance WhatsApp (03399333066)...`);
+    window.open(whatsappUrl, "_blank");
     form.reset();
   });
 }
