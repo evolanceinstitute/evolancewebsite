@@ -1,7 +1,7 @@
 /* ==========================================================================
    EVOLANCE INSTITUTE OF IT — SCRIPT
    Features: Single-Page Navigation / Tab Switcher, Preloader Reveal,
-   Stats Counter Animations, Admissions Form Handler
+   Stats Counter Animations, Admissions & Login Form Handlers
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTabNavigation();
   initCounters();
   initAdmissionsForm();
+  initLoginForm();
   initBackToTop();
 });
 
@@ -112,7 +113,42 @@ function initCounters() {
   });
 }
 
-// Form Handler
+// Login Form Handler & Role Switcher
+function initLoginForm() {
+  const rolePills = document.querySelectorAll(".role-pill");
+  const loginForm = document.getElementById("login-form");
+  const pwdInput = document.getElementById("login-password");
+  const toggleBtn = document.getElementById("toggle-pwd");
+
+  let selectedRole = "student";
+
+  rolePills.forEach(pill => {
+    pill.addEventListener("click", () => {
+      rolePills.forEach(p => p.classList.remove("active"));
+      pill.classList.add("active");
+      selectedRole = pill.getAttribute("data-role");
+    });
+  });
+
+  if (toggleBtn && pwdInput) {
+    toggleBtn.addEventListener("click", () => {
+      const type = pwdInput.getAttribute("type") === "password" ? "text" : "password";
+      pwdInput.setAttribute("type", type);
+      toggleBtn.innerHTML = type === "password" ? '<i class="fa-regular fa-eye"></i>' : '<i class="fa-regular fa-eye-slash"></i>';
+    });
+  }
+
+  if (loginForm) {
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value;
+      alert(`Welcome to Evolance Portal (${selectedRole.toUpperCase()})!\nSigned in as: ${email}`);
+      loginForm.reset();
+    });
+  }
+}
+
+// Admissions Form Handler
 function initAdmissionsForm() {
   const form = document.getElementById("admissions-form");
   if (!form) return;
