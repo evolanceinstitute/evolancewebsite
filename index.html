@@ -42,10 +42,10 @@
   <!-- Site Wrapper -->
   <div class="site-wrapper" id="site-wrapper">
     
-    <!-- Top Navigation Bar with Dedicated Tabs -->
+    <!-- Top Navigation Bar (No border line, glassmorphism blur) -->
     <header class="navbar">
       <div class="container nav-container">
-        <a href="#home" class="logo tab-link" data-tab="home">
+        <a href="#home" class="logo nav-tab" data-tab="home">
           <span class="logo-mark"></span>
           <div class="logo-group">
             <span class="logo-text">EVOLANCE</span>
@@ -58,20 +58,20 @@
           <button class="nav-tab" data-tab="ignite">Capstone Ignite</button>
           <button class="nav-tab" data-tab="juniors">Capstone Juniors</button>
           <button class="nav-tab" data-tab="master">Master IT (11 Modules)</button>
-          <button class="nav-tab" data-tab="contact">Location & Admissions</button>
+          <button class="nav-tab" data-tab="registration">Registration</button>
         </nav>
 
         <div class="nav-action">
-          <button class="text-link nav-tab" data-tab="contact">Admissions <i class="fa-solid fa-arrow-up-right"></i></button>
+          <button class="text-link nav-tab" data-tab="registration">Registration <i class="fa-solid fa-arrow-up-right"></i></button>
         </div>
       </div>
     </header>
 
-    <!-- MAIN VIEW CONTAINER (Tabbed Single-Page Architecture) -->
+    <!-- MAIN TABBED VIEWS -->
     <main class="main-content">
 
       <!-- ===================================================================
-           TAB 1: HOME (Hero, Vision & Quick Program Hub)
+           TAB 1: HOME
            =================================================================== -->
       <section class="tab-view active" id="tab-home">
         <!-- Hero Section -->
@@ -118,7 +118,7 @@
           </div>
         </div>
 
-        <!-- Quick Program Cards (Clicking switches directly to that course tab!) -->
+        <!-- Quick Program Cards -->
         <div class="programs-section">
           <div class="container">
             <div class="section-header">
@@ -203,7 +203,7 @@
       </section>
 
       <!-- ===================================================================
-           TAB 2: CAPSTONE IGNITE (Women-First Program Dedicated Tab)
+           TAB 2: CAPSTONE IGNITE
            =================================================================== -->
       <section class="tab-view" id="tab-ignite">
         <div class="container page-container">
@@ -249,7 +249,7 @@
                     <span class="phase-num">Phase 1</span>
                     <div>
                       <h4>Foundations (Days 1–6)</h4>
-                      <p>Computer hardware basics, Windows navigation, file management, typing accuracy, and ngồi confidently at any PC.</p>
+                      <p>Computer hardware basics, Windows navigation, file management, typing accuracy, and sitting confidently at any PC.</p>
                     </div>
                   </div>
                   <div class="phase-item">
@@ -287,7 +287,7 @@
                   <li><i class="fa-solid fa-users text-accent"></i> Small batch sizes (personal attention)</li>
                   <li><i class="fa-solid fa-award text-accent"></i> Recognized Certificate & Portfolio</li>
                 </ul>
-                <button class="minimal-btn btn-full nav-tab" data-tab="contact">Apply for Ignite <i class="fa-solid fa-arrow-right"></i></button>
+                <button class="minimal-btn btn-full nav-tab" data-tab="registration">Register for Ignite <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -295,7 +295,7 @@
       </section>
 
       <!-- ===================================================================
-           TAB 3: CAPSTONE JUNIORS (Ages 11–15 Dedicated Tab)
+           TAB 3: CAPSTONE JUNIORS
            =================================================================== -->
       <section class="tab-view" id="tab-juniors">
         <div class="container page-container">
@@ -362,7 +362,7 @@
                   <li><i class="fa-solid fa-check text-accent"></i> Python programming basics</li>
                   <li><i class="fa-solid fa-check text-accent"></i> Certificate & Parent Presentation</li>
                 </ul>
-                <button class="minimal-btn btn-full nav-tab" data-tab="contact">Enroll Child <i class="fa-solid fa-arrow-right"></i></button>
+                <button class="minimal-btn btn-full nav-tab" data-tab="registration">Register Child <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -370,7 +370,7 @@
       </section>
 
       <!-- ===================================================================
-           TAB 4: MASTER IT PROGRAM (11 Modules Dedicated Tab)
+           TAB 4: MASTER IT PROGRAM
            =================================================================== -->
       <section class="tab-view" id="tab-master">
         <div class="container page-container">
@@ -436,7 +436,7 @@
                 <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
                   Produces well-rounded graduates capable of working in offices, coding software, managing websites, and earning online.
                 </p>
-                <button class="minimal-btn btn-full nav-tab" data-tab="contact">Apply for Master IT <i class="fa-solid fa-arrow-right"></i></button>
+                <button class="minimal-btn btn-full nav-tab" data-tab="registration">Register for Master IT <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -444,65 +444,20 @@
       </section>
 
       <!-- ===================================================================
-           TAB 5: LOCATION & ADMISSIONS (Very End Location & Contact Dedicated Tab)
+           TAB 5: REGISTRATION
            =================================================================== -->
-      <section class="tab-view" id="tab-contact">
+      <section class="tab-view" id="tab-registration">
         <div class="container page-container">
           <div class="page-header">
-            <span class="page-badge">Campus & Registration</span>
-            <h1 class="page-title">Admissions & Location</h1>
-            <p class="page-subtitle">Evolance Institute of IT · Rawalpindi, Pakistan</p>
+            <span class="page-badge">Online Seat Reservation</span>
+            <h1 class="page-title">Program Registration</h1>
+            <p class="page-subtitle">Reserve your seat at Evolance Institute of IT · Rawalpindi, Pakistan</p>
           </div>
 
-          <div class="admissions-grid">
-            
-            <!-- Left Column: Location Details & Embedded Map at the very end -->
-            <div class="admissions-info">
-              <h2 class="admissions-title">Visit Our Campus</h2>
-              <p class="admissions-desc">
-                Classes are held in small batches to ensure personal attention. Feel free to visit our campus or click below for turn-by-turn directions.
-              </p>
-
-              <div class="contact-details">
-                <div class="contact-item">
-                  <i class="fa-solid fa-location-dot"></i>
-                  <div>
-                    <strong>Campus Address</strong>
-                    <p>Evolance Institute of IT, Rawalpindi, Pakistan</p>
-                    <a href="https://maps.google.com/?q=Evolance+Institute+of+IT,+Rawalpindi,+Pakistan" target="_blank" rel="noopener noreferrer" class="map-link">
-                      Get Directions on Google Maps <i class="fa-solid fa-arrow-up-right"></i>
-                    </a>
-                  </div>
-                </div>
-
-                <!-- Embedded Google Map -->
-                <div class="map-container">
-                  <iframe 
-                    title="Evolance Institute of IT Location Map"
-                    src="https://maps.google.com/maps?q=Evolance%20Institute%20of%20IT%20Rawalpindi%20Pakistan&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                    width="100%" 
-                    height="260" 
-                    style="border:0; filter: grayscale(90%) invert(90%) contrast(120%);" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                  </iframe>
-                </div>
-
-                <div class="contact-item">
-                  <i class="fa-solid fa-user"></i>
-                  <div>
-                    <strong>Founder & Director</strong>
-                    <p>NoorAbbas</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Right Column: Admissions Inquiry Form -->
+          <div class="registration-wrapper">
             <div class="admissions-form-box">
               <form id="admissions-form" class="minimal-form">
-                <h3>Reserve Your Seat</h3>
+                <h3>Course Registration Form</h3>
                 
                 <div class="form-group">
                   <label for="student-name">Full Name</label>
@@ -515,7 +470,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="student-program">Select Program Tab</label>
+                  <label for="student-program">Target Program</label>
                   <select id="student-program" required>
                     <option value="" disabled selected>Select Program...</option>
                     <option value="Capstone Ignite (Women Track)">Capstone Ignite (Women Track)</option>
@@ -524,15 +479,64 @@
                   </select>
                 </div>
 
-                <button type="submit" class="minimal-btn btn-full">Submit Inquiry <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="submit" class="minimal-btn btn-full">Submit Registration <i class="fa-solid fa-arrow-right"></i></button>
               </form>
             </div>
-
           </div>
         </div>
       </section>
 
     </main>
+
+    <!-- GLOBAL BOTTOM CAMPUS LOCATION & MAP (Present at the bottom of EVERY tab view) -->
+    <section class="global-location-section">
+      <div class="container">
+        <div class="location-box">
+          <div class="location-info-side">
+            <span class="section-num">Campus & Contact</span>
+            <h2 class="location-title">Visit Evolance Institute of IT</h2>
+            <p class="location-desc">Classes are held in small batches to ensure personal attention and hands-on guidance for every student.</p>
+
+            <div class="contact-details">
+              <div class="contact-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                  <strong>Campus Address</strong>
+                  <p>Evolance Institute of IT, Rawalpindi, Pakistan</p>
+                  <a href="https://maps.google.com/?q=Evolance+Institute+of+IT,+Rawalpindi,+Pakistan" target="_blank" rel="noopener noreferrer" class="map-link">
+                    Get Directions on Google Maps <i class="fa-solid fa-arrow-up-right"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <i class="fa-solid fa-user"></i>
+                <div>
+                  <strong>Founder & Director</strong>
+                  <p>NoorAbbas</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Embedded Dark Google Map -->
+          <div class="location-map-side">
+            <div class="map-container">
+              <iframe 
+                title="Evolance Institute of IT Location Map"
+                src="https://maps.google.com/maps?q=Evolance%20Institute%20of%20IT%20Rawalpindi%20Pakistan&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="320" 
+                style="border:0; filter: grayscale(90%) invert(90%) contrast(120%);" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Footer at Very End -->
     <footer class="footer">
@@ -542,7 +546,7 @@
             <h2 class="footer-title">EVOLANCE INSTITUTE OF IT</h2>
             <p class="footer-subtext">Rawalpindi, Pakistan · Founded by NoorAbbas</p>
           </div>
-          <button class="footer-email nav-tab" data-tab="contact">Contact Admissions <i class="fa-solid fa-arrow-up-right"></i></button>
+          <button class="footer-email nav-tab" data-tab="registration">Course Registration <i class="fa-solid fa-arrow-up-right"></i></button>
         </div>
 
         <div class="footer-bottom">
