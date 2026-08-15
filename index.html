@@ -711,11 +711,10 @@
               <button class="minimal-btn btn-sm" id="student-logout"><i class="fa-solid fa-right-from-bracket"></i> Switch Account / Log Out</button>
             </div>
 
-            <!-- Inner Student Tabs -->
+            <!-- Inner Student Tabs (Attendance & Marks Only) -->
             <div class="portal-tabs-nav">
               <button class="portal-tab-btn active" data-s-tab="s-attendance"><i class="fa-solid fa-user-check"></i> My Attendance Record</button>
               <button class="portal-tab-btn" data-s-tab="s-marks"><i class="fa-solid fa-award"></i> My Marks & Transcript</button>
-              <button class="portal-tab-btn" data-s-tab="s-materials"><i class="fa-solid fa-book-open"></i> Class Materials & Submit</button>
             </div>
 
             <!-- Student Tab 1: My Attendance Record -->
@@ -849,44 +848,6 @@
                       </tr>
                     </tbody>
                   </table>
-                </div>
-              </div>
-            </div>
-
-            <!-- Student Tab 3: Materials & Submit -->
-            <div class="s-tab-content" id="s-tab-s-materials">
-              <div class="dash-card">
-                <h3>Course Materials & Project Submission</h3>
-                <div class="materials-list" style="margin-top: 16px;">
-                  <div class="material-item">
-                    <div>
-                      <strong><i class="fa-solid fa-file-pdf text-accent"></i> Module 9: Python Basics Handbook.pdf</strong>
-                      <p style="font-size: 0.82rem; color: var(--text-muted);">Uploaded by Prof. NoorAbbas · 14 Aug 2026</p>
-                    </div>
-                    <a href="#" class="minimal-btn btn-sm" onclick="alert('Downloading Python Basics Handbook...'); return false;"><i class="fa-solid fa-download"></i> Download PDF</a>
-                  </div>
-                  <div class="material-item">
-                    <div>
-                      <strong><i class="fa-solid fa-file-powerpoint text-accent"></i> Module 11: Fiverr & Upwork Proposal Kit.pptx</strong>
-                      <p style="font-size: 0.82rem; color: var(--text-muted);">Uploaded by Prof. NoorAbbas · 12 Aug 2026</p>
-                    </div>
-                    <a href="#" class="minimal-btn btn-sm" onclick="alert('Downloading Freelancing Proposal Kit...'); return false;"><i class="fa-solid fa-download"></i> Download PPTX</a>
-                  </div>
-                </div>
-
-                <div class="submit-assignment-box" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-muted);">
-                  <h4>Submit Homework / Capstone Assignment</h4>
-                  <form id="assignment-submit-form" style="margin-top: 12px;">
-                    <div class="form-group">
-                      <label>Assignment Title</label>
-                      <input type="text" placeholder="e.g. Capstone Final Website URL / Project Zip" required>
-                    </div>
-                    <div class="form-group">
-                      <label>Submission Link / Notes</label>
-                      <input type="text" placeholder="https://github.com/... or Google Drive Link" required>
-                    </div>
-                    <button type="submit" class="minimal-btn"><i class="fa-solid fa-upload"></i> Submit to Faculty</button>
-                  </form>
                 </div>
               </div>
             </div>
