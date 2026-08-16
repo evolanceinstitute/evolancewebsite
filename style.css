@@ -1,37 +1,29 @@
 /* ==========================================================================
-   EVOLANCE MINIMALIST DESIGN SYSTEM — DOMINANT AESTHETIC BLUE THEME
-   Primary Color: Dominant Deep Ocean Navy & Electric Sky Blue
-   Minor Accent: Crisp White & Soft Ice Tint
+   EVOLANCE MINIMALIST MATTE DESIGN SYSTEM & TABBED ARCHITECTURE
+   Colors: Matte Deep Obsidian, Off-White Porcelain, Warm Muted Architectural Tones
    Typography: Syne (Bold Display) & Plus Jakarta Sans
    ========================================================================== */
 
 :root {
-  /* Dominant Aesthetic Blue & Crisp White Palette */
-  --bg-dark: #0b1727;          /* Dominant Deep Midnight Blue Background */
-  --bg-card: #122238;          /* Rich Ocean Blue Cards */
-  --bg-hover: #1b3354;         /* Vibrant Ice Blue Hover Fill */
-  --bg-input: #08111e;         /* Deep Sapphire Input Fill */
+  /* Matte Palette */
+  --bg-dark: #0e0f12;
+  --bg-card: #14161a;
+  --bg-hover: #1b1d22;
   
-  --text-main: #ffffff;        /* Pure Crisp White Text (High Contrast) */
-  --text-muted: #94a3b8;       /* Soft Ice Slate Text */
-  --text-dim: #64748b;         /* Muted Ocean Slate */
+  --text-main: #f0eee9;
+  --text-muted: #8e9096;
+  --text-dim: #5a5c62;
 
-  --border-muted: #1e3a5f;     /* Subtle Ocean Blue Border */
-  --border-hover: #38bdf8;     /* Glowing Sky Blue Hover Border */
-  
-  --accent-warm: #38bdf8;      /* Electric Sky Blue Primary Highlight */
-  --accent-sky: #0284c7;       /* Deep Cerulean Blue */
-  --accent-light: rgba(56, 189, 248, 0.12); /* Soft Sky Blue Tint */
-  --accent-navy: #0369a1;      /* Bright Royal Blue */
+  --border-muted: #24262b;
+  --border-hover: #3d4048;
+  --accent-warm: #c5a880;
 
   /* Typography */
-  --font-display: 'Open Sans', sans-serif;
-  --font-sans: 'Open Sans', sans-serif;
+  --font-display: 'Syne', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
 
   --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: 0.2s ease;
-  --shadow-subtle: none;
-  --shadow-card: none;
 }
 
 /* Reset & Base Setup */
@@ -71,7 +63,7 @@ a, button {
 .text-center { text-align: center; }
 .text-accent { color: var(--accent-warm); }
 .text-green { color: #4ade80; }
-.text-gold { color: #fbbf24; }
+.text-gold { color: #facc15; }
 .text-red { color: #f87171; }
 
 /* Container */
@@ -82,7 +74,7 @@ a, button {
 }
 
 /* ==========================================================================
-   FULLSCREEN PRELOADER / INTRO ANIMATION (DOMINANT BLUE)
+   FULLSCREEN PRELOADER / INTRO ANIMATION
    ========================================================================== */
 .preloader {
   position: fixed;
@@ -90,7 +82,7 @@ a, button {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #0b1727;
+  background-color: #08090b;
   z-index: 10000;
   display: flex;
   align-items: center;
@@ -114,7 +106,7 @@ a, button {
   font-size: 3rem;
   font-weight: 800;
   letter-spacing: 0.3em;
-  color: #ffffff;
+  color: var(--text-main);
   margin-bottom: 6px;
   display: flex;
   overflow: hidden;
@@ -125,7 +117,6 @@ a, button {
   letter-spacing: 0.4em;
   color: var(--accent-warm);
   margin-bottom: 24px;
-  font-weight: 700;
 }
 
 .preloader-brand .char {
@@ -153,12 +144,11 @@ a, button {
 
 .preloader-bar {
   width: 180px;
-  height: 3px;
-  background: var(--border-muted);
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
   margin-bottom: 12px;
   position: relative;
   overflow: hidden;
-  border-radius: 2px;
 }
 
 .preloader-progress {
@@ -167,7 +157,7 @@ a, button {
   left: 0;
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, var(--accent-sky), var(--accent-warm));
+  background: var(--text-main);
   transition: width 0.1s linear;
 }
 
@@ -176,7 +166,6 @@ a, button {
   font-size: 0.85rem;
   color: var(--text-muted);
   letter-spacing: 0.1em;
-  font-weight: 700;
 }
 
 /* Site Wrapper Fade Reveal */
@@ -192,14 +181,14 @@ body.loaded .site-wrapper {
 }
 
 /* ==========================================================================
-   MINIMALIST NAVBAR & TOP TABS NAVIGATION (BLUE GLASS)
+   MINIMALIST NAVBAR & TOP TABS NAVIGATION
    ========================================================================== */
 .navbar {
   padding: 20px 0;
-  border-bottom: 1px solid var(--border-muted);
+  border-bottom: none;
   position: sticky;
   top: 0;
-  background-color: rgba(11, 23, 39, 0.85);
+  background-color: rgba(14, 15, 18, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   z-index: 1000;
@@ -218,11 +207,10 @@ body.loaded .site-wrapper {
 }
 
 .logo-mark {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   background-color: var(--accent-warm);
-  border-radius: 3px;
-  box-shadow: none;
+  border-radius: 2px;
 }
 
 .logo-group {
@@ -233,17 +221,16 @@ body.loaded .site-wrapper {
 .logo-text {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   letter-spacing: 0.15em;
-  color: #ffffff;
+  color: var(--text-main);
   line-height: 1;
 }
 
 .logo-sub {
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   letter-spacing: 0.25em;
-  color: var(--accent-warm);
-  font-weight: 700;
+  color: var(--text-muted);
   margin-top: 2px;
 }
 
@@ -257,8 +244,7 @@ body.loaded .site-wrapper {
   color: var(--text-muted);
   position: relative;
   padding: 6px 12px;
-  border-radius: 4px;
-  font-weight: 500;
+  border-radius: 2px;
   transition: color var(--transition-fast), background-color var(--transition-fast);
 }
 
@@ -275,12 +261,12 @@ body.loaded .site-wrapper {
 }
 
 .nav-tab:hover {
-  color: #ffffff;
+  color: var(--text-main);
 }
 
 .nav-tab.active {
-  color: var(--accent-warm);
-  font-weight: 700;
+  color: var(--text-main);
+  font-weight: 600;
 }
 
 .nav-tab.active::after {
@@ -289,19 +275,19 @@ body.loaded .site-wrapper {
 
 .text-link {
   font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--accent-warm);
+  font-weight: 600;
+  color: var(--text-main);
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  border-bottom: 2px solid var(--accent-warm);
+  border-bottom: 1px solid var(--text-main);
   padding-bottom: 2px;
-  transition: color var(--transition-fast), border-color var(--transition-fast);
+  transition: border-color var(--transition-fast), color var(--transition-fast);
 }
 
 .text-link:hover {
-  color: #ffffff;
-  border-color: #ffffff;
+  color: var(--accent-warm);
+  border-color: var(--accent-warm);
 }
 
 /* WHEN PORTAL VIEW IS ACTIVE -> HIDE TOP NAVBAR LINKS, FOOTER & MAP */
@@ -355,19 +341,13 @@ body.portal-mode-active .footer {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--accent-warm);
-  font-weight: 800;
+  font-weight: 700;
   display: inline-block;
   margin-bottom: 8px;
-  background-color: var(--accent-light);
-  padding: 4px 12px;
-  border-radius: 20px;
-  border: 1px solid rgba(56, 189, 248, 0.3);
 }
 
 .page-badge.gold {
-  color: #fbbf24;
-  background-color: rgba(251, 191, 36, 0.12);
-  border-color: rgba(251, 191, 36, 0.3);
+  color: var(--accent-warm);
 }
 
 .page-title {
@@ -376,7 +356,6 @@ body.portal-mode-active .footer {
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 10px;
-  color: #ffffff;
 }
 
 .page-subtitle {
@@ -405,7 +384,7 @@ body.portal-mode-active .footer {
   font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: 16px;
-  color: #ffffff;
+  color: var(--text-main);
 }
 
 .info-block p {
@@ -426,14 +405,6 @@ body.portal-mode-active .footer {
   padding: 24px;
   background-color: var(--bg-card);
   border: 1px solid var(--border-muted);
-  border-radius: 8px;
-  box-shadow: var(--shadow-subtle);
-  transition: transform var(--transition-fast), border-color var(--transition-fast);
-}
-
-.audience-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--border-hover);
 }
 
 .audience-card h4 {
@@ -441,7 +412,6 @@ body.portal-mode-active .footer {
   font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 8px;
-  color: #ffffff;
 }
 
 .audience-card p {
@@ -463,9 +433,7 @@ body.portal-mode-active .footer {
   padding: 20px;
   background-color: var(--bg-card);
   border: 1px solid var(--border-muted);
-  border-radius: 8px;
   align-items: flex-start;
-  box-shadow: var(--shadow-subtle);
 }
 
 .phase-num {
@@ -474,9 +442,9 @@ body.portal-mode-active .footer {
   font-weight: 800;
   text-transform: uppercase;
   color: var(--accent-warm);
-  background-color: var(--accent-light);
+  background-color: var(--bg-dark);
   padding: 6px 12px;
-  border-radius: 4px;
+  border: 1px solid var(--border-muted);
   white-space: nowrap;
 }
 
@@ -484,7 +452,6 @@ body.portal-mode-active .footer {
   font-family: var(--font-display);
   font-size: 1.1rem;
   margin-bottom: 4px;
-  color: #ffffff;
 }
 
 .phase-item p {
@@ -504,8 +471,6 @@ body.portal-mode-active .footer {
   padding: 24px;
   background-color: var(--bg-card);
   border: 1px solid var(--border-muted);
-  border-radius: 8px;
-  box-shadow: var(--shadow-subtle);
 }
 
 .mod-badge {
@@ -513,7 +478,7 @@ body.portal-mode-active .footer {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--accent-warm);
-  font-weight: 800;
+  font-weight: 700;
   display: block;
   margin-bottom: 8px;
 }
@@ -523,7 +488,6 @@ body.portal-mode-active .footer {
   font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: 8px;
-  color: #ffffff;
 }
 
 .module-card p {
@@ -536,8 +500,6 @@ body.portal-mode-active .footer {
   padding: 32px;
   background-color: var(--bg-card);
   border: 1px solid var(--border-muted);
-  border-radius: 12px;
-  box-shadow: var(--shadow-card);
   position: sticky;
   top: 100px;
 }
@@ -546,7 +508,6 @@ body.portal-mode-active .footer {
   font-family: var(--font-display);
   font-size: 1.3rem;
   margin-bottom: 20px;
-  color: #ffffff;
 }
 
 .check-list {
@@ -559,7 +520,7 @@ body.portal-mode-active .footer {
   align-items: center;
   gap: 12px;
   font-size: 0.88rem;
-  color: #ffffff;
+  color: var(--text-main);
   margin-bottom: 12px;
 }
 
@@ -579,14 +540,12 @@ body.portal-mode-active .footer {
 
 .saved-session-banner {
   background-color: var(--bg-card);
-  border: 1.5px solid var(--accent-warm);
+  border: 1px solid var(--accent-warm);
   padding: 16px 20px;
   margin-bottom: 20px;
-  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: var(--shadow-subtle);
 }
 
 .banner-info {
@@ -598,7 +557,6 @@ body.portal-mode-active .footer {
 .banner-info strong {
   display: block;
   font-size: 0.9rem;
-  color: #ffffff;
 }
 
 .banner-info span {
@@ -609,9 +567,7 @@ body.portal-mode-active .footer {
 .login-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-muted);
-  border-radius: 12px;
   padding: 36px;
-  box-shadow: var(--shadow-card);
 }
 
 .portal-mode-switch {
@@ -631,16 +587,14 @@ body.portal-mode-active .footer {
 }
 
 .mode-btn.active {
-  color: var(--accent-warm);
+  color: var(--text-main);
   border-bottom-color: var(--accent-warm);
-  font-weight: 700;
 }
 
 .role-selector {
   display: flex;
   background-color: var(--bg-dark);
   border: 1px solid var(--border-muted);
-  border-radius: 6px;
   padding: 4px;
   gap: 4px;
   margin-bottom: 24px;
@@ -651,15 +605,14 @@ body.portal-mode-active .footer {
   padding: 8px 12px;
   font-size: 0.82rem;
   color: var(--text-muted);
-  border-radius: 4px;
+  border-radius: 2px;
   transition: color var(--transition-fast), background-color var(--transition-fast);
 }
 
 .role-pill.active {
-  background-color: var(--bg-hover);
-  color: var(--accent-warm);
-  font-weight: 700;
-  box-shadow: var(--shadow-subtle);
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  font-weight: 600;
 }
 
 .verification-notice-box {
@@ -667,21 +620,18 @@ body.portal-mode-active .footer {
   align-items: flex-start;
   gap: 12px;
   padding: 12px 16px;
-  background-color: var(--accent-light);
-  border: 1px solid var(--border-hover);
-  border-radius: 6px;
+  background-color: var(--bg-dark);
+  border: 1px solid var(--border-muted);
   margin-bottom: 20px;
   font-size: 0.82rem;
-  color: var(--accent-warm);
+  color: var(--text-muted);
 }
 
 /* PORTAL DASHBOARD BOX */
 .portal-dashboard-box {
   background-color: var(--bg-card);
   border: 1px solid var(--border-muted);
-  border-radius: 16px;
   padding: 36px;
-  box-shadow: var(--shadow-card);
 }
 
 .dashboard-header {
@@ -699,7 +649,6 @@ body.portal-mode-active .footer {
   font-family: var(--font-display);
   font-size: 2.2rem;
   font-weight: 800;
-  color: #ffffff;
 }
 
 .dash-sub {
@@ -737,16 +686,15 @@ body.portal-mode-active .footer {
   color: var(--text-muted);
   border: 1px solid var(--border-muted);
   background-color: var(--bg-dark);
-  border-radius: 6px;
+  border-radius: 2px;
   transition: var(--transition-fast);
   text-align: left;
 }
 
 .portal-tab-btn:hover, .portal-tab-btn.active {
   background-color: var(--bg-hover);
-  color: var(--accent-warm);
-  border-color: var(--border-hover);
-  font-weight: 700;
+  color: var(--text-main);
+  border-color: var(--accent-warm);
 }
 
 .caret-icon {
@@ -764,7 +712,7 @@ body.portal-mode-active .footer {
   flex-direction: column;
   gap: 4px;
   padding: 8px 0 4px 12px;
-  border-left: 2px solid var(--accent-warm);
+  border-left: 2px solid var(--border-muted);
   margin-top: 6px;
   margin-left: 10px;
 }
@@ -781,14 +729,12 @@ body.portal-mode-active .footer {
   display: flex;
   align-items: center;
   gap: 8px;
-  border-radius: 4px;
-  transition: color var(--transition-fast), background-color var(--transition-fast);
+  transition: color var(--transition-fast);
 }
 
 .v-sub-btn:hover, .v-sub-btn.active {
   color: var(--accent-warm);
-  background-color: var(--bg-hover);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .portal-tab-workspace {
@@ -819,10 +765,9 @@ body.portal-mode-active .footer {
 
 .batch-selectors select, .batch-selectors input {
   padding: 8px 12px;
-  background: var(--bg-input);
+  background: var(--bg-dark);
   border: 1px solid var(--border-muted);
-  color: #ffffff;
-  border-radius: 4px;
+  color: var(--text-main);
   font-size: 0.85rem;
 }
 
@@ -849,31 +794,30 @@ body.portal-mode-active .footer {
   color: var(--text-muted);
   letter-spacing: 0.05em;
   background-color: var(--bg-dark);
-  font-weight: 700;
 }
 
 .status-badge {
   font-size: 0.75rem;
   font-weight: 700;
   padding: 4px 10px;
-  border-radius: 4px;
+  border-radius: 2px;
   text-transform: uppercase;
 }
 
 .status-badge.green {
-  background-color: rgba(74, 222, 128, 0.15);
+  background-color: rgba(74, 222, 128, 0.1);
   color: #4ade80;
   border: 1px solid rgba(74, 222, 128, 0.3);
 }
 
 .status-badge.yellow {
-  background-color: rgba(251, 191, 36, 0.15);
-  color: #fbbf24;
-  border: 1px solid rgba(251, 191, 36, 0.3);
+  background-color: rgba(250, 204, 21, 0.1);
+  color: #facc15;
+  border: 1px solid rgba(250, 204, 21, 0.3);
 }
 
 .status-badge.red {
-  background-color: rgba(248, 113, 113, 0.15);
+  background-color: rgba(248, 113, 113, 0.1);
   color: #f87171;
   border: 1px solid rgba(248, 113, 113, 0.3);
 }
@@ -882,7 +826,7 @@ body.portal-mode-active .footer {
   padding: 6px 14px;
   font-size: 0.78rem;
   font-weight: 700;
-  border-radius: 4px;
+  border-radius: 2px;
   cursor: pointer;
   transition: var(--transition-fast);
 }
@@ -909,7 +853,7 @@ body.portal-mode-active .footer {
 .status-msg {
   font-size: 0.85rem;
   color: #4ade80;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .grade-input-grid {
@@ -934,7 +878,6 @@ body.portal-mode-active .footer {
   padding: 16px;
   background-color: var(--bg-dark);
   border: 1px solid var(--border-muted);
-  border-radius: 8px;
 }
 
 .mini-lbl {
@@ -943,14 +886,12 @@ body.portal-mode-active .footer {
   display: block;
   margin-bottom: 4px;
   text-transform: uppercase;
-  font-weight: 700;
 }
 
 .mini-val {
   font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: 800;
-  color: #ffffff;
 }
 
 .remove-btn {
@@ -958,13 +899,13 @@ body.portal-mode-active .footer {
   font-size: 0.75rem;
   color: #f87171;
   border: 1px solid rgba(248, 113, 113, 0.3);
-  background: rgba(248, 113, 113, 0.1);
-  border-radius: 4px;
+  background: rgba(248, 113, 113, 0.08);
+  border-radius: 2px;
   cursor: pointer;
 }
 
 .remove-btn:hover {
-  background: rgba(248, 113, 113, 0.25);
+  background: rgba(248, 113, 113, 0.2);
 }
 
 /* ==========================================================================
@@ -988,7 +929,6 @@ body.portal-mode-active .footer {
   font-size: 2.2rem;
   font-weight: 800;
   margin-bottom: 12px;
-  color: #ffffff;
 }
 
 .location-desc {
@@ -1018,7 +958,7 @@ body.portal-mode-active .footer {
 .contact-item strong {
   display: block;
   font-size: 0.95rem;
-  color: #ffffff;
+  color: var(--text-main);
 }
 
 .contact-item p {
@@ -1031,24 +971,24 @@ body.portal-mode-active .footer {
   align-items: center;
   gap: 6px;
   font-size: 0.82rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--accent-warm);
   margin-top: 6px;
-  border-bottom: 2px solid var(--accent-warm);
+  border-bottom: 1px solid var(--accent-warm);
   padding-bottom: 2px;
   transition: color var(--transition-fast);
 }
 
 .map-link:hover {
-  color: #ffffff;
-  border-color: #ffffff;
+  color: var(--text-main);
+  border-color: var(--text-main);
 }
 
 .map-container {
   border: 1px solid var(--border-muted);
-  border-radius: 8px;
+  border-radius: 2px;
   overflow: hidden;
-  box-shadow: var(--shadow-card);
+  background-color: var(--bg-dark);
   transition: border-color var(--transition-smooth);
 }
 
@@ -1060,9 +1000,7 @@ body.portal-mode-active .footer {
 .admissions-form-box {
   background-color: var(--bg-card);
   border: 1px solid var(--border-muted);
-  border-radius: 12px;
   padding: 36px;
-  box-shadow: var(--shadow-card);
 }
 
 .admissions-form-box h3 {
@@ -1070,7 +1008,6 @@ body.portal-mode-active .footer {
   font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: 24px;
-  color: #ffffff;
 }
 
 .form-group {
@@ -1083,32 +1020,28 @@ body.portal-mode-active .footer {
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-weight: 700;
   margin-bottom: 6px;
 }
 
 .form-group input, .form-group select {
   width: 100%;
   padding: 12px 16px;
-  background-color: var(--bg-input);
+  background-color: var(--bg-dark);
   border: 1px solid var(--border-muted);
-  border-radius: 6px;
-  color: #ffffff;
+  color: var(--text-main);
   outline: none;
   font-family: inherit;
   font-size: 0.9rem;
-  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  transition: border-color var(--transition-fast);
 }
 
 .form-group select option {
-  background-color: var(--bg-card);
-  color: #ffffff;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
 }
 
 .form-group input:focus, .form-group select:focus {
   border-color: var(--accent-warm);
-  background-color: var(--bg-dark);
-  box-shadow: none;
 }
 
 .btn-full {
@@ -1126,16 +1059,15 @@ body.portal-mode-active .footer {
   align-items: center;
   gap: 16px;
   font-size: 0.85rem;
-  color: var(--accent-warm);
-  font-weight: 700;
+  color: var(--text-muted);
   margin-bottom: 24px;
   letter-spacing: 0.05em;
 }
 
 .tag-divider {
   width: 30px;
-  height: 2px;
-  background-color: var(--accent-warm);
+  height: 1px;
+  background-color: var(--border-muted);
 }
 
 .hero-heading {
@@ -1145,7 +1077,6 @@ body.portal-mode-active .footer {
   line-height: 1.08;
   letter-spacing: -0.02em;
   margin-bottom: 36px;
-  color: #ffffff;
 }
 
 .serif-title {
@@ -1181,28 +1112,20 @@ body.portal-mode-active .footer {
   align-items: center;
   gap: 10px;
   padding: 12px 24px;
-  background-color: var(--accent-sky);
-  border: 1px solid var(--accent-warm);
-  color: #ffffff;
+  background-color: transparent;
+  border: 1px solid var(--border-muted);
+  color: var(--text-main);
   font-size: 0.88rem;
-  font-weight: 700;
-  border-radius: 6px;
+  font-weight: 600;
+  border-radius: 2px;
   cursor: pointer;
   transition: var(--transition-smooth);
-  box-shadow: none;
 }
 
 .minimal-btn:hover {
-  background-color: var(--accent-warm);
-  color: #0b1727;
-  border-color: var(--accent-warm);
+  background-color: var(--bg-hover);
+  border-color: var(--text-main);
   transform: translateY(-2px);
-  box-shadow: none;
-}
-
-.minimal-btn.btn-sm {
-  padding: 8px 16px;
-  font-size: 0.82rem;
 }
 
 /* Statement */
@@ -1224,22 +1147,21 @@ body.portal-mode-active .footer {
   color: var(--accent-warm);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .statement-text {
   font-family: var(--font-display);
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.35;
-  color: #ffffff;
+  color: var(--text-main);
   margin-bottom: 12px;
 }
 
 .statement-author {
   font-size: 0.9rem;
   color: var(--text-muted);
-  font-weight: 600;
 }
 
 /* Programs Grid */
@@ -1258,8 +1180,7 @@ body.portal-mode-active .footer {
 
 .section-num {
   font-size: 0.85rem;
-  color: var(--accent-warm);
-  font-weight: 700;
+  color: var(--text-muted);
   display: block;
   margin-bottom: 8px;
 }
@@ -1268,7 +1189,6 @@ body.portal-mode-active .footer {
   font-family: var(--font-display);
   font-size: 2.4rem;
   font-weight: 700;
-  color: #ffffff;
 }
 
 .section-desc {
@@ -1286,8 +1206,6 @@ body.portal-mode-active .footer {
   padding: 36px 28px;
   border: 1px solid var(--border-muted);
   background-color: var(--bg-card);
-  border-radius: 12px;
-  box-shadow: var(--shadow-subtle);
   display: flex;
   flex-direction: column;
   transition: var(--transition-smooth);
@@ -1296,13 +1214,12 @@ body.portal-mode-active .footer {
 
 .program-card.highlight-card {
   border-color: var(--accent-warm);
-  box-shadow: var(--shadow-card);
 }
 
 .program-card:hover {
-  border-color: var(--accent-warm);
-  transform: translateY(-5px);
-  box-shadow: 0 14px 28px rgba(56, 189, 248, 0.18);
+  border-color: var(--text-main);
+  background-color: var(--bg-hover);
+  transform: translateY(-4px);
 }
 
 .card-meta {
@@ -1314,14 +1231,14 @@ body.portal-mode-active .footer {
 }
 
 .card-badge {
-  color: var(--accent-warm);
+  color: var(--text-main);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .card-badge.gold {
-  color: #fbbf24;
+  color: var(--accent-warm);
 }
 
 .card-duration {
@@ -1333,14 +1250,13 @@ body.portal-mode-active .footer {
   font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: 4px;
-  color: #ffffff;
 }
 
 .program-subtitle {
   font-size: 0.85rem;
   color: var(--accent-warm);
   margin-bottom: 16px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .program-desc {
@@ -1375,14 +1291,13 @@ body.portal-mode-active .footer {
   font-family: var(--font-display);
   font-size: 3.2rem;
   font-weight: 800;
-  color: var(--accent-warm);
+  color: var(--text-main);
   margin-bottom: 4px;
 }
 
 .stat-lbl {
   font-size: 0.88rem;
   color: var(--text-muted);
-  font-weight: 600;
   letter-spacing: 0.05em;
 }
 
@@ -1390,7 +1305,6 @@ body.portal-mode-active .footer {
 .footer {
   padding: 60px 0 40px;
   border-top: 1px solid var(--border-muted);
-  background-color: var(--bg-card);
 }
 
 .footer-top {
@@ -1409,7 +1323,6 @@ body.portal-mode-active .footer {
   font-size: 1.8rem;
   font-weight: 800;
   letter-spacing: 0.05em;
-  color: #ffffff;
 }
 
 .footer-subtext {
@@ -1423,7 +1336,7 @@ body.portal-mode-active .footer {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--accent-warm);
-  border-bottom: 2px solid var(--accent-warm);
+  border-bottom: 1px solid var(--accent-warm);
   padding-bottom: 2px;
 }
 
@@ -1439,12 +1352,11 @@ body.portal-mode-active .footer {
 
 .top-link {
   color: var(--text-muted);
-  font-weight: 600;
   transition: color var(--transition-fast);
 }
 
 .top-link:hover {
-  color: var(--accent-warm);
+  color: var(--text-main);
 }
 
 /* Responsive */
