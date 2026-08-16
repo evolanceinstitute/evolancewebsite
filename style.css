@@ -1463,13 +1463,12 @@ body.portal-mode-active .footer {
   border-radius: 50px;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: none;
+  transition: opacity var(--transition-fast);
 }
 
 .whatsapp-trigger-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.6);
+  opacity: 0.9;
 }
 
 .whatsapp-trigger-btn i {
