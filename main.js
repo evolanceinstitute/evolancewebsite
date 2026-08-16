@@ -59,6 +59,11 @@ function initTabNavigation() {
       body.classList.remove("portal-mode-active");
     }
 
+    const footer = document.querySelector(".footer");
+    if (footer) {
+      footer.style.display = (targetTabId === "support") ? "none" : "block";
+    }
+
     tabs.forEach(btn => {
       if (btn.getAttribute("data-tab") === targetTabId) {
         btn.classList.add("active");
