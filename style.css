@@ -234,6 +234,22 @@ body.loaded .site-wrapper {
   margin-top: 2px;
 }
 
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 6px;
+  line-height: 1;
+  transition: color var(--transition-fast);
+}
+
+.mobile-registration-wrapper {
+  display: none;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -1615,7 +1631,7 @@ body.portal-mode-active #whatsapp-widget {
   display: none !important;
 }
 
-/* Responsive Optimization */
+/* Responsive Optimization & Mobile Drawer Navigation */
 .table-responsive {
   width: 100%;
   overflow-x: auto;
@@ -1623,35 +1639,78 @@ body.portal-mode-active #whatsapp-widget {
 }
 
 @media (max-width: 900px) {
-  .header-container {
-    padding: 12px 20px;
-    height: auto;
-    flex-wrap: wrap;
-    gap: 12px;
+  .nav-action {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-registration-wrapper {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-muted);
   }
 
   .nav-links {
-    display: flex;
-    overflow-x: auto;
-    white-space: nowrap;
-    width: 100%;
-    order: 3;
-    padding-bottom: 6px;
-    gap: 12px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .nav-links::-webkit-scrollbar {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgba(14, 15, 18, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 24px 20px;
+    border-bottom: 1px solid var(--border-muted);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85);
+    z-index: 9999;
   }
 
-  .nav-action {
-    margin-left: auto;
+  .nav-links.mobile-menu-open {
+    display: flex !important;
+    animation: slideDownFade 0.25s ease-out;
+  }
+
+  @keyframes slideDownFade {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .nav-links .nav-tab {
+    width: 100%;
+    font-size: 1.05rem;
+    padding: 10px 0;
+    justify-content: flex-start;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-links .nav-tab::after {
+    display: none !important;
+  }
+
+  .mobile-reg-btn {
+    color: var(--accent-warm) !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
   }
 
   .hero-heading { 
-    font-size: 2.8rem; 
+    font-size: 2.6rem; 
   }
 
   .hero-bottom-row, 
@@ -1691,13 +1750,13 @@ body.portal-mode-active #whatsapp-widget {
 
   .hero-section {
     padding: 30px 0;
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 80px);
   }
 
   .hero-heading {
-    font-size: 2.1rem;
-    line-height: 1.18;
-    margin-bottom: 24px;
+    font-size: 2.05rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
   }
 
   .hero-desc {
@@ -1706,7 +1765,7 @@ body.portal-mode-active #whatsapp-widget {
   }
 
   .hero-bottom-row {
-    padding-top: 24px;
+    padding-top: 20px;
     gap: 20px;
   }
 
@@ -1716,12 +1775,12 @@ body.portal-mode-active #whatsapp-widget {
   }
 
   .section-title, .page-title {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
   }
 
   .statement-quote {
-    font-size: 1.35rem;
-    line-height: 1.5;
+    font-size: 1.25rem;
+    line-height: 1.55;
   }
 
   .footer-top {
@@ -1731,7 +1790,7 @@ body.portal-mode-active #whatsapp-widget {
   }
 
   .footer-title {
-    font-size: 1.35rem;
+    font-size: 1.3rem;
   }
 
   .footer-bottom {
@@ -1753,5 +1812,12 @@ body.portal-mode-active #whatsapp-widget {
   .whatsapp-modal {
     width: calc(100vw - 32px);
     max-width: 310px;
+  }
+
+  /* Form inputs mobile styling */
+  .form-group input, 
+  .form-group select, 
+  .form-group textarea {
+    font-size: 16px !important; /* Prevents auto-zoom on iOS */
   }
 }

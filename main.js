@@ -34,6 +34,7 @@ const state = {
 
 document.addEventListener("DOMContentLoaded", () => {
   initPreloader();
+  initMobileMenu();
   initTabNavigation();
   initCounters();
   initAdmissionsForm();
@@ -691,6 +692,43 @@ function initWhatsAppWidget() {
   document.addEventListener("click", (e) => {
     if (modal.style.display === "block" && !modal.contains(e.target) && !triggerBtn.contains(e.target)) {
       modal.style.display = "none";
+    }
+  });
+}
+
+// Mobile Menu Toggle & Navigation Drawer Handler
+function initMobileMenu() {
+  const menuBtn = document.getElementById("mobile-menu-btn");
+  const menuIcon = document.getElementById("menu-icon");
+  const navLinks = document.getElementById("main-nav-links");
+
+  if (!menuBtn || !navLinks) return;
+
+  menuBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isOpen = navLinks.classList.toggle("mobile-menu-open");
+    if (menuIcon) {
+      menuIcon.className = isOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars";
+    }
+  });
+
+  // Close mobile drawer when tapping any nav tab item
+  navLinks.querySelectorAll(".nav-tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      navLinks.classList.remove("mobile-menu-open");
+      if (menuIcon) {
+        menuIcon.className = "fa-solid fa-bars";
+      }
+    });
+  });
+
+  // Close mobile drawer when clicking outside header
+  document.addEventListener("click", (e) => {
+    if (navLinks.classList.contains("mobile-menu-open") && !navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+      navLinks.classList.remove("mobile-menu-open");
+      if (menuIcon) {
+        menuIcon.className = "fa-solid fa-bars";
+      }
     }
   });
 }

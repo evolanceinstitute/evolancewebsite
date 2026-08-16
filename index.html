@@ -52,13 +52,21 @@
           </div>
         </a>
 
-        <!-- Top Navigation Links (Hidden automatically when Portal View is open) -->
+        <!-- Mobile Menu Toggle Button (Visible on screens < 900px) -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Mobile Navigation Menu">
+          <i class="fa-solid fa-bars" id="menu-icon"></i>
+        </button>
+
+        <!-- Top Navigation Links (Desktop bar / Mobile dropdown drawer) -->
         <nav class="nav-links" id="main-nav-links">
           <button class="nav-tab active" data-tab="home">Home</button>
           <button class="nav-tab" data-tab="ignite">Capstone Ignite</button>
           <button class="nav-tab" data-tab="juniors">Capstone Juniors</button>
           <button class="nav-tab" data-tab="master">Master IT (11 Modules)</button>
           <button class="nav-tab" data-tab="login">Portal Login</button>
+          <div class="mobile-registration-wrapper">
+            <button class="nav-tab mobile-reg-btn" data-tab="registration"><span>Registration</span> <i class="fa-solid fa-arrow-up-right"></i></button>
+          </div>
         </nav>
 
         <div class="nav-action" id="main-nav-action">
