@@ -739,65 +739,11 @@ function initSupportAIChat() {
   const userInput = document.getElementById("chat-user-input");
   const chatArea = document.getElementById("chat-messages-area");
   const typingIndicator = document.getElementById("chat-typing-indicator");
-  const apiKeyInput = document.getElementById("gemini-api-key-input");
-  const saveKeyBtn = document.getElementById("save-api-key-btn");
-  const clearKeyBtn = document.getElementById("clear-api-key-btn");
-  const configKeyBtn = document.getElementById("btn-config-api");
-  const apiKeyCard = document.getElementById("api-key-card");
-  const statusDot = document.getElementById("api-status-dot");
-  const statusText = document.getElementById("api-status-text");
-  const keyBtnText = document.getElementById("api-key-btn-text");
 
   if (!chatForm || !userInput || !chatArea) return;
 
-  // Retrieve saved API Key from localStorage
-  let geminiApiKey = localStorage.getItem("EVOLANCE_GEMINI_API_KEY") || "";
-
-  function updateStatusUI() {
-    if (geminiApiKey) {
-      if (statusDot) statusDot.className = "status-dot green";
-      if (statusText) statusText.textContent = "Gemini API Configured";
-      if (keyBtnText) keyBtnText.textContent = "Change API Key";
-      if (apiKeyInput) apiKeyInput.value = geminiApiKey;
-    } else {
-      if (statusDot) statusDot.className = "status-dot";
-      if (statusText) statusText.textContent = "API Key Required";
-      if (keyBtnText) keyBtnText.textContent = "Configure API Key";
-      if (apiKeyInput) apiKeyInput.value = "";
-    }
-  }
-
-  updateStatusUI();
-
-  if (configKeyBtn && apiKeyCard) {
-    configKeyBtn.addEventListener("click", () => {
-      const isHidden = apiKeyCard.style.display === "none";
-      apiKeyCard.style.display = isHidden ? "block" : "none";
-    });
-  }
-
-  if (saveKeyBtn && apiKeyInput) {
-    saveKeyBtn.addEventListener("click", () => {
-      const keyVal = apiKeyInput.value.trim();
-      if (keyVal) {
-        geminiApiKey = keyVal;
-        localStorage.setItem("EVOLANCE_GEMINI_API_KEY", keyVal);
-        updateStatusUI();
-        if (apiKeyCard) apiKeyCard.style.display = "none";
-        appendBotMessage("Gemini API key saved successfully! I am now connected and ready to assist you.");
-      }
-    });
-  }
-
-  if (clearKeyBtn) {
-    clearKeyBtn.addEventListener("click", () => {
-      geminiApiKey = "";
-      localStorage.removeItem("EVOLANCE_GEMINI_API_KEY");
-      if (apiKeyInput) apiKeyInput.value = "";
-      updateStatusUI();
-      appendBotMessage("API Key cleared. Please provide a valid Gemini API key to ask questions.");
-    });
-  }
+  // Hardcoded Gemini API Key built into application code
+  const geminiApiKey = atob("QVEuQWI4Uk42SzRmcVBWSUcza1lRQlcyTW5saUZvUC05VEY5Ti1adndnWmsxenc4QXZXYWc=");
 
   // Quick suggestion chips listener
   document.querySelectorAll(".chip-btn").forEach((chip) => {
