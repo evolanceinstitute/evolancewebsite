@@ -1051,7 +1051,7 @@ body.portal-mode-active .footer {
 
 /* Hero & Components */
 .hero {
-  min-height: calc(100vh - 82px);
+  min-height: calc(100vh - 65px);
   display: flex;
   align-items: center;
   justify-content: center;
