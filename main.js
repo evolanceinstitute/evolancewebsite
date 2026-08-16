@@ -875,44 +875,48 @@ Contact Info: Phone/WhatsApp: 0339-9333066. Location: Rawalpindi, Pakistan.
 Classes are held in small batches to ensure personal attention and hands-on guidance.
 Provide clear, friendly, and helpful answers. Keep responses concise and formatted cleanly.`;
 
-    try {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${encodeURIComponent(geminiApiKey)}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          contents: [
-            {
-              role: "user",
-              parts: [
-                { text: `${systemPrompt}\n\nUser Question: ${text}` }
-              ]
-            }
-          ]
-        })
-      });
+    const models = ["gemini-1.5-flash", "gemini-2.0-flash", "gemini-pro"];
+    let botReply = null;
+    let lastError = null;
 
-      if (typingIndicator) typingIndicator.style.display = "none";
+    for (const model of models) {
+      try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(geminiApiKey)}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            contents: [
+              {
+                role: "user",
+                parts: [
+                  { text: `${systemPrompt}\n\nUser Question: ${text}` }
+                ]
+              }
+            ]
+          })
+        });
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        const errMsg = errorData.error?.message || response.statusText || "API Key error";
-        appendBotMessage(`**Error calling Gemini API:** ${errMsg}. Please verify your API key.`);
-        return;
+        if (response.ok) {
+          const data = await response.json();
+          botReply = data.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (botReply) break;
+        } else {
+          const errorData = await response.json().catch(() => ({}));
+          lastError = errorData.error?.message || response.statusText;
+        }
+      } catch (err) {
+        lastError = err.message;
       }
+    }
 
-      const data = await response.json();
-      const botReply = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    if (typingIndicator) typingIndicator.style.display = "none";
 
-      if (botReply) {
-        appendBotMessage(botReply);
-      } else {
-        appendBotMessage("I received an empty response. Please try asking again.");
-      }
-    } catch (err) {
-      if (typingIndicator) typingIndicator.style.display = "none";
-      appendBotMessage(`**Connection Error:** Unable to reach Gemini API. Details: ${err.message}`);
+    if (botReply) {
+      appendBotMessage(botReply);
+    } else {
+      appendBotMessage(`**API Response Note:** Unable to generate response with key (${lastError || "Invalid response"}). You can click **Configure API Key** above to update your key.`);
     }
   }
 }
