@@ -94,20 +94,37 @@ function initTabNavigation() {
   });
 }
 
-// Preloader Reveal Animation - Smooth Upward Docking
+// Preloader Reveal Animation - Dynamic FLIP Docking into Navbar Logo
 function initPreloader() {
   const preloader = document.getElementById("preloader");
+  const preloaderBrand = document.getElementById("preloader-brand");
+  const navLogoText = document.getElementById("nav-logo-text");
   const body = document.body;
 
   if (!preloader) return;
 
-  // Once EVOLANCE letter animation finishes (~750ms)
+  // Wait for letter reveal animation to complete (~750ms)
   setTimeout(() => {
+    if (preloaderBrand && navLogoText) {
+      // Measure real-time bounding rectangles in current viewport
+      const startRect = preloaderBrand.getBoundingClientRect();
+      const targetRect = navLogoText.getBoundingClientRect();
+
+      const deltaX = targetRect.left - startRect.left;
+      const deltaY = targetRect.top - startRect.top;
+      const scale = targetRect.height / startRect.height;
+
+      // Animate preloader brand to exact sub-pixel coordinates of top navbar logo
+      preloaderBrand.style.transformOrigin = "top left";
+      preloaderBrand.style.transition = "transform 0.85s cubic-bezier(0.16, 1, 0.3, 1)";
+      preloaderBrand.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
+    }
+
     preloader.classList.add("move-up");
     body.classList.remove("loading");
     body.classList.add("loaded");
 
-    // Hide preloader from DOM flow after transition completes
+    // Hide preloader overlay after transition completes
     setTimeout(() => {
       preloader.classList.add("completed");
     }, 900);

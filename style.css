@@ -113,9 +113,7 @@ a, button {
   transform-origin: center center;
 }
 
-.preloader.move-up .preloader-content {
-  transform: translate(calc(-50vw + 140px), calc(-50vh + 34px)) scale(0.36);
-}
+
 
 .preloader-brand {
   font-family: var(--font-display);
@@ -1874,10 +1872,6 @@ html, body, .site-wrapper {
 }
 
 @media (max-width: 900px) {
-  .preloader.move-up .preloader-content {
-    transform: translate(calc(-50vw + 95px), calc(-50vh + 26px)) scale(0.30);
-  }
-
   .nav-action {
     display: none !important;
   }
