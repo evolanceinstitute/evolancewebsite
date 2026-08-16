@@ -957,7 +957,7 @@ body.portal-mode-active .footer {
 
 .location-box {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.25fr;
   gap: 50px;
   align-items: center;
 }
@@ -1024,7 +1024,7 @@ body.portal-mode-active .footer {
 
 .map-container {
   border: 1px solid var(--border-muted);
-  border-radius: 2px;
+  border-radius: 16px;
   overflow: hidden;
   background-color: var(--bg-dark);
   transition: border-color var(--transition-smooth);
