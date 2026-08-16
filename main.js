@@ -821,7 +821,7 @@ Contact Info: Phone/WhatsApp: 0339-9333066. Location: Rawalpindi, Pakistan.
 Classes are held in small batches to ensure personal attention and hands-on guidance.
 Provide clear, friendly, and helpful answers. Keep responses concise and formatted cleanly.`;
 
-    const models = ["gemini-1.5-flash", "gemini-2.0-flash", "gemini-pro"];
+    const models = ["gemini-flash-lite-latest", "gemini-flash-latest", "gemma-4-26b-a4b-it"];
     let botReply = null;
     let lastError = null;
 
@@ -862,7 +862,7 @@ Provide clear, friendly, and helpful answers. Keep responses concise and formatt
     if (botReply) {
       appendBotMessage(botReply);
     } else {
-      appendBotMessage(`**API Response Note:** Unable to generate response with key (${lastError || "Invalid response"}). You can click **Configure API Key** above to update your key.`);
+      appendBotMessage(`Sorry, I am currently unable to process your request right now (${lastError || "Network busy"}). Please feel free to reach out directly via WhatsApp using the floating button at the bottom right!`);
     }
   }
 }
