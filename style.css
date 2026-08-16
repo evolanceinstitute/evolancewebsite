@@ -282,6 +282,20 @@ body.loaded .site-wrapper {
   width: 60%;
 }
 
+.nav-action .nav-tab {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.nav-action .nav-tab::after {
+  width: 75%;
+  background-color: var(--accent-warm);
+}
+
+.nav-action .nav-tab:hover::after {
+  width: 100%;
+}
+
 .text-link {
   font-size: 0.88rem;
   font-weight: 600;
