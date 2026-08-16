@@ -288,12 +288,27 @@ body.loaded .site-wrapper {
 }
 
 .nav-action .nav-tab::after {
-  width: 75%;
-  background-color: var(--accent-warm);
+  display: none;
 }
 
-.nav-action .nav-tab:hover::after {
+.nav-action .nav-tab span {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-action .nav-tab span::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
   width: 100%;
+  height: 2px;
+  background-color: var(--accent-warm);
+  transition: background-color var(--transition-fast);
+}
+
+.nav-action .nav-tab:hover span::after {
+  background-color: var(--text-main);
 }
 
 .text-link {
