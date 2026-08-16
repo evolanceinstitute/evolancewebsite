@@ -103,20 +103,26 @@ function initPreloader() {
 
   if (!preloader) return;
 
-  // Wait for letter reveal animation to complete (~750ms)
+  // Initially set navbar logo text opacity to 0 until preloader text docks
+  if (navLogoText) navLogoText.style.opacity = "0";
+
+  // Wait for initial letter reveal animation (~700ms)
   setTimeout(() => {
     if (preloaderBrand && navLogoText) {
-      // Measure real-time bounding rectangles in current viewport
+      // Get exact live bounding client rects in active viewport
       const startRect = preloaderBrand.getBoundingClientRect();
       const targetRect = navLogoText.getBoundingClientRect();
 
       const deltaX = targetRect.left - startRect.left;
       const deltaY = targetRect.top - startRect.top;
+      
+      // Compute height scale ratio
       const scale = targetRect.height / startRect.height;
 
-      // Animate preloader brand to exact sub-pixel coordinates of top navbar logo
+      // Animate transform & letter spacing simultaneously to match navbar logo geometry 100%
       preloaderBrand.style.transformOrigin = "top left";
-      preloaderBrand.style.transition = "transform 0.85s cubic-bezier(0.16, 1, 0.3, 1)";
+      preloaderBrand.style.transition = "transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), letter-spacing 0.85s cubic-bezier(0.16, 1, 0.3, 1)";
+      preloaderBrand.style.letterSpacing = "0.14em";
       preloaderBrand.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
     }
 
@@ -124,11 +130,12 @@ function initPreloader() {
     body.classList.remove("loading");
     body.classList.add("loaded");
 
-    // Hide preloader overlay after transition completes
+    // Reveal native navbar logo text and clean up preloader overlay
     setTimeout(() => {
+      if (navLogoText) navLogoText.style.opacity = "1";
       preloader.classList.add("completed");
-    }, 900);
-  }, 750);
+    }, 850);
+  }, 700);
 }
 
 // Stats Counter

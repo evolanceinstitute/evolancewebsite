@@ -125,6 +125,7 @@ a, button {
   display: flex;
   overflow: hidden;
   max-width: 100%;
+  transition: letter-spacing 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .preloader-sub {
@@ -259,6 +260,7 @@ body.loaded .site-wrapper {
   letter-spacing: 0.14em;
   color: var(--text-main);
   line-height: 1;
+  transition: opacity 0.3s ease;
 }
 
 .logo-sub {
