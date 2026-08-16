@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initPortalDashboards();
   initBackToTop();
   initExploreCoursesButton();
+  initWhatsAppWidget();
 });
 
 // Single-Page Tab Switcher & Top Navbar Dynamic Visibility
@@ -664,4 +665,32 @@ function initExploreCoursesButton() {
       }
     });
   }
+}
+
+// WhatsApp Sticky Contact Widget Handler
+function initWhatsAppWidget() {
+  const triggerBtn = document.getElementById("whatsapp-trigger-btn");
+  const modal = document.getElementById("whatsapp-modal");
+  const closeBtn = document.getElementById("whatsapp-modal-close");
+
+  if (!triggerBtn || !modal) return;
+
+  triggerBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isVisible = modal.style.display === "block";
+    modal.style.display = isVisible ? "none" : "block";
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      modal.style.display = "none";
+    });
+  }
+
+  document.addEventListener("click", (e) => {
+    if (modal.style.display === "block" && !modal.contains(e.target) && !triggerBtn.contains(e.target)) {
+      modal.style.display = "none";
+    }
+  });
 }

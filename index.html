@@ -1096,6 +1096,49 @@
 
   </div>
 
+  <!-- WhatsApp Sticky Contact Widget & Popup Modal -->
+  <div class="whatsapp-widget-container" id="whatsapp-widget">
+    <!-- Popup Card -->
+    <div class="whatsapp-modal" id="whatsapp-modal" style="display: none;">
+      <div class="whatsapp-modal-header">
+        <div class="whatsapp-brand">
+          <i class="fa-brands fa-whatsapp"></i>
+          <div>
+            <strong>Evolance WhatsApp</strong>
+            <p>Direct Admissions Support</p>
+          </div>
+        </div>
+        <button class="whatsapp-modal-close" id="whatsapp-modal-close" aria-label="Close">&times;</button>
+      </div>
+
+      <div class="whatsapp-modal-body">
+        <div class="qr-code-wrapper">
+          <img 
+            src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fwa.me%2F923399333066&color=25d366&bgcolor=0e0f12" 
+            alt="Scan QR Code to chat with Evolance on WhatsApp" 
+            class="whatsapp-qr-img"
+          />
+          <span class="qr-caption">Scan QR code to start chat</span>
+        </div>
+
+        <div class="whatsapp-manual-info">
+          <span class="info-label">WhatsApp Number (Manual Type):</span>
+          <strong class="phone-number">0339-9333066</strong>
+        </div>
+
+        <a href="https://wa.me/923399333066" target="_blank" rel="noopener noreferrer" class="whatsapp-direct-btn">
+          <i class="fa-brands fa-whatsapp"></i> Open WhatsApp Directly
+        </a>
+      </div>
+    </div>
+
+    <!-- Sticky Trigger Button -->
+    <button class="whatsapp-trigger-btn" id="whatsapp-trigger-btn" aria-label="Contact on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span>Chat on WhatsApp</span>
+    </button>
+  </div>
+
   <script type="module" src="./main.js"></script>
 </body>
 </html>
