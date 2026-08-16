@@ -203,12 +203,12 @@ body.loaded .site-wrapper {
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .logo-mark {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background-color: var(--accent-warm);
   border-radius: 2px;
 }
@@ -221,8 +221,8 @@ body.loaded .site-wrapper {
 .logo-text {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: 0.15em;
+  font-size: 0.92rem;
+  letter-spacing: 0.14em;
   color: var(--text-main);
   line-height: 1;
 }
@@ -236,7 +236,13 @@ body.loaded .site-wrapper {
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 20px;
+}
+
+.nav-action {
+  display: flex;
+  align-items: center;
 }
 
 .nav-tab {
@@ -245,6 +251,9 @@ body.loaded .site-wrapper {
   position: relative;
   padding: 6px 12px;
   border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   transition: color var(--transition-fast), background-color var(--transition-fast);
 }
 
