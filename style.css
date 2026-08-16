@@ -1399,6 +1399,12 @@ body.portal-mode-active .footer {
   padding-bottom: 2px;
 }
 
+.footer-location-box {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border-muted);
+}
+
 .footer-bottom {
   display: flex;
   justify-content: space-between;
