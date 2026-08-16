@@ -34,6 +34,7 @@ const state = {
 
 document.addEventListener("DOMContentLoaded", () => {
   initPreloader();
+  initMobileMenu();
   initTabNavigation();
   initCounters();
   initAdmissionsForm();
