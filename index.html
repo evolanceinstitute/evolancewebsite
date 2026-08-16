@@ -63,6 +63,7 @@
           <button class="nav-tab" data-tab="ignite">Capstone Ignite</button>
           <button class="nav-tab" data-tab="juniors">Capstone Juniors</button>
           <button class="nav-tab" data-tab="master">Master IT (11 Modules)</button>
+          <button class="nav-tab" data-tab="support"><i class="fa-solid fa-headset"></i> AI Support</button>
           <div class="mobile-registration-wrapper">
             <button class="nav-tab mobile-reg-btn" data-tab="registration"><span>Registration</span> <i class="fa-solid fa-arrow-up-right"></i></button>
           </div>
@@ -446,7 +447,95 @@
       </section>
 
       <!-- ===================================================================
-           TAB 5: REGISTRATION
+           TAB 5: CUSTOMER SUPPORT & AI COUNSELOR
+           =================================================================== -->
+      <section class="tab-view" id="tab-support">
+        <div class="container page-container">
+          <div class="page-header text-center">
+            <span class="page-badge"><i class="fa-solid fa-robot"></i> 24/7 AI Admissions Counselor</span>
+            <h1 class="page-title">Customer Support & Guidance</h1>
+            <p class="page-subtitle">Instant answers regarding our IT courses, fee structure, batch schedules, and campus details powered by Gemini AI</p>
+          </div>
+
+          <div class="support-wrapper">
+            <!-- Top Controls & Key Bar -->
+            <div class="support-api-bar">
+              <div class="api-status-indicator" id="api-status-box">
+                <span class="status-dot green" id="api-status-dot"></span>
+                <span class="status-text" id="api-status-text">Gemini API Ready</span>
+              </div>
+              <button class="minimal-btn btn-sm" id="btn-config-api"><i class="fa-solid fa-key"></i> <span id="api-key-btn-text">Configure API Key</span></button>
+            </div>
+
+            <!-- API Key Input Card (Collapsible) -->
+            <div class="api-key-card" id="api-key-card" style="display: none;">
+              <div class="key-card-header">
+                <h3><i class="fa-solid fa-key text-accent"></i> Enter Your Gemini API Key</h3>
+                <p>Paste your Google Gemini API Key below to power the AI support chat. Your key is stored securely in your browser's local storage.</p>
+              </div>
+              <div class="form-group" style="margin-bottom: 12px;">
+                <input type="password" id="gemini-api-key-input" placeholder="AIzaSy..." autocomplete="off">
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <button class="minimal-btn btn-sm" id="save-api-key-btn"><i class="fa-solid fa-check"></i> Save Key</button>
+                <button class="minimal-btn btn-sm" id="clear-api-key-btn" style="color: #f87171;"><i class="fa-solid fa-trash"></i> Clear</button>
+              </div>
+            </div>
+
+            <!-- Main Interactive AI Chat Window -->
+            <div class="support-chat-container">
+              
+              <!-- Quick Suggestion Chips -->
+              <div class="quick-chips-row">
+                <span class="chip-label">Suggested Questions:</span>
+                <button class="chip-btn" data-query="What is the fee and duration of the Master IT Program?">Master IT Fee & Duration</button>
+                <button class="chip-btn" data-query="Who can join Capstone Ignite for Women?">Capstone Ignite Info</button>
+                <button class="chip-btn" data-query="What skills do kids learn in Capstone Juniors?">Capstone Juniors Skills</button>
+                <button class="chip-btn" data-query="Where is Evolance Institute located in Rawalpindi?">Campus Location & Contact</button>
+              </div>
+
+              <!-- Chat Message Scroll Window -->
+              <div class="chat-messages-area" id="chat-messages-area">
+                <!-- Welcome Bot Message -->
+                <div class="chat-message bot-message">
+                  <div class="message-avatar"><i class="fa-solid fa-robot"></i></div>
+                  <div class="message-content">
+                    <p>Hello! Welcome to <strong>Evolance Institute of IT</strong>. I am your 24/7 AI Admissions Counselor powered by Gemini.</p>
+                    <p>Ask me any question about our courses (Master IT, Capstone Ignite, Capstone Juniors), fee details, batch timings, or campus location in Rawalpindi!</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Typing Indicator -->
+              <div class="chat-typing-indicator" id="chat-typing-indicator" style="display: none;">
+                <div class="typing-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <span class="typing-label">Evolance AI is thinking...</span>
+              </div>
+
+              <!-- Chat Input Bar -->
+              <form id="support-chat-form" class="chat-input-bar">
+                <input 
+                  type="text" 
+                  id="chat-user-input" 
+                  placeholder="Type your question about Evolance IT programs..." 
+                  autocomplete="off"
+                  required
+                />
+                <button type="submit" class="minimal-btn" id="chat-send-btn">
+                  <span>Send</span>
+                  <i class="fa-solid fa-paper-plane"></i>
+                </button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           TAB 6: REGISTRATION
            =================================================================== -->
       <section class="tab-view" id="tab-registration">
         <div class="container page-container">

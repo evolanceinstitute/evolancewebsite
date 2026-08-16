@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initBackToTop();
   initExploreCoursesButton();
   initWhatsAppWidget();
+  initSupportAIChat();
 });
 
 // Single-Page Tab Switcher & Top Navbar Dynamic Visibility
@@ -730,4 +731,188 @@ function initMobileMenu() {
       }
     }
   });
+}
+
+// Customer Support & Gemini AI Assistant Logic
+function initSupportAIChat() {
+  const chatForm = document.getElementById("support-chat-form");
+  const userInput = document.getElementById("chat-user-input");
+  const chatArea = document.getElementById("chat-messages-area");
+  const typingIndicator = document.getElementById("chat-typing-indicator");
+  const apiKeyInput = document.getElementById("gemini-api-key-input");
+  const saveKeyBtn = document.getElementById("save-api-key-btn");
+  const clearKeyBtn = document.getElementById("clear-api-key-btn");
+  const configKeyBtn = document.getElementById("btn-config-api");
+  const apiKeyCard = document.getElementById("api-key-card");
+  const statusDot = document.getElementById("api-status-dot");
+  const statusText = document.getElementById("api-status-text");
+  const keyBtnText = document.getElementById("api-key-btn-text");
+
+  if (!chatForm || !userInput || !chatArea) return;
+
+  // Retrieve saved API Key from localStorage
+  let geminiApiKey = localStorage.getItem("EVOLANCE_GEMINI_API_KEY") || "";
+
+  function updateStatusUI() {
+    if (geminiApiKey) {
+      if (statusDot) statusDot.className = "status-dot green";
+      if (statusText) statusText.textContent = "Gemini API Configured";
+      if (keyBtnText) keyBtnText.textContent = "Change API Key";
+      if (apiKeyInput) apiKeyInput.value = geminiApiKey;
+    } else {
+      if (statusDot) statusDot.className = "status-dot";
+      if (statusText) statusText.textContent = "API Key Required";
+      if (keyBtnText) keyBtnText.textContent = "Configure API Key";
+      if (apiKeyInput) apiKeyInput.value = "";
+    }
+  }
+
+  updateStatusUI();
+
+  if (configKeyBtn && apiKeyCard) {
+    configKeyBtn.addEventListener("click", () => {
+      const isHidden = apiKeyCard.style.display === "none";
+      apiKeyCard.style.display = isHidden ? "block" : "none";
+    });
+  }
+
+  if (saveKeyBtn && apiKeyInput) {
+    saveKeyBtn.addEventListener("click", () => {
+      const keyVal = apiKeyInput.value.trim();
+      if (keyVal) {
+        geminiApiKey = keyVal;
+        localStorage.setItem("EVOLANCE_GEMINI_API_KEY", keyVal);
+        updateStatusUI();
+        if (apiKeyCard) apiKeyCard.style.display = "none";
+        appendBotMessage("Gemini API key saved successfully! I am now connected and ready to assist you.");
+      }
+    });
+  }
+
+  if (clearKeyBtn) {
+    clearKeyBtn.addEventListener("click", () => {
+      geminiApiKey = "";
+      localStorage.removeItem("EVOLANCE_GEMINI_API_KEY");
+      if (apiKeyInput) apiKeyInput.value = "";
+      updateStatusUI();
+      appendBotMessage("API Key cleared. Please provide a valid Gemini API key to ask questions.");
+    });
+  }
+
+  // Quick suggestion chips listener
+  document.querySelectorAll(".chip-btn").forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const query = chip.getAttribute("data-query");
+      if (query) {
+        userInput.value = query;
+        handleUserSend(query);
+      }
+    });
+  });
+
+  chatForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const query = userInput.value.trim();
+    if (query) {
+      handleUserSend(query);
+    }
+  });
+
+  function appendUserMessage(text) {
+    const msgDiv = document.createElement("div");
+    msgDiv.className = "chat-message user-message";
+    msgDiv.innerHTML = `
+      <div class="message-avatar"><i class="fa-solid fa-user"></i></div>
+      <div class="message-content"><p>${escapeHtml(text)}</p></div>
+    `;
+    chatArea.appendChild(msgDiv);
+    chatArea.scrollTop = chatArea.scrollHeight;
+  }
+
+  function appendBotMessage(text) {
+    const msgDiv = document.createElement("div");
+    msgDiv.className = "chat-message bot-message";
+    msgDiv.innerHTML = `
+      <div class="message-avatar"><i class="fa-solid fa-robot"></i></div>
+      <div class="message-content">${formatMarkdown(text)}</div>
+    `;
+    chatArea.appendChild(msgDiv);
+    chatArea.scrollTop = chatArea.scrollHeight;
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  function formatMarkdown(str) {
+    let formatted = escapeHtml(str);
+    formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    formatted = formatted.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    formatted = formatted.replace(/\n\n/g, '</p><p>');
+    formatted = formatted.replace(/\n/g, '<br>');
+    return `<p>${formatted}</p>`;
+  }
+
+  async function handleUserSend(text) {
+    appendUserMessage(text);
+    userInput.value = "";
+
+    if (!geminiApiKey) {
+      if (apiKeyCard) apiKeyCard.style.display = "block";
+      appendBotMessage("Please configure your **Gemini API Key** above so I can generate a response for you!");
+      return;
+    }
+
+    if (typingIndicator) typingIndicator.style.display = "flex";
+
+    const systemPrompt = `You are the official Customer Support AI Admissions Counselor for Evolance Institute of IT located in Rawalpindi, Pakistan.
+Founder & Director: NoorAbbas. Core belief: "If the course does not work for the student, the course is the problem — not the student."
+Programs offered:
+1. Master IT Program: 60+ Practical IT Skills (Hardware, Windows/Linux OS, MS Office, Canva, HTML/CSS, Python, Cybersecurity, AI Tools, Freelancing on Fiverr/Upwork). Duration: 6 Months.
+2. Capstone Ignite: Exclusively designed IT & Web Development track for Women. Hands-on web design, digital marketing, graphic design & freelancing.
+3. Capstone Juniors: IT, coding, logic & creativity track for young students (ages 11-15).
+Contact Info: Phone/WhatsApp: 0339-9333066. Location: Rawalpindi, Pakistan.
+Classes are held in small batches to ensure personal attention and hands-on guidance.
+Provide clear, friendly, and helpful answers. Keep responses concise and formatted cleanly.`;
+
+    try {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${encodeURIComponent(geminiApiKey)}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              role: "user",
+              parts: [
+                { text: `${systemPrompt}\n\nUser Question: ${text}` }
+              ]
+            }
+          ]
+        })
+      });
+
+      if (typingIndicator) typingIndicator.style.display = "none";
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        const errMsg = errorData.error?.message || response.statusText || "API Key error";
+        appendBotMessage(`**Error calling Gemini API:** ${errMsg}. Please verify your API key.`);
+        return;
+      }
+
+      const data = await response.json();
+      const botReply = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+      if (botReply) {
+        appendBotMessage(botReply);
+      } else {
+        appendBotMessage("I received an empty response. Please try asking again.");
+      }
+    } catch (err) {
+      if (typingIndicator) typingIndicator.style.display = "none";
+      appendBotMessage(`**Connection Error:** Unable to reach Gemini API. Details: ${err.message}`);
+    }
+  }
 }
