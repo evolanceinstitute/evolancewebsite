@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initTabNavigation();
   initCounters();
   initAdmissionsForm();
-  initPortalDashboards();
   initBackToTop();
   initExploreCoursesButton();
   initWhatsAppWidget();
