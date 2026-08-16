@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initAdmissionsForm();
   initPortalDashboards();
   initBackToTop();
+  initExploreCoursesButton();
 });
 
 // Single-Page Tab Switcher & Top Navbar Dynamic Visibility
@@ -647,6 +648,20 @@ function initBackToTop() {
     topBtn.addEventListener("click", (e) => {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+}
+
+// Explore Courses Smooth Scroll Button
+function initExploreCoursesButton() {
+  const exploreBtn = document.getElementById("explore-courses-btn");
+  if (exploreBtn) {
+    exploreBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const coursesSection = document.getElementById("courses-section");
+      if (coursesSection) {
+        coursesSection.scrollIntoView({ behavior: "smooth" });
+      }
     });
   }
 }
