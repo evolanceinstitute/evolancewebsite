@@ -94,7 +94,7 @@ function initTabNavigation() {
   });
 }
 
-// Preloader Reveal Animation - Dynamic FLIP Docking into Navbar Logo
+// Preloader Reveal Animation - Smooth Upward Docking into Top Bar
 function initPreloader() {
   const preloader = document.getElementById("preloader");
   const preloaderBrand = document.getElementById("preloader-brand");
@@ -103,25 +103,27 @@ function initPreloader() {
 
   if (!preloader) return;
 
-  // Initially set navbar logo text opacity to 0 until preloader text docks
+  // Ensure top bar EVOLANCE logo text is hidden initially until animation completes
   if (navLogoText) navLogoText.style.opacity = "0";
 
   // Wait for initial letter reveal animation (~700ms)
   setTimeout(() => {
     if (preloaderBrand && navLogoText) {
-      // Get exact live bounding client rects in active viewport
+      // Get live screen bounding boxes for starting & ending locations
       const startRect = preloaderBrand.getBoundingClientRect();
       const targetRect = navLogoText.getBoundingClientRect();
 
       const deltaX = targetRect.left - startRect.left;
       const deltaY = targetRect.top - startRect.top;
       
-      // Compute height scale ratio
-      const scale = targetRect.height / startRect.height;
+      // Calculate scale ratio to fit the top bar logo slot perfectly
+      const scaleX = targetRect.width / startRect.width;
+      const scaleY = targetRect.height / startRect.height;
+      const scale = Math.min(scaleX, scaleY);
 
-      // Animate transform & letter spacing simultaneously to match navbar logo geometry 100%
+      // Gradually move up and decrease size to fit the top bar logo slot perfectly
       preloaderBrand.style.transformOrigin = "top left";
-      preloaderBrand.style.transition = "transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), letter-spacing 0.85s cubic-bezier(0.16, 1, 0.3, 1)";
+      preloaderBrand.style.transition = "transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), letter-spacing 0.9s cubic-bezier(0.16, 1, 0.3, 1)";
       preloaderBrand.style.letterSpacing = "0.14em";
       preloaderBrand.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
     }
@@ -130,11 +132,11 @@ function initPreloader() {
     body.classList.remove("loading");
     body.classList.add("loaded");
 
-    // Reveal native navbar logo text and clean up preloader overlay
+    // Once animation ends (900ms later), reveal top bar logo and complete preloader
     setTimeout(() => {
       if (navLogoText) navLogoText.style.opacity = "1";
       preloader.classList.add("completed");
-    }, 850);
+    }, 900);
   }, 700);
 }
 
