@@ -103,10 +103,10 @@ function initPreloader() {
 
   if (!preloader) return;
 
-  // Ensure top bar EVOLANCE logo text is hidden initially until animation completes
+  // Ensure top bar EVOLANCE logo text is hidden initially
   if (navLogoText) navLogoText.style.opacity = "0";
 
-  // Wait for initial letter reveal animation (~700ms)
+  // Wait for initial letter reveal animation (~650ms)
   setTimeout(() => {
     if (preloaderBrand && navLogoText) {
       // Get live screen bounding boxes for starting & ending locations
@@ -116,14 +116,12 @@ function initPreloader() {
       const deltaX = targetRect.left - startRect.left;
       const deltaY = targetRect.top - startRect.top;
       
-      // Calculate scale ratio to fit the top bar logo slot perfectly
-      const scaleX = targetRect.width / startRect.width;
-      const scaleY = targetRect.height / startRect.height;
-      const scale = Math.min(scaleX, scaleY);
+      // Calculate exact height scale ratio
+      const scale = targetRect.height / startRect.height;
 
-      // Gradually move up and decrease size to fit the top bar logo slot perfectly
+      // Single continuous fluid motion directly into navbar logo slot
       preloaderBrand.style.transformOrigin = "top left";
-      preloaderBrand.style.transition = "transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), letter-spacing 0.9s cubic-bezier(0.16, 1, 0.3, 1)";
+      preloaderBrand.style.transition = "transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), letter-spacing 0.85s cubic-bezier(0.16, 1, 0.3, 1)";
       preloaderBrand.style.letterSpacing = "0.14em";
       preloaderBrand.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
     }
@@ -132,12 +130,12 @@ function initPreloader() {
     body.classList.remove("loading");
     body.classList.add("loaded");
 
-    // Once animation ends (900ms later), reveal top bar logo and complete preloader
+    // Reveal native navbar logo text right at destination arrival (850ms)
     setTimeout(() => {
       if (navLogoText) navLogoText.style.opacity = "1";
       preloader.classList.add("completed");
-    }, 900);
-  }, 700);
+    }, 850);
+  }, 650);
 }
 
 // Stats Counter

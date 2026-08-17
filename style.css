@@ -165,13 +165,11 @@ a, button {
 /* Site Wrapper Fade Reveal */
 .site-wrapper {
   opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+  transition: opacity 0.8s ease 0.2s;
 }
 
 body.loaded .site-wrapper {
   opacity: 1;
-  transform: translateY(0);
 }
 
 /* Social Media Buttons */
