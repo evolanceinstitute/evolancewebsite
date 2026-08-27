@@ -2687,17 +2687,49 @@ html, body, .site-wrapper {
 
 /* Ignite Hero Section */
 .ignite-hero {
-  display: flex;
-  background: linear-gradient(135deg, rgba(20, 10, 35, 0.7) 0%, rgba(8, 9, 11, 0.9) 100%);
+  position: relative;
+  background-color: #07080a;
   border: 1px solid rgba(168, 85, 247, 0.15);
   border-radius: 16px;
   overflow: hidden;
-  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+}
+
+.ignite-hero-bg-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ignite-hero-bg-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 59% 23%; /* Centered precisely on the woman's head */
+  transform: scale(1.6); /* Zoom in to isolate the student */
+  opacity: 0.95;
+  filter: contrast(108%) brightness(112%) saturate(105%);
+}
+
+.ignite-hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(90deg, #07080a 0%, #07080a 32%, rgba(7, 8, 10, 0.9) 46%, rgba(7, 8, 10, 0.15) 70%, transparent 100%),
+    linear-gradient(180deg, rgba(7, 8, 10, 0.3) 0%, transparent 15%, transparent 80%, #07080a 100%);
 }
 
 .ignite-hero-left {
-  flex: 1.2;
-  padding: 48px;
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  padding: 48px 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2787,23 +2819,7 @@ html, body, .site-wrapper {
   box-shadow: 0 6px 24px rgba(168, 85, 247, 0.4);
 }
 
-.ignite-hero-right {
-  flex: 0.9;
-  position: relative;
-  overflow: hidden;
-  height: auto;
-  min-height: 380px;
-  background-color: #000;
-}
 
-.ignite-hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 59% 23%; /* Centered precisely on the woman's head */
-  transform: scale(1.6); /* Zoom in to isolate the student and cut out screenshot elements */
-  display: block;
-}
 
 /* Two Column Row */
 .ignite-columns-row {
@@ -3118,13 +3134,18 @@ html, body, .site-wrapper {
 
 @media (max-width: 768px) {
   .ignite-hero {
-    flex-direction: column;
+    min-height: 400px;
+  }
+  .ignite-hero-bg-img {
+    opacity: 0.45;
+    object-position: 55% 23%;
+  }
+  .ignite-hero-bg-overlay {
+    background: linear-gradient(180deg, rgba(7, 8, 10, 0.7) 0%, rgba(7, 8, 10, 0.95) 100%);
   }
   .ignite-hero-left {
     padding: 30px;
-  }
-  .ignite-hero-right {
-    min-height: 280px;
+    max-width: 100%;
   }
   .ignite-columns-row {
     grid-template-columns: 1fr;
@@ -3148,7 +3169,7 @@ html, body, .site-wrapper {
     grid-template-columns: 1fr;
   }
   .ignite-hero-left {
-    padding: 20px;
+    padding: 24px;
   }
   .ignite-title {
     font-size: 2.5rem;
