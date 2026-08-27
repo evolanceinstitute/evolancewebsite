@@ -161,12 +161,37 @@ a, button {
   font-size: 0.75rem;
   letter-spacing: 0.4em;
   color: var(--accent-warm);
-  margin-bottom: 0;
+  margin-bottom: 32px;
   transition: opacity 0.4s ease;
 }
 
 .preloader.move-up .preloader-sub {
   opacity: 0;
+}
+
+/* Progress bar */
+.preloader-progress-wrap {
+  width: 160px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.preloader-progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #5b8cff, #a0c4ff);
+  border-radius: 99px;
+  transition: width 0.04s linear;
+}
+
+.preloader-counter {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .preloader-brand .char {
