@@ -2656,3 +2656,501 @@ html, body, .site-wrapper {
 .chat-input-bar input:focus {
   border-color: var(--accent-warm);
 }
+
+/* ==========================================================================
+   CAPSTONE IGNITE REDESIGN (PURPLE/VIOLET THEME)
+   ========================================================================== */
+
+/* Active Navbar Tab State Override for Ignite */
+.nav-tab[data-tab="ignite"].active {
+  color: #c084fc !important;
+}
+.nav-tab[data-tab="ignite"].active::after {
+  background-color: #a855f7 !important;
+  box-shadow: 0 0 10px #a855f7;
+}
+
+/* Page Layout Grid */
+.ignite-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 30px;
+  align-items: start;
+}
+
+/* Left main content column */
+.ignite-main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Ignite Hero Section */
+.ignite-hero {
+  display: flex;
+  background: linear-gradient(135deg, rgba(20, 10, 35, 0.7) 0%, rgba(8, 9, 11, 0.9) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ignite-hero-left {
+  flex: 1.2;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ignite-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #c084fc;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.ignite-title {
+  font-family: var(--font-display);
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.ignite-accent {
+  color: #a855f7;
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+}
+
+.ignite-subtitle {
+  font-size: 1.2rem;
+  color: #e2e8f0;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.ignite-founders {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  margin-bottom: 28px;
+}
+
+.ignite-stats-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.ignite-stat-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(168, 85, 247, 0.12);
+  background: rgba(168, 85, 247, 0.04);
+  font-size: 0.88rem;
+  color: #e2e8f0;
+}
+
+.ignite-stat-box i {
+  color: #a855f7;
+  font-size: 1rem;
+}
+
+.ignite-register-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #6b21a8 0%, #4c1d95 100%);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.25);
+  outline: none;
+}
+
+.ignite-register-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(168, 85, 247, 0.4);
+}
+
+.ignite-hero-right {
+  flex: 0.9;
+  position: relative;
+  overflow: hidden;
+  height: auto;
+  min-height: 380px;
+  background-color: #000;
+}
+
+.ignite-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 59% 23%; /* Centered precisely on the woman's head */
+  transform: scale(1.6); /* Zoom in to isolate the student and cut out screenshot elements */
+  display: block;
+}
+
+/* Two Column Row */
+.ignite-columns-row {
+  display: grid;
+  grid-template-columns: 1.15fr 1.85fr;
+  gap: 30px;
+}
+
+.ignite-info-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.ignite-section-title {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ignite-section-title::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 14px;
+  background-color: #a855f7;
+  border-radius: 2px;
+}
+
+.ignite-info-text {
+  color: #94a3b8;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* Audience Grid and Cards */
+.ignite-audience-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.ignite-audience-card {
+  padding: 16px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(10, 13, 22, 0.5);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.ignite-audience-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(168, 85, 247, 0.2);
+  background: rgba(168, 85, 247, 0.02);
+}
+
+.ignite-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(168, 85, 247, 0.06);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  color: #a855f7;
+  margin-bottom: 12px;
+}
+
+.ignite-card-title {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+
+.ignite-card-age {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.ignite-card-desc {
+  font-size: 0.78rem;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+/* Banners Row */
+.ignite-banners-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.ignite-mission-banner {
+  background: rgba(10, 13, 22, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ignite-mission-icon {
+  font-size: 1.3rem;
+  color: #ef4444;
+  flex-shrink: 0;
+}
+
+.ignite-mission-text {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.ignite-mission-text strong {
+  color: #a855f7;
+}
+
+.ignite-together-banner {
+  background: linear-gradient(135deg, rgba(107, 33, 168, 0.15) 0%, rgba(76, 29, 149, 0.15) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+  box-shadow: inset 0 0 20px rgba(168, 85, 247, 0.08);
+}
+
+.ignite-together-banner i {
+  color: #a855f7;
+  font-size: 1.1rem;
+  animation: pulseFire 2s infinite ease-in-out;
+}
+
+@keyframes pulseFire {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px #a855f7); }
+  50% { transform: scale(1.15); filter: drop-shadow(0 0 8px #c084fc); }
+}
+
+/* Sidebar Styling */
+.ignite-sidebar {
+  position: sticky;
+  top: 90px;
+}
+
+.ignite-highlights-card {
+  background: rgba(10, 13, 22, 0.8);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: 16px;
+  padding: 32px 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.ignite-highlights-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ignite-highlights-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ignite-highlights-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ignite-highlight-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(168, 85, 247, 0.06);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c084fc;
+  font-size: 0.88rem;
+  flex-shrink: 0;
+}
+
+.ignite-highlight-text {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+/* Curriculum Section */
+.ignite-curriculum-section {
+  margin-top: 20px;
+}
+
+.ignite-curriculum-title {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 24px;
+  background: linear-gradient(90deg, #ffffff 0%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ignite-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ignite-timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  background: rgba(10, 13, 22, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.ignite-timeline-item:hover {
+  border-color: rgba(168, 85, 247, 0.18);
+  background: rgba(168, 85, 247, 0.01);
+}
+
+.ignite-timeline-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(168, 85, 247, 0.06);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: #a855f7;
+  flex-shrink: 0;
+}
+
+.ignite-timeline-badge {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  background: rgba(168, 85, 247, 0.05);
+  padding: 4px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.ignite-timeline-content {
+  flex: 1;
+}
+
+.ignite-timeline-content h4 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.ignite-timeline-content p {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* Responsive Rules for Ignite Tab */
+@media (max-width: 1024px) {
+  .ignite-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .ignite-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .ignite-hero {
+    flex-direction: column;
+  }
+  .ignite-hero-left {
+    padding: 30px;
+  }
+  .ignite-hero-right {
+    min-height: 280px;
+  }
+  .ignite-columns-row {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .ignite-audience-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ignite-banners-row {
+    grid-template-columns: 1fr;
+  }
+  .ignite-timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ignite-audience-grid {
+    grid-template-columns: 1fr;
+  }
+  .ignite-hero-left {
+    padding: 20px;
+  }
+  .ignite-title {
+    font-size: 2.5rem;
+  }
+}
