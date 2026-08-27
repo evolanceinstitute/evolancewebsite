@@ -2670,19 +2670,21 @@ html, body, .site-wrapper {
   box-shadow: 0 0 10px #a855f7;
 }
 
-/* Page Layout Grid */
-.ignite-layout-grid {
+/* Top Row Grid: Hero (Left) + Sidebar (Right) */
+.ignite-top-grid {
   display: grid;
   grid-template-columns: 1fr 340px;
-  gap: 30px;
-  align-items: start;
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 36px;
 }
 
-/* Left main content column */
-.ignite-main-content {
+/* Full Width Content Sections below Top Row */
+.ignite-full-content {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 36px;
+  width: 100%;
 }
 
 /* Ignite Hero Section */
@@ -2826,8 +2828,9 @@ html, body, .site-wrapper {
 /* Two Column Row */
 .ignite-columns-row {
   display: grid;
-  grid-template-columns: 1.15fr 1.85fr;
-  gap: 30px;
+  grid-template-columns: 1fr 1.65fr;
+  gap: 32px;
+  width: 100%;
 }
 
 .ignite-info-col {
@@ -3125,9 +3128,9 @@ html, body, .site-wrapper {
 
 /* Responsive Rules for Ignite Tab */
 @media (max-width: 1024px) {
-  .ignite-layout-grid {
+  .ignite-top-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 32px;
   }
   .ignite-sidebar {
     position: static;
