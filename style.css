@@ -2670,6 +2670,35 @@ html, body, .site-wrapper {
   box-shadow: 0 0 10px #a855f7;
 }
 
+/* Specific Ignite Tab Navbar Registration Button (Blue arrow, Purple underline) */
+body[data-active-tab="ignite"] .nav-action .nav-tab i,
+body[data-active-tab="ignite"] .mobile-reg-btn i {
+  color: #38bdf8 !important; /* Blue arrow decoration matching Ignite theme */
+  transition: color var(--transition-fast);
+}
+
+body[data-active-tab="ignite"] .nav-action .nav-tab span::after,
+body[data-active-tab="ignite"] .mobile-reg-btn span::after {
+  background-color: #a855f7 !important; /* Purple line underneath Registration button */
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.5);
+  transition: background-color var(--transition-fast);
+}
+
+/* Chatbot Arrow & Icon Decoration (Blue and Purple Gradient) */
+body[data-active-tab="ignite"] #chat-send-btn i,
+body[data-active-tab="ignite"] .chat-input-bar button i {
+  background: linear-gradient(135deg, #38bdf8 0%, #a855f7 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.5));
+}
+
+body[data-active-tab="ignite"] .nav-tab[data-tab="support"] i {
+  background: linear-gradient(135deg, #38bdf8 0%, #a855f7 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
 /* Top Row Grid: Hero (Left) + Sidebar (Right) */
 .ignite-top-grid {
   display: grid;

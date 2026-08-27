@@ -53,6 +53,8 @@ function initTabNavigation() {
   if (!tabs.length || !tabViews.length) return;
 
   function switchTab(targetTabId) {
+    body.setAttribute("data-active-tab", targetTabId);
+
     if (targetTabId === "login") {
       body.classList.add("portal-mode-active");
     } else {
@@ -82,6 +84,9 @@ function initTabNavigation() {
 
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
+
+  // Set default initial active tab
+  body.setAttribute("data-active-tab", "home");
 
   tabs.forEach(btn => {
     btn.addEventListener("click", (e) => {
