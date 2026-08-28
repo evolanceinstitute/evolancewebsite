@@ -19,6 +19,7 @@
   --accent-warm: #c5a880;
 
   /* Typography */
+  --font-modern: 'Outfit', sans-serif;
   --font-display: 'Syne', sans-serif;
   --font-sans: 'Plus Jakarta Sans', sans-serif;
 
@@ -1367,10 +1368,10 @@ body.portal-mode-active .footer {
 }
 
 .hero-heading {
-  font-family: var(--font-display);
-  font-size: 4.8rem;
+  font-family: var(--font-modern), var(--font-display);
+  font-size: 4.1rem;
   font-weight: 800;
-  line-height: 1.02;
+  line-height: 1.04;
   letter-spacing: -0.025em;
   margin-bottom: 24px;
   text-align: left;
@@ -1575,10 +1576,11 @@ body.portal-mode-active .footer {
 }
 
 .courses-title {
-  font-family: var(--font-display);
-  font-size: 3.4rem;
+  font-family: var(--font-modern), var(--font-display);
+  font-size: 2.85rem;
   font-weight: 800;
-  line-height: 1.08;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   color: #ffffff;
   margin-bottom: 18px;
 }
@@ -1629,8 +1631,8 @@ body.portal-mode-active .footer {
 
 /* Card-specific hover border glow */
 .program-card--ignite:hover {
-  border-color: rgba(255, 160, 180, 0.45);
-  box-shadow: 0 12px 40px rgba(255, 130, 160, 0.14);
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 12px 40px rgba(168, 85, 247, 0.18);
   transform: translateY(-5px);
 }
 
@@ -1677,10 +1679,10 @@ body.portal-mode-active .footer {
 }
 
 .card-icon--ignite {
-  background: radial-gradient(circle at 35% 35%, #2a1a2e, #12101a);
-  border: 1px solid rgba(255, 140, 170, 0.25);
-  color: #f0a0c0;
-  box-shadow: 0 0 24px rgba(255, 100, 150, 0.18) inset;
+  background: radial-gradient(circle at 35% 35%, #1e0d30, #110a1e);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: #c084fc;
+  box-shadow: 0 0 24px rgba(168, 85, 247, 0.2) inset;
 }
 
 .card-icon--juniors {
@@ -1707,7 +1709,7 @@ body.portal-mode-active .footer {
   text-align: center;
 }
 
-.program-title-accent--ignite { color: #f0a0c0; }
+.program-title-accent--ignite { color: #c084fc; }
 .program-title-accent--juniors { color: #50ccc0; }
 .program-title-accent--pro { color: #b070ff; }
 
@@ -1719,7 +1721,7 @@ body.portal-mode-active .footer {
   text-align: center;
 }
 
-.program-subtitle--ignite { color: #f0a0c0; }
+.program-subtitle--ignite { color: #c084fc; }
 .program-subtitle--juniors { color: #50ccc0; }
 .program-subtitle--pro { color: #b070ff; }
 
@@ -1766,12 +1768,12 @@ body.portal-mode-active .footer {
   transform: translateX(4px);
 }
 
-/* Ignite → pinkish hover */
+/* Ignite → purplish/violet hover */
 .course-btn--ignite:hover {
-  background: rgba(255, 130, 160, 0.15);
-  border-color: rgba(255, 140, 170, 0.5);
-  color: #ffb0cc;
-  box-shadow: 0 0 20px rgba(255, 110, 150, 0.2);
+  background: rgba(168, 85, 247, 0.16);
+  border-color: rgba(168, 85, 247, 0.5);
+  color: #c084fc;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.22);
 }
 
 /* Juniors → teal/light hover */
@@ -1839,10 +1841,11 @@ body.portal-mode-active .footer {
 }
 
 .footer-title {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
+  font-family: var(--font-modern), var(--font-sans);
+  font-size: 1.65rem;
   font-weight: 800;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+  color: #ffffff;
 }
 
 .footer-subtext {
