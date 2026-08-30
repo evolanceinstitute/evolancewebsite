@@ -3359,7 +3359,7 @@ body[data-active-tab="juniors"] .nav-tab[data-tab="support"]:hover i {
   top: 0;
   right: 0;
   bottom: 0;
-  width: 48%;
+  width: 52%;
   height: 100%;
   z-index: 0;
   overflow: hidden;
@@ -3370,14 +3370,17 @@ body[data-active-tab="juniors"] .nav-tab[data-tab="support"]:hover i {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
-  filter: brightness(0.9) contrast(1.05);
+  object-position: center 20%;
+  opacity: 0.96;
+  filter: contrast(108%) brightness(106%);
 }
 
 .juniors-hero-bg-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #061317 0%, rgba(6, 19, 23, 0.85) 40%, rgba(5, 11, 14, 0.2) 100%);
+  background: 
+    linear-gradient(90deg, #061317 0%, rgba(6, 19, 23, 0.75) 15%, transparent 50%),
+    linear-gradient(180deg, transparent 78%, #050b0e 100%);
 }
 
 .juniors-hero-left {
@@ -3693,6 +3696,20 @@ body[data-active-tab="juniors"] .nav-tab[data-tab="support"]:hover i {
 @media (max-width: 900px) {
   .juniors-top-grid {
     grid-template-columns: 1fr;
+  }
+  .juniors-hero {
+    min-height: 380px;
+  }
+  .juniors-hero-bg-wrapper {
+    width: 100%;
+    opacity: 0.22;
+  }
+  .juniors-hero-bg-overlay {
+    background: linear-gradient(180deg, rgba(6, 19, 23, 0.6) 0%, rgba(5, 11, 14, 0.96) 100%);
+  }
+  .juniors-hero-left {
+    padding: 32px 24px;
+    max-width: 100%;
   }
   .juniors-audience-grid {
     grid-template-columns: repeat(2, 1fr);
