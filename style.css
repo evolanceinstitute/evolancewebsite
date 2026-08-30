@@ -3344,7 +3344,7 @@ body[data-active-tab="juniors"] .nav-tab[data-tab="support"]:hover i {
 /* Juniors Hero Section */
 .juniors-hero {
   position: relative;
-  background: radial-gradient(ellipse at 70% 50%, #001f26 0%, #001117 50%, #04090c 100%);
+  background: linear-gradient(135deg, #001319 0%, #000c0f 100%);
   border: 1px solid rgba(45, 212, 191, 0.2);
   border-radius: 16px;
   overflow: hidden;
@@ -3359,30 +3359,28 @@ body[data-active-tab="juniors"] .nav-tab[data-tab="support"]:hover i {
   top: 0;
   right: 0;
   bottom: 0;
-  width: 52%;
+  width: 48%;
   height: 100%;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .juniors-hero-bg-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
-  opacity: 0.98;
-  filter: contrast(106%) brightness(105%);
+  object-position: center 10%;
+  opacity: 0.95;
+  filter: contrast(106%) brightness(108%);
 }
 
 .juniors-hero-bg-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #04090c 0%, rgba(4, 9, 12, 0.7) 12%, transparent 40%);
-  pointer-events: none;
+  background: 
+    linear-gradient(90deg, #001319 0%, rgba(0, 19, 25, 0.85) 15%, transparent 50%),
+    linear-gradient(180deg, transparent 75%, #000c0f 100%);
 }
 
 .juniors-hero-left {
@@ -3707,7 +3705,7 @@ body[data-active-tab="juniors"] .nav-tab[data-tab="support"]:hover i {
     opacity: 0.22;
   }
   .juniors-hero-bg-overlay {
-    background: linear-gradient(180deg, rgba(6, 19, 23, 0.6) 0%, rgba(5, 11, 14, 0.96) 100%);
+    background: linear-gradient(180deg, rgba(0, 19, 25, 0.6) 0%, rgba(0, 12, 15, 0.96) 100%);
   }
   .juniors-hero-left {
     padding: 32px 24px;
