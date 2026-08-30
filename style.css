@@ -3321,3 +3321,390 @@ body[data-active-tab="juniors"] .nav-tab[data-tab="support"]:hover i {
     font-size: 2.5rem;
   }
 }
+
+/* ==========================================================================
+   CAPSTONE JUNIORS TAB REDESIGN (TEAL/CYAN THEME)
+   ========================================================================== */
+
+.juniors-top-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 36px;
+}
+
+.juniors-full-content {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 100%;
+}
+
+/* Juniors Hero Section */
+.juniors-hero {
+  position: relative;
+  background: linear-gradient(135deg, #061317 0%, #050b0e 100%);
+  border: 1px solid rgba(45, 212, 191, 0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 60px rgba(45, 212, 191, 0.04);
+}
+
+.juniors-hero-bg-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 48%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.juniors-hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: brightness(0.9) contrast(1.05);
+}
+
+.juniors-hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #061317 0%, rgba(6, 19, 23, 0.85) 40%, rgba(5, 11, 14, 0.2) 100%);
+}
+
+.juniors-hero-left {
+  position: relative;
+  z-index: 2;
+  padding: 44px 48px;
+  max-width: 580px;
+}
+
+.juniors-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2dd4bf;
+  background: rgba(45, 212, 191, 0.12);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
+.juniors-title {
+  font-family: var(--font-modern), var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.juniors-accent {
+  color: #2dd4bf;
+  text-shadow: 0 0 20px rgba(45, 212, 191, 0.4);
+}
+
+.juniors-subtitle {
+  font-size: 1.15rem;
+  color: #50ccc0;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.juniors-meta-text {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  margin-bottom: 24px;
+}
+
+.juniors-stats-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.juniors-stat-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(45, 212, 191, 0.08);
+  border: 1px solid rgba(45, 212, 191, 0.2);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.juniors-stat-box i {
+  color: #2dd4bf;
+}
+
+.juniors-register-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 28px;
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(20, 184, 166, 0.35);
+  transition: all 0.25s ease;
+}
+
+.juniors-register-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(20, 184, 166, 0.5);
+}
+
+/* Sidebar Highlights */
+.juniors-sidebar {
+  height: 100%;
+}
+
+.juniors-highlights-card {
+  background: #061317;
+  border: 1px solid rgba(45, 212, 191, 0.18);
+  border-radius: 16px;
+  padding: 24px;
+  height: 100%;
+}
+
+.juniors-highlights-card h3 {
+  font-family: var(--font-modern), var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(45, 212, 191, 0.18);
+}
+
+.juniors-highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.juniors-highlights-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.juniors-highlight-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(45, 212, 191, 0.12);
+  border: 1px solid rgba(45, 212, 191, 0.25);
+  color: #2dd4bf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.juniors-highlight-text {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+/* Logic for Life Block */
+.juniors-info-block {
+  background: #061317;
+  border: 1px solid rgba(45, 212, 191, 0.18);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.juniors-section-title {
+  font-family: var(--font-modern), var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2dd4bf;
+  margin-bottom: 18px;
+  letter-spacing: 0.02em;
+}
+
+.juniors-info-text {
+  font-size: 0.96rem;
+  color: #94a3b8;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.juniors-info-text:last-child {
+  margin-bottom: 0;
+}
+
+/* Audience Cards Grid */
+.juniors-audience-section {
+  background: #061317;
+  border: 1px solid rgba(45, 212, 191, 0.18);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.juniors-audience-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.juniors-audience-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(45, 212, 191, 0.15);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.25s ease;
+}
+
+.juniors-audience-card:hover {
+  border-color: rgba(45, 212, 191, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(45, 212, 191, 0.1);
+}
+
+.juniors-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(45, 212, 191, 0.12);
+  color: #2dd4bf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 14px;
+}
+
+.juniors-card-title {
+  font-family: var(--font-modern), var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.juniors-card-desc {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+/* Curriculum Breakdown */
+.juniors-curriculum-section {
+  background: #061317;
+  border: 1px solid rgba(45, 212, 191, 0.18);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.juniors-curriculum-title {
+  font-family: var(--font-modern), var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.juniors-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.juniors-timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(45, 212, 191, 0.15);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.25s ease;
+}
+
+.juniors-timeline-item:hover {
+  border-color: rgba(45, 212, 191, 0.4);
+  box-shadow: 0 4px 20px rgba(45, 212, 191, 0.08);
+}
+
+.juniors-timeline-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(45, 212, 191, 0.12);
+  color: #2dd4bf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.juniors-timeline-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #2dd4bf;
+  background: rgba(45, 212, 191, 0.1);
+  padding: 4px 10px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.juniors-timeline-content h4 {
+  font-family: var(--font-modern), var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.juniors-timeline-content p {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .juniors-top-grid {
+    grid-template-columns: 1fr;
+  }
+  .juniors-audience-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .juniors-audience-grid {
+    grid-template-columns: 1fr;
+  }
+  .juniors-timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

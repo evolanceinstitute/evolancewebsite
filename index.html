@@ -527,72 +527,174 @@
            =================================================================== -->
       <section class="tab-view" id="tab-juniors">
         <div class="container page-container">
-          <div class="page-header">
-            <span class="page-badge">Ages 11–15 Tech Track</span>
-            <h1 class="page-title">Capstone Juniors</h1>
-            <p class="page-subtitle">Next-Generation Technology & Coding Programme</p>
-            <p class="page-meta">4 Phases | 15+ Skills | 3 Projects</p>
-          </div>
-
-          <div class="page-body-grid">
-            <div class="page-main-info">
-              <div class="info-block">
-                <h3>Building Problem-Solving Logic for Life</h3>
-                <p>
-                  Technology isn't just about screen time — it's about building computational thinking, problem-solving skills, and AI literacy that give young minds a genuine head start in life.
-                </p>
+          <!-- Top Row: Hero Card (Left) + Program Highlights Sidebar (Right) -->
+          <div class="juniors-top-grid">
+            
+            <!-- Hero Section -->
+            <div class="juniors-hero">
+              <!-- Background Image & Overlay -->
+              <div class="juniors-hero-bg-wrapper">
+                <img src="./juniors-student.png" alt="Capstone Juniors Student" class="juniors-hero-bg-img">
+                <div class="juniors-hero-bg-overlay"></div>
               </div>
 
-              <!-- 4 Phases Breakdown -->
-              <div class="info-block">
-                <h3>4-Phase Curriculum Breakdown</h3>
-                <div class="phase-timeline">
-                  <div class="phase-item">
-                    <span class="phase-num">Phase 1</span>
-                    <div>
-                      <h4>IT Foundations</h4>
-                      <p>Understanding computer parts, Windows settings, taskbar shortcuts, file/folder organization, and proper typing technique.</p>
-                    </div>
+              <div class="juniors-hero-left">
+                <span class="juniors-badge">AGES 11–15 TECH TRACK</span>
+                <h1 class="juniors-title">Capstone <span class="juniors-accent">Juniors</span></h1>
+                <p class="juniors-subtitle">Next-Generation Technology & Coding Programme</p>
+                <p class="juniors-meta-text">4 Phases | 15+ Skills | 3 Projects</p>
+                
+                <div class="juniors-stats-row">
+                  <div class="juniors-stat-box">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>4 Phases</span>
                   </div>
-                  <div class="phase-item">
-                    <span class="phase-num">Phase 2</span>
-                    <div>
-                      <h4>Internet & Productivity</h4>
-                      <p>Safe online browsing, phishing awareness, MS Word document creation, PowerPoint & designing a take-home Canva poster.</p>
-                    </div>
+                  <div class="juniors-stat-box">
+                    <i class="fa-solid fa-star"></i>
+                    <span>15+ Real Skills</span>
                   </div>
-                  <div class="phase-item">
-                    <span class="phase-num">Phase 3</span>
-                    <div>
-                      <h4>Coding & Logic</h4>
-                      <p>Computational thinking, Scratch drag-and-drop block coding, Python language intro, building and presenting a coded Scratch game.</p>
-                    </div>
+                  <div class="juniors-stat-box">
+                    <i class="fa-solid fa-code"></i>
+                    <span>3 Projects</span>
                   </div>
-                  <div class="phase-item">
-                    <span class="phase-num">Phase 4</span>
-                    <div>
-                      <h4>AI & Showcase</h4>
-                      <p>How AI works, writing clear AI prompts, building a final showcase project, and presenting to parents on Certificate Day.</p>
-                    </div>
-                  </div>
+                </div>
+                
+                <button class="juniors-register-btn nav-tab" data-tab="registration">
+                  <span>Register Your Child</span> <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Right Side Sidebar -->
+            <div class="juniors-sidebar">
+              <div class="juniors-highlights-card">
+                <h3>Program Highlights</h3>
+                <ul class="juniors-highlights-list">
+                  <li>
+                    <span class="juniors-highlight-icon-wrap"><i class="fa-solid fa-graduation-cap"></i></span>
+                    <span class="juniors-highlight-text">Learn real tech skills step by step</span>
+                  </li>
+                  <li>
+                    <span class="juniors-highlight-icon-wrap"><i class="fa-solid fa-brain"></i></span>
+                    <span class="juniors-highlight-text">Build logic & problem-solving ability</span>
+                  </li>
+                  <li>
+                    <span class="juniors-highlight-icon-wrap"><i class="fa-solid fa-code"></i></span>
+                    <span class="juniors-highlight-text">Hands-on coding & projects</span>
+                  </li>
+                  <li>
+                    <span class="juniors-highlight-icon-wrap"><i class="fa-solid fa-robot"></i></span>
+                    <span class="juniors-highlight-text">Explore AI & future technologies</span>
+                  </li>
+                  <li>
+                    <span class="juniors-highlight-icon-wrap"><i class="fa-solid fa-chart-line"></i></span>
+                    <span class="juniors-highlight-text">Present your project with confidence</span>
+                  </li>
+                  <li>
+                    <span class="juniors-highlight-icon-wrap"><i class="fa-solid fa-award"></i></span>
+                    <span class="juniors-highlight-text">Earn a recognized certificate</span>
+                  </li>
+                  <li>
+                    <span class="juniors-highlight-icon-wrap"><i class="fa-solid fa-shield-halved"></i></span>
+                    <span class="juniors-highlight-text">Safe, guided & mentor-supported learning</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Full Width Content Sections Below Top Row -->
+          <div class="juniors-full-content">
+            
+            <!-- Logic for Life Section (No child picture as requested) -->
+            <div class="juniors-info-block">
+              <h3 class="juniors-section-title">Building Problem-Solving Logic for Life</h3>
+              <p class="juniors-info-text">
+                Your child already knows how to use a screen. Capstone Juniors teaches them what's behind it.
+              </p>
+              <p class="juniors-info-text">
+                There is a gap growing between children who understand technology and children who only consume it — and that gap will define their opportunities.
+              </p>
+              <p class="juniors-info-text">
+                In four structured phases, students go from understanding how a computer works to writing real code, using AI tools, and presenting their own project on Certificate Day.
+              </p>
+              <p class="juniors-info-text">
+                We don't just prepare them for the future — we give them the confidence to shape it.
+              </p>
+            </div>
+            
+            <!-- Designed for Every Junior Section -->
+            <div class="juniors-audience-section">
+              <h3 class="juniors-section-title">Designed for Every Junior</h3>
+              <div class="juniors-audience-grid">
+                <div class="juniors-audience-card">
+                  <div class="juniors-card-icon"><i class="fa-solid fa-face-smile"></i></div>
+                  <h4 class="juniors-card-title">The Curious Learner</h4>
+                  <p class="juniors-card-desc">For kids who love exploring, asking questions, and understanding how things work.</p>
+                </div>
+                <div class="juniors-audience-card">
+                  <div class="juniors-card-icon"><i class="fa-solid fa-users"></i></div>
+                  <h4 class="juniors-card-title">The Supporting Parent</h4>
+                  <p class="juniors-card-desc">For parents who want their child to gain valuable digital skills and stay ahead in the future.</p>
+                </div>
+                <div class="juniors-audience-card">
+                  <div class="juniors-card-icon"><i class="fa-solid fa-rocket"></i></div>
+                  <h4 class="juniors-card-title">The Confident Thinker</h4>
+                  <p class="juniors-card-desc">For children who want to improve focus, logic, and problem-solving skills.</p>
+                </div>
+                <div class="juniors-audience-card">
+                  <div class="juniors-card-icon"><i class="fa-solid fa-briefcase"></i></div>
+                  <h4 class="juniors-card-title">The Aspiring Developer</h4>
+                  <p class="juniors-card-desc">Dreams of building games, apps, and innovative projects one day.</p>
                 </div>
               </div>
             </div>
 
-            <!-- Sidebar -->
-            <div class="page-sidebar">
-              <div class="sidebar-card">
-                <h3>What Students Walk Away With</h3>
-                <ul class="check-list">
-                  <li><i class="fa-solid fa-check text-accent"></i> Real computer confidence</li>
-                  <li><i class="fa-solid fa-check text-accent"></i> A designed creative Canva project</li>
-                  <li><i class="fa-solid fa-check text-accent"></i> Their own coded Scratch game</li>
-                  <li><i class="fa-solid fa-check text-accent"></i> Python programming basics</li>
-                  <li><i class="fa-solid fa-check text-accent"></i> Certificate & Parent Presentation</li>
-                </ul>
-                <button class="minimal-btn btn-full nav-tab" data-tab="registration">Register Child <i class="fa-solid fa-arrow-right"></i></button>
+            <!-- 4-Phase Curriculum Section -->
+            <div class="juniors-curriculum-section">
+              <h2 class="juniors-curriculum-title">4-Phase Curriculum Breakdown</h2>
+              <div class="juniors-timeline">
+                
+                <div class="juniors-timeline-item">
+                  <div class="juniors-timeline-icon"><i class="fa-solid fa-desktop"></i></div>
+                  <div class="juniors-timeline-badge">PHASE 1</div>
+                  <div class="juniors-timeline-content">
+                    <h4>IT Foundations</h4>
+                    <p>Understanding computer parts, Windows settings, taskbar shortcuts, file/folder organization, and proper typing technique.</p>
+                  </div>
+                </div>
+                
+                <div class="juniors-timeline-item">
+                  <div class="juniors-timeline-icon"><i class="fa-solid fa-file-lines"></i></div>
+                  <div class="juniors-timeline-badge">PHASE 2</div>
+                  <div class="juniors-timeline-content">
+                    <h4>Internet & Productivity</h4>
+                    <p>Safe online browsing, phishing awareness, MS Word document creation, PowerPoint & designing a take-home Canva poster.</p>
+                  </div>
+                </div>
+                
+                <div class="juniors-timeline-item">
+                  <div class="juniors-timeline-icon"><i class="fa-solid fa-code"></i></div>
+                  <div class="juniors-timeline-badge">PHASE 3</div>
+                  <div class="juniors-timeline-content">
+                    <h4>Coding & Logic</h4>
+                    <p>Computational thinking, Scratch drag-and-drop block coding, Python language intro, building and presenting a coded Scratch game.</p>
+                  </div>
+                </div>
+                
+                <div class="juniors-timeline-item">
+                  <div class="juniors-timeline-icon"><i class="fa-solid fa-robot"></i></div>
+                  <div class="juniors-timeline-badge">PHASE 4</div>
+                  <div class="juniors-timeline-content">
+                    <h4>AI & Showcase</h4>
+                    <p>How AI works, writing clear AI prompts, building a final showcase project, and presenting to parents on Certificate Day.</p>
+                  </div>
+                </div>
+                
               </div>
             </div>
+
           </div>
         </div>
       </section>
