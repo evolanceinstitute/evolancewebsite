@@ -2721,6 +2721,89 @@ body[data-active-tab="ignite"] .nav-tab[data-tab="support"]:hover i {
   transform: scale(1.12);
 }
 
+/* Capstone Ignite Nav Tab — Purple/Violet on hover, white by default */
+.nav-tab[data-tab="ignite"]:hover {
+  color: #c084fc !important;
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+.nav-tab[data-tab="ignite"]:hover::after {
+  background-color: #a855f7 !important;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.5);
+  width: 40% !important;
+}
+
+/* ==========================================================================
+   CAPSTONE JUNIORS NAV & THEME (TEAL/CYAN)
+   ========================================================================== */
+
+/* Active Navbar Tab State Override for Juniors */
+.nav-tab[data-tab="juniors"].active {
+  color: #50ccc0 !important;
+}
+.nav-tab[data-tab="juniors"].active::after {
+  background-color: #2dd4bf !important;
+  box-shadow: 0 0 10px #2dd4bf;
+}
+
+/* Capstone Juniors Nav Tab — Teal on hover, white by default */
+.nav-tab[data-tab="juniors"]:hover {
+  color: #50ccc0 !important;
+  text-shadow: 0 0 10px rgba(45, 212, 191, 0.5);
+}
+.nav-tab[data-tab="juniors"]:hover::after {
+  background-color: #2dd4bf !important;
+  box-shadow: 0 0 8px rgba(45, 212, 191, 0.5);
+  width: 40% !important;
+}
+
+/* Specific Juniors Tab Navbar Registration Button (Teal arrow, Teal underline) */
+body[data-active-tab="juniors"] .nav-action .nav-tab i,
+body[data-active-tab="juniors"] .mobile-reg-btn i {
+  color: #2dd4bf !important;
+  transition: color var(--transition-fast);
+}
+
+body[data-active-tab="juniors"] .nav-action .nav-tab span::after,
+body[data-active-tab="juniors"] .mobile-reg-btn span::after {
+  background-color: #2dd4bf !important;
+  box-shadow: 0 0 8px rgba(45, 212, 191, 0.5);
+  transition: background-color var(--transition-fast);
+}
+
+/* Chatbot Arrow & Icon Decoration (Teal Gradient) when Juniors active */
+body[data-active-tab="juniors"] #chat-send-btn i,
+body[data-active-tab="juniors"] .chat-input-bar button i {
+  background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 0 4px rgba(45, 212, 191, 0.5));
+}
+
+body[data-active-tab="juniors"] .nav-tab[data-tab="support"] i {
+  background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* AI SUPPORT Hover State with Teal Glow on Juniors Theme */
+body[data-active-tab="juniors"] .nav-tab[data-tab="support"]:hover {
+  color: #50ccc0 !important;
+  text-shadow: 0 0 12px rgba(45, 212, 191, 0.85), 0 0 24px rgba(80, 204, 192, 0.5) !important;
+  transition: all 0.25s ease;
+}
+
+body[data-active-tab="juniors"] .nav-tab[data-tab="support"]:hover::after {
+  background-color: #2dd4bf !important;
+  box-shadow: 0 0 10px #2dd4bf, 0 0 20px rgba(45, 212, 191, 0.6) !important;
+  width: 60% !important;
+}
+
+body[data-active-tab="juniors"] .nav-tab[data-tab="support"]:hover i {
+  filter: drop-shadow(0 0 10px #2dd4bf) !important;
+  transform: scale(1.12);
+}
+
 /* Top Row Grid: Hero (Left) + Sidebar (Right) */
 .ignite-top-grid {
   display: grid;
