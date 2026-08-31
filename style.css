@@ -4027,8 +4027,9 @@ body[data-active-tab="master"] .nav-tab[data-tab="support"]:hover i {
 /* Two Column Row */
 .pro-columns-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 32px;
+  width: 100%;
 }
 
 .pro-info-col {
@@ -4036,6 +4037,8 @@ body[data-active-tab="master"] .nav-tab[data-tab="support"]:hover i {
   border: 1px solid rgba(59, 130, 246, 0.18);
   border-radius: 16px;
   padding: 32px;
+  display: flex;
+  flex-direction: column;
 }
 
 .pro-section-title {
@@ -4057,6 +4060,31 @@ body[data-active-tab="master"] .nav-tab[data-tab="support"]:hover i {
 
 .pro-info-text:last-child {
   margin-bottom: 0;
+}
+
+/* Outcomes Box */
+.pro-outcomes-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(59, 130, 246, 0.18);
+}
+
+.pro-outcome-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.pro-outcome-item i {
+  color: #60a5fa;
+  font-size: 0.8rem;
+  flex-shrink: 0;
 }
 
 /* Audience Grid */
