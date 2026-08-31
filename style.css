@@ -3806,6 +3806,15 @@ body[data-active-tab="master"] .nav-tab[data-tab="support"]:hover i {
    CAPSTONE PRO TAB REDESIGN (ROYAL / ELECTRIC BLUE THEME)
    ========================================================================== */
 
+/* Top Row Grid: Hero (Left) + Sidebar (Right) matching Ignite */
+.pro-top-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 36px;
+}
+
 /* Pro Hero Section */
 .pro-hero {
   position: relative;
@@ -3813,10 +3822,9 @@ body[data-active-tab="master"] .nav-tab[data-tab="support"]:hover i {
   border: 1px solid rgba(59, 130, 246, 0.22);
   border-radius: 16px;
   overflow: hidden;
-  min-height: 460px;
+  min-height: 440px;
   display: flex;
   align-items: center;
-  margin-bottom: 36px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 60px rgba(37, 99, 235, 0.04);
 }
 
@@ -3948,6 +3956,64 @@ body[data-active-tab="master"] .nav-tab[data-tab="support"]:hover i {
 .pro-register-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 28px rgba(37, 99, 235, 0.5);
+}
+
+/* Sidebar Highlights matching Ignite */
+.pro-sidebar {
+  height: 100%;
+}
+
+.pro-highlights-card {
+  background: #020713;
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  border-radius: 16px;
+  padding: 24px;
+  height: 100%;
+}
+
+.pro-highlights-card h3 {
+  font-family: var(--font-modern), var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.18);
+}
+
+.pro-highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pro-highlights-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pro-highlight-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(37, 99, 235, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  color: #60a5fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.pro-highlight-text {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  line-height: 1.4;
 }
 
 /* Full Width Content Sections */
@@ -4183,6 +4249,9 @@ body[data-active-tab="master"] .nav-tab[data-tab="support"]:hover i {
 
 /* Responsive Media Queries for Pro */
 @media (max-width: 900px) {
+  .pro-top-grid {
+    grid-template-columns: 1fr;
+  }
   .pro-hero {
     min-height: 380px;
   }
