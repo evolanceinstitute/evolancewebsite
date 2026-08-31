@@ -709,6 +709,10 @@ body.portal-mode-active .footer {
   border: 1px solid var(--border-muted);
 }
 
+.module-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .mod-badge {
   font-size: 0.75rem;
   text-transform: uppercase;
