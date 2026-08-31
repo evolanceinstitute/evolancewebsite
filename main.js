@@ -840,6 +840,9 @@ function initSupportAIChat() {
   });
 
   function appendUserMessage(text) {
+    const welcomeState = document.getElementById("support-welcome-state");
+    if (welcomeState) welcomeState.style.display = "none";
+
     const msgDiv = document.createElement("div");
     msgDiv.className = "chat-message user-message";
     msgDiv.innerHTML = `
@@ -851,10 +854,13 @@ function initSupportAIChat() {
   }
 
   function appendBotMessage(text) {
+    const welcomeState = document.getElementById("support-welcome-state");
+    if (welcomeState) welcomeState.style.display = "none";
+
     const msgDiv = document.createElement("div");
     msgDiv.className = "chat-message bot-message";
     msgDiv.innerHTML = `
-      <div class="message-avatar"><i class="fa-solid fa-headset"></i></div>
+      <div class="message-avatar"><i class="fa-solid fa-robot"></i></div>
       <div class="message-content">${formatMarkdown(text)}</div>
     `;
     chatArea.appendChild(msgDiv);

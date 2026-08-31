@@ -957,56 +957,171 @@
            TAB 5: CUSTOMER SUPPORT & AI COUNSELOR
            =================================================================== -->
       <section class="tab-view" id="tab-support">
-        <div class="container page-container">
-          <div class="page-header text-center">
-            <span class="page-badge"><i class="fa-solid fa-robot"></i> 24/7 AI Admissions Counselor</span>
-            <h1 class="page-title">Customer Support & Guidance</h1>
-            <p class="page-subtitle">Instant answers regarding our IT courses, fee structure, batch schedules, and campus details powered by Gemini AI</p>
-          </div>
-
-          <div class="support-wrapper">
-            <!-- Main Interactive AI Chat Window -->
-            <div class="support-chat-container">
+        <div class="container page-container support-page-container">
+          
+          <div class="support-layout-grid">
+            
+            <!-- Left Column: Support Info, 4 Feature Cards & 24/7 Banner -->
+            <div class="support-left-col">
               
-              <!-- Quick Suggestion Chips -->
-              <div class="quick-chips-row">
-                <span class="chip-label">Suggested Questions:</span>
-                <button class="chip-btn" data-query="What is the fee and duration of the Capstone Pro Program?">Capstone Pro Fee & Duration</button>
-                <button class="chip-btn" data-query="Who can join Capstone Ignite for Women?">Capstone Ignite Info</button>
-                <button class="chip-btn" data-query="What skills do kids learn in Capstone Juniors?">Capstone Juniors Skills</button>
-                <button class="chip-btn" data-query="Where is Evolance Institute located in Rawalpindi?">Campus Location & Contact</button>
+              <div class="support-badge">
+                <i class="fa-solid fa-robot"></i> 24/7 AI ADMISSIONS COUNSELOR
               </div>
 
-              <!-- Chat Message Scroll Window -->
-              <div class="chat-messages-area" id="chat-messages-area">
-                <!-- Starts empty until talked to -->
-              </div>
+              <h1 class="support-title">
+                Customer Support &amp;<br>
+                <span class="support-title-accent">Guidance</span>
+              </h1>
 
-              <!-- Typing Indicator -->
-              <div class="chat-typing-indicator" id="chat-typing-indicator" style="display: none;">
-                <div class="typing-dots">
-                  <span></span><span></span><span></span>
+              <div class="support-title-line"></div>
+
+              <p class="support-desc">
+                Instant answers regarding our IT courses, fee structure, batch schedules, and campus details powered by <span class="support-gemini-accent">Gemini AI</span>.
+              </p>
+
+              <!-- 2x2 Feature Cards Grid -->
+              <div class="support-features-grid">
+                
+                <div class="support-feature-card">
+                  <div class="support-feature-icon">
+                    <i class="fa-solid fa-comments"></i>
+                  </div>
+                  <div class="support-feature-info">
+                    <h4>Instant Answers</h4>
+                    <p>Get immediate replies to all your questions about our programs, fees, and more.</p>
+                  </div>
                 </div>
-                <span class="typing-label">Evolance Counselor is typing...</span>
+
+                <div class="support-feature-card">
+                  <div class="support-feature-icon">
+                    <i class="fa-solid fa-calendar-days"></i>
+                  </div>
+                  <div class="support-feature-info">
+                    <h4>Admission Guidance</h4>
+                    <p>Detailed information about admission process, eligibility, and required documents.</p>
+                  </div>
+                </div>
+
+                <div class="support-feature-card">
+                  <div class="support-feature-icon">
+                    <i class="fa-solid fa-file-lines"></i>
+                  </div>
+                  <div class="support-feature-info">
+                    <h4>Fee &amp; Schedule Info</h4>
+                    <p>Know about fee structure, installments, batch timings, and upcoming schedules.</p>
+                  </div>
+                </div>
+
+                <div class="support-feature-card">
+                  <div class="support-feature-icon">
+                    <i class="fa-solid fa-building"></i>
+                  </div>
+                  <div class="support-feature-info">
+                    <h4>Campus Details</h4>
+                    <p>Get information about our campus location, facilities, and environment.</p>
+                  </div>
+                </div>
+
               </div>
 
-              <!-- Chat Input Bar -->
-              <form id="support-chat-form" class="chat-input-bar">
-                <input 
-                  type="text" 
-                  id="chat-user-input" 
-                  placeholder="Type your question about Evolance IT programs..." 
-                  autocomplete="off"
-                  required
-                />
-                <button type="submit" class="minimal-btn" id="chat-send-btn">
-                  <span>Send</span>
-                  <i class="fa-solid fa-paper-plane"></i>
-                </button>
-              </form>
+              <!-- 24/7 Availability Banner -->
+              <div class="support-247-banner">
+                <div class="support-247-icon">
+                  <i class="fa-solid fa-comments"></i>
+                </div>
+                <p class="support-247-text">
+                  Our AI Counselor is available <strong>24/7</strong> to help you choose the right program and take the next step toward your future in tech.
+                </p>
+              </div>
 
             </div>
+
+            <!-- Right Column: Interactive AI Counselor Chat Card -->
+            <div class="support-right-col">
+              <div class="support-chat-card">
+                
+                <!-- Suggested Questions Section -->
+                <div class="support-suggested-section">
+                  <span class="support-suggested-label">Suggested Questions:</span>
+                  <div class="support-chips-wrap">
+                    <button type="button" class="chip-btn" data-query="What is the fee and duration of the Capstone Pro Program?">Capstone Pro Fee &amp; Duration</button>
+                    <button type="button" class="chip-btn" data-query="Who can join Capstone Ignite for Women?">Capstone Ignite Info</button>
+                    <button type="button" class="chip-btn" data-query="What skills do kids learn in Capstone Juniors?">Capstone Juniors Skills</button>
+                    <button type="button" class="chip-btn" data-query="Where is Evolance Institute located in Rawalpindi?">Campus Location &amp; Contact</button>
+                  </div>
+                </div>
+
+                <!-- Sparkle Divider -->
+                <div class="support-sparkle-divider">
+                  <span>✦</span>
+                </div>
+
+                <!-- Chat Messages Scroll Area -->
+                <div class="support-chat-messages-area" id="chat-messages-area">
+                  
+                  <!-- Default Welcome Graphic (Shown initially before chatting) -->
+                  <div class="support-welcome-state" id="support-welcome-state">
+                    <div class="support-radar-circles">
+                      <div class="radar-circle radar-c1"></div>
+                      <div class="radar-circle radar-c2"></div>
+                      <div class="radar-circle radar-c3"></div>
+                      <div class="support-bot-avatar-wrap">
+                        <svg class="support-bot-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <!-- Robot Head -->
+                          <rect x="25" y="38" width="50" height="38" rx="14" fill="#002b28" stroke="#2dd4bf" stroke-width="3.5"/>
+                          <!-- Antenna -->
+                          <line x1="50" y1="26" x2="50" y2="38" stroke="#2dd4bf" stroke-width="3.5" stroke-linecap="round"/>
+                          <circle cx="50" cy="24" r="4.5" fill="#2dd4bf"/>
+                          <!-- Eyes / Happy Face -->
+                          <path d="M38 52C38 54.5 40 56 42 56C44 56 46 54.5 46 52" stroke="#2dd4bf" stroke-width="3.5" stroke-linecap="round"/>
+                          <path d="M54 52C54 54.5 56 56 58 56C60 56 62 54.5 62 52" stroke="#2dd4bf" stroke-width="3.5" stroke-linecap="round"/>
+                          <!-- Smile -->
+                          <path d="M43 65C46 68 54 68 57 65" stroke="#2dd4bf" stroke-width="3.5" stroke-linecap="round"/>
+                          <!-- Ears -->
+                          <rect x="19" y="48" width="6" height="16" rx="3" fill="#2dd4bf"/>
+                          <rect x="75" y="48" width="6" height="16" rx="3" fill="#2dd4bf"/>
+                          <!-- Chat Bubble Top Right -->
+                          <path d="M72 26C72 20 78 16 86 16C94 16 100 20 100 26C100 30 96 33.5 91 35.2L92 41L85.5 36C77.5 36 72 31.5 72 26Z" fill="#002b28" stroke="#2dd4bf" stroke-width="2.5"/>
+                          <circle cx="81" cy="26" r="1.5" fill="#2dd4bf"/>
+                          <circle cx="86" cy="26" r="1.5" fill="#2dd4bf"/>
+                          <circle cx="91" cy="26" r="1.5" fill="#2dd4bf"/>
+                        </svg>
+                      </div>
+                    </div>
+                    <h3 class="support-welcome-title">Hi! I’m your AI Admissions Counselor.</h3>
+                    <p class="support-welcome-sub">Ask me anything about Evolance IT programs.</p>
+                  </div>
+
+                </div>
+
+                <!-- Typing Indicator -->
+                <div class="chat-typing-indicator" id="chat-typing-indicator" style="display: none;">
+                  <div class="typing-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <span class="typing-label">Evolance Counselor is typing...</span>
+                </div>
+
+                <!-- Chat Input Bar -->
+                <form id="support-chat-form" class="support-chat-input-bar">
+                  <input 
+                    type="text" 
+                    id="chat-user-input" 
+                    placeholder="Type your question about Evolance IT programs..." 
+                    autocomplete="off"
+                    required
+                  />
+                  <button type="submit" class="support-send-btn" id="chat-send-btn">
+                    <span>Send</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                  </button>
+                </form>
+
+              </div>
+            </div>
+
           </div>
+
         </div>
       </section>
 
