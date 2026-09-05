@@ -880,32 +880,141 @@ function initSupportAIChat() {
     return `<p>${formatted}</p>`;
   }
 
+  // Dynamically extract latest structured data from the 3 program landing pages
+  function getLiveProgramKnowledge() {
+    // 1. Capstone Pro live data extraction
+    const proModules = Array.from(document.querySelectorAll("#tab-master .pro-module-item")).map(item => {
+      const badge = item.querySelector(".pro-module-badge")?.innerText.replace(/\s+/g, " ").trim() || "MODULE";
+      const title = item.querySelector(".pro-module-content h4")?.innerText.trim() || "";
+      const desc = item.querySelector(".pro-module-content p")?.innerText.trim() || "";
+      return `  * ${badge}: ${title}\n    - Curriculum: ${desc}`;
+    }).join("\n");
+
+    const proHighlights = Array.from(document.querySelectorAll("#tab-master .pro-highlights-list li")).map(li => {
+      return `  - ${li.querySelector(".pro-highlight-text")?.innerText.trim() || li.innerText.trim()}`;
+    }).join("\n");
+
+    const proPersonas = Array.from(document.querySelectorAll("#tab-master .pro-audience-card")).map(card => {
+      const title = card.querySelector(".pro-card-title")?.innerText.replace(/\s+/g, " ").trim() || "";
+      const desc = card.querySelector(".pro-card-desc")?.innerText.trim() || "";
+      return `  * ${title}: ${desc}`;
+    }).join("\n");
+
+    // 2. Capstone Ignite live data extraction
+    const ignitePhases = Array.from(document.querySelectorAll("#tab-ignite .ignite-timeline-item")).map(item => {
+      const badge = item.querySelector(".ignite-timeline-badge")?.innerText.trim() || "PHASE";
+      const title = item.querySelector(".ignite-timeline-content h4")?.innerText.trim() || "";
+      const desc = item.querySelector(".ignite-timeline-content p")?.innerText.trim() || "";
+      return `  * ${badge} (${title}): ${desc}`;
+    }).join("\n");
+
+    const igniteHighlights = Array.from(document.querySelectorAll("#tab-ignite .ignite-highlights-list li")).map(li => {
+      return `  - ${li.querySelector(".ignite-highlight-text")?.innerText.trim() || li.innerText.trim()}`;
+    }).join("\n");
+
+    const ignitePersonas = Array.from(document.querySelectorAll("#tab-ignite .ignite-audience-card")).map(card => {
+      const title = card.querySelector(".ignite-card-title")?.innerText.replace(/\s+/g, " ").trim() || "";
+      const desc = card.querySelector(".ignite-card-desc")?.innerText.trim() || "";
+      return `  * ${title}: ${desc}`;
+    }).join("\n");
+
+    // 3. Capstone Juniors live data extraction
+    const juniorsPhases = Array.from(document.querySelectorAll("#tab-juniors .juniors-timeline-item")).map(item => {
+      const badge = item.querySelector(".juniors-timeline-badge")?.innerText.trim() || "PHASE";
+      const title = item.querySelector(".juniors-timeline-content h4")?.innerText.trim() || "";
+      const desc = item.querySelector(".juniors-timeline-content p")?.innerText.trim() || "";
+      return `  * ${badge} (${title}): ${desc}`;
+    }).join("\n");
+
+    const juniorsHighlights = Array.from(document.querySelectorAll("#tab-juniors .juniors-highlights-list li")).map(li => {
+      return `  - ${li.querySelector(".juniors-highlight-text")?.innerText.trim() || li.innerText.trim()}`;
+    }).join("\n");
+
+    const juniorsPersonas = Array.from(document.querySelectorAll("#tab-juniors .juniors-audience-card")).map(card => {
+      const title = card.querySelector(".juniors-card-title")?.innerText.replace(/\s+/g, " ").trim() || "";
+      const desc = card.querySelector(".juniors-card-desc")?.innerText.trim() || "";
+      return `  * ${title}: ${desc}`;
+    }).join("\n");
+
+    return {
+      proModules,
+      proHighlights,
+      proPersonas,
+      ignitePhases,
+      igniteHighlights,
+      ignitePersonas,
+      juniorsPhases,
+      juniorsHighlights,
+      juniorsPersonas
+    };
+  }
+
   async function handleUserSend(text) {
     appendUserMessage(text);
     userInput.value = "";
 
     if (typingIndicator) typingIndicator.style.display = "flex";
 
-    const systemPrompt = `You are a real, warm, and professional human Admissions Counselor at Evolance Institute of IT located in Rawalpindi, Pakistan.
+    const data = getLiveProgramKnowledge();
 
-Key Persona Rules:
-- Communicate in a friendly, conversational human tone, just like an experienced admissions counselor talking to a student.
-- NEVER sound like a robot or AI. Do NOT use phrases like "As an AI model...", "I am programmed to...", or mechanical disclaimers.
-- Use natural greetings (e.g. "Assalam-o-Alaikum!", "Hello!", "Great to hear from you!") when appropriate.
-- Keep answers clear, direct, and helpful.
+    const systemPrompt = `You are the official, warm, knowledgeable, and professional Admissions Counselor at Evolance Institute of IT located in Rawalpindi, Pakistan.
 
-Evolance Institute Details:
-- Founder: Abdul Rehman. Co-Founder & Director: NoorAbbas. Core belief: "If the course does not work for the student, the course is the problem — not the student."
-- Location: Rawalpindi, Pakistan.
-- Phone / WhatsApp: 0339-9333066.
-- Class Batches: Small batches to ensure personal attention and hands-on guidance for every student.
+KEY RULES & BEHAVIOR:
+1. Tone: Friendly, conversational, respectful, and helpful. Speak like an experienced admissions advisor. Never sound robotic or say "As an AI...". Use warm greetings (e.g. "Assalam-o-Alaikum!", "Hello!").
+2. Keep Programs Strictly Separated: Do NOT mix up modules, curriculum, or target audience between Capstone Pro, Capstone Ignite, and Capstone Juniors. Answer accurately based on the specific program requested.
+3. Program Durations (All 3 programs are 2 Months):
+   - Capstone Pro: 2 Months
+   - Capstone Ignite: 2 Months
+   - Capstone Juniors: 2 Months
+4. Fee Questions Policy: For ALL fee-related queries (tuition cost, discount offers, installment plans), inform the user that fees vary with current batch promotions and kindly direct them to contact Evolance on WhatsApp at 0339-9333066 or use the "Chat on WhatsApp" button for the latest, accurate fee breakdown and registration assistance.
+5. Workstation: Every student at Evolance is provided with a dedicated laptop/computer during class.
 
-Programs offered:
-1. Capstone Pro: 60+ Practical IT Skills (Hardware, Windows/Linux OS, MS Office, Canva, HTML/CSS, Python, Cybersecurity, AI Tools, Freelancing on Fiverr/Upwork). Duration: 6 Months. Fee: PKR 120,000 (semester-wise installments available).
-2. Capstone Ignite: Exclusively designed IT & Web Development track for Women. Hands-on web design, digital marketing, graphic design & freelancing.
-3. Capstone Juniors: IT, coding, logic & creativity track for young students (ages 11-15).
+============================================================
+OFFICIAL PROGRAM DETAILS (FETCHED DIRECTLY FROM LANDING PAGES)
+============================================================
 
-Respond naturally, concisely, and warmly to the student's question as a human representative.`;
+1. CAPSTONE PRO (Advanced Career & Tech Track):
+- Track: Advanced Tech Track / From Beginner to Career-Ready
+- Duration: 2 Months
+- Structure: Exactly 10 Modules (60+ Practical Skills)
+- Target Audience (4 Personas):
+${data.proPersonas || '  * The School Leaver (Age 16–21), The Skill Upgrader, The Aspiring Freelancer, The University Student'}
+- Program Highlights:
+${data.proHighlights || '  - Dedicated laptop for every student\n  - Complete 10-module career roadmap\n  - Hands-on coding & real-world projects\n  - ChatGPT & Gemini AI tools training\n  - Web development (WordPress & Webflow)\n  - Cybersecurity & digital safety\n  - Freelancing on Upwork & Fiverr\n  - Recognized Certificate'}
+- Complete 10 Modules Breakdown (explain details when asked):
+${data.proModules}
+
+2. CAPSTONE IGNITE (Women-First Tech Initiative):
+- Track: Exclusively designed for Women to learn IT, design, and freelancing in a safe, empowering environment.
+- Duration: 2 Months
+- Target Audience (4 Personas):
+${data.ignitePersonas || '  * The Student (Age 16–25), The Homemaker, The Job Seeker, The Aspiring Freelancer'}
+- Program Highlights:
+${data.igniteHighlights || '  - Dedicated laptop for every student\n  - Safe, supportive environment\n  - Small batch sizes (personal attention)\n  - Recognized Certificate\n  - AI tools training included\n  - Career & freelancing support'}
+- 4-Phase Curriculum Breakdown:
+${data.ignitePhases}
+
+3. CAPSTONE JUNIORS (Kids & Teens Tech Track):
+- Track: Next-Generation Technology, Logic & Coding Programme for Young Learners.
+- Target Age: Ages 11–15
+- Duration: 2 Months
+- Structure: 4 Phases, 15+ Skills, 3 Hands-on Projects
+- Target Audience (4 Personas):
+${data.juniorsPersonas || '  * The Curious Learner, The Supporting Parent, The Confident Thinker, The Aspiring Developer'}
+- Program Highlights:
+${data.juniorsHighlights || '  - Learn real tech skills step by step\n  - Build logic & problem-solving ability\n  - Hands-on Scratch & Python coding\n  - Explore AI & future tech\n  - Final Showcase presentation to parents on Certificate Day\n  - Recognized Certificate\n  - Mentor-supported learning'}
+- 4-Phase Curriculum Breakdown:
+${data.juniorsPhases}
+
+============================================================
+INSTITUTE DETAILS:
+- Name: Evolance Institute of IT
+- Leadership: Founded by Abdul Rehman, Co-Founded by Noor Abbas
+- Core Belief: "If the course does not work for the student, the course is the problem — not the student."
+- Location: Rawalpindi, Pakistan
+- Official WhatsApp / Helpline: 0339-9333066
+
+When answering questions, use this exact knowledge base. Explain specific modules or skills thoroughly and clearly when requested.`;
 
     const models = ["gemini-flash-lite-latest", "gemini-flash-latest", "gemma-4-26b-a4b-it"];
     let botReply = null;
@@ -948,7 +1057,7 @@ Respond naturally, concisely, and warmly to the student's question as a human re
     if (botReply) {
       appendBotMessage(botReply);
     } else {
-      appendBotMessage(`Sorry, I am currently unable to process your request right now (${lastError || "Network busy"}). Please feel free to reach out directly via WhatsApp using the floating button at the bottom right!`);
+      appendBotMessage(`Sorry, I am currently unable to process your request right now (${lastError || "Network busy"}). Please feel free to reach out directly via WhatsApp (0339-9333066) using the button at the bottom right!`);
     }
   }
 }
